@@ -97,10 +97,6 @@ const DocumentsViewer = ({ application, open, onClose }: DocumentsViewerProps) =
       await markViewed(fileName);
     }
   };
-      a.click();
-      await markViewed(fileName);
-    }
-  };
 
   const formatDate = (iso: string) => {
     const d = new Date(iso);
