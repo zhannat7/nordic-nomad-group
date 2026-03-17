@@ -56,14 +56,22 @@ const Header = () => {
           </div>
 
 
-          {/* Login button - only RU and KY */}
+          {/* Login & Register buttons - only RU and KY */}
           {(lang === 'ru' || lang === 'ky') && (
-            <a
-              href="/login"
-              className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              {lang === 'ky' ? 'Кирүү' : 'Войти'}
-            </a>
+            <>
+              <a
+                href="/register"
+                className="rounded-md border border-primary px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+              >
+                {lang === 'ky' ? 'Каттоо' : 'Регистрация'}
+              </a>
+              <a
+                href="/login"
+                className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                {lang === 'ky' ? 'Кирүү' : 'Войти'}
+              </a>
+            </>
           )}
 
           {/* Mobile toggle */}
@@ -98,13 +106,22 @@ const Header = () => {
                 </a>
               ))}
               {(lang === 'ru' || lang === 'ky') && (
-                <a
-                  href="/login"
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
-                >
-                  {lang === 'ky' ? 'Кирүү' : 'Войти'}
-                </a>
+                <>
+                  <a
+                    href="/register"
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-md border border-primary px-4 py-2 text-center text-sm font-medium text-primary"
+                  >
+                    {lang === 'ky' ? 'Каттоо' : 'Регистрация'}
+                  </a>
+                  <a
+                    href="/login"
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
+                  >
+                    {lang === 'ky' ? 'Кирүү' : 'Войти'}
+                  </a>
+                </>
               )}
             </nav>
           </motion.div>

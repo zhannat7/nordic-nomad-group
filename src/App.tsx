@@ -11,6 +11,7 @@ import Login from "./pages/Login.tsx";
 import ResetPassword from "./pages/ResetPassword.tsx";
 import AdminDashboard from "./pages/AdminDashboard.tsx";
 import Profile from "./pages/Profile.tsx";
+import Register from "./pages/Register.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/login" element={<Login />} />
               <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="/register" element={<Register />} />
               <Route
                 path="/admin"
                 element={
