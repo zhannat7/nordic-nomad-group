@@ -55,14 +55,6 @@ const Header = () => {
             ))}
           </div>
 
-          {/* CTA */}
-          <a
-            href="tel:+4552808621"
-            className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform active:scale-[0.98] md:flex"
-          >
-            <Phone size={14} />
-            +45 52 80 86 21
-          </a>
 
           {/* Mobile toggle */}
           <button
