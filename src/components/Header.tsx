@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 import { useI18n, languages } from '@/lib/i18n';
+import logo from '@/assets/logo.jpeg';
 
 const Header = () => {
   const { lang, setLang, t } = useI18n();
@@ -16,9 +17,11 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="container flex h-16 items-center justify-between">
-        <a href="#" className="font-display text-2xl tracking-tight text-foreground">
-          <span className="font-bold">NORDIC</span>
-          <span className="text-primary"> Nomad Group</span>
+        <a href="#" className="flex items-center gap-3">
+          <img src={logo} alt="Nordic Nomad Group logo" className="h-[60px] w-auto" />
+          <span className="text-2xl tracking-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#1B3A6B', fontWeight: 700 }}>
+            Nordic Nomad Group
+          </span>
         </a>
 
         {/* Desktop nav */}
