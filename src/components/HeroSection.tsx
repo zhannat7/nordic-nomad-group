@@ -66,7 +66,7 @@ const HeroSection = () => {
           className="flex flex-col gap-4"
         >
           <a
-            href="tel:+4552808621"
+            href="tel:+4528575350"
             className="legal-card flex items-center gap-4 !border-primary/30 !bg-card/95 transition-transform active:scale-[0.98]"
           >
             <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
