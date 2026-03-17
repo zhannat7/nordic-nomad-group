@@ -64,13 +64,20 @@ const DocumentsViewer = ({ application, open, onClose }: DocumentsViewerProps) =
     setViews((prev) => ({ ...prev, [fileName]: now }));
   };
 
+  const getFullSignedUrl = (signedUrl: string) => {
+    if (signedUrl.startsWith('http')) return signedUrl;
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    return `${supabaseUrl}/storage/v1${signedUrl}`;
+  };
+
   const handlePreview = async (fileName: string) => {
     if (!application) return;
     const { data } = await supabase.storage
       .from('documents')
       .createSignedUrl(`${application.user_id}/${fileName}`, 3600);
     if (data?.signedUrl) {
-      setPreviewUrl(data.signedUrl);
+      const fullUrl = getFullSignedUrl(data.signedUrl);
+      setPreviewUrl(fullUrl);
       setPreviewName(fileName);
       await markViewed(fileName);
     }
