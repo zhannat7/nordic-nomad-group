@@ -14,6 +14,71 @@ export type Database = {
   }
   public: {
     Tables: {
+      application_comments: {
+        Row: {
+          admin_id: string
+          application_id: string
+          comment: string
+          created_at: string
+          id: string
+        }
+        Insert: {
+          admin_id: string
+          application_id: string
+          comment: string
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          admin_id?: string
+          application_id?: string
+          comment?: string
+          created_at?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "application_comments_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      applications: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          program: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          program: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          program?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
