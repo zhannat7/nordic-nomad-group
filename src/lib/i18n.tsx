@@ -140,6 +140,24 @@ const t: Translations = {
     ru: 'Все трудоустройства полностью законны и соответствуют нормам.',
     ky: 'Бардык жумушка орноштуруулар толугу менен мыйзамдуу.',
   },
+  'about.cert_registered': {
+    en: 'Officially registered in Denmark since 01.07.2024',
+    da: 'Officielt registreret i Danmark siden 01.07.2024',
+    ru: 'Официально зарегистрирована в Дании с 01.07.2024',
+    ky: 'Дания мамлекетинде 01.07.2024-жылдан расмий катталган',
+  },
+  'about.cert_view': {
+    en: '👁️ View Certificate',
+    da: '👁️ Se certifikat',
+    ru: '👁️ Посмотреть свидетельство',
+    ky: '👁️ Күбөлүктү көрүү',
+  },
+  'about.cert_download': {
+    en: '⬇️ Download',
+    da: '⬇️ Download',
+    ru: '⬇️ Скачать',
+    ky: '⬇️ Жүктөп алуу',
+  },
 
   // Why choose
   'why.title': { en: 'Why choose Nordic Nomad Group?', da: 'Hvorfor vælge Nordic Nomad Group?', ru: 'Почему Nordic Nomad Group?', ky: 'Эмне үчүн Nordic Nomad Group?' },
