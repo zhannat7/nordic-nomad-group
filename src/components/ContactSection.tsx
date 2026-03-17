@@ -43,7 +43,12 @@ const ContactSection = () => {
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Mail size={18} />
                 </div>
-                <p className="text-sm font-semibold text-foreground">info@workadvice.com</p>
+                <p className="text-sm font-semibold text-foreground">info@nordicnomadgroup.com</p>
+              </div>
+              <div className="mt-4 rounded-md border border-border bg-card p-3">
+                <p className="text-xs font-semibold text-foreground">Nordic Nomad Group</p>
+                <p className="text-xs text-muted-foreground">Lillemosevej 6, 4070 Kirke Hyllinge, Denmark</p>
+                <p className="text-xs text-muted-foreground">CVR: 44829363</p>
               </div>
             </div>
           </motion.div>

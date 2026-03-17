@@ -86,19 +86,19 @@ const t: Translations = {
     ky: 'Биз туура кызматкерлерди табуу компанияңыздын ийгилиги үчүн маанилүү фактор болоорун түшүнөбүз. Ошондуктан сизге жардам берүү үчүн бул жердебиз.',
   },
   'about.body': {
-    en: 'With over 15 years of experience, WorkAdvice specializes in recruiting employees from abroad for Danish companies. Our goal is to be the preferred bridge between foreign labor and Danish employers – with a focus on delivering qualified, motivated, and stable candidates.',
-    da: 'Med over 15 års erfaring er WorkAdvice specialiseret i rekruttering af medarbejdere fra udlandet til danske virksomheder. Vores mål er at være den foretrukne brobygger mellem udenlandsk arbejdskraft og danske arbejdsgivere – med fokus på at levere kvalificerede, motiverede og stabile kandidater.',
-    ru: 'Имея более 15 лет опыта, WorkAdvice специализируется на подборе сотрудников из-за рубежа для датских компаний. Наша цель — быть надёжным мостом между иностранной рабочей силой и датскими работодателями.',
-    ky: '15 жылдан ашуун тажрыйбасы менен WorkAdvice дания компаниялары үчүн чет өлкөлүк кызматкерлерди тандоого адистешкен. Биздин максат — чет элдик жумушчу күчү менен дания иш берүүчүлөрүнүн ортосунда ишенимдүү көпүрө болуу.',
+    en: 'With over 15 years of experience, Nordic Nomad Group specializes in recruiting employees from abroad for Danish companies. Our goal is to be the preferred bridge between foreign labor and Danish employers – with a focus on delivering qualified, motivated, and stable candidates.',
+    da: 'Med over 15 års erfaring er Nordic Nomad Group specialiseret i rekruttering af medarbejdere fra udlandet til danske virksomheder. Vores mål er at være den foretrukne brobygger mellem udenlandsk arbejdskraft og danske arbejdsgivere – med fokus på at levere kvalificerede, motiverede og stabile kandidater.',
+    ru: 'Имея более 15 лет опыта, Nordic Nomad Group специализируется на подборе сотрудников из-за рубежа для датских компаний. Наша цель — быть надёжным мостом между иностранной рабочей силой и датскими работодателями.',
+    ky: '15 жылдан ашуун тажрыйбасы менен Nordic Nomad Group дания компаниялары үчүн чет өлкөлүк кызматкерлерди тандоого адистешкен. Биздин максат — чет элдик жумушчу күчү менен дания иш берүүчүлөрүнүн ортосунда ишенимдүү көпүрө болуу.',
   },
 
   // Why choose
-  'why.title': { en: 'Why choose WorkAdvice?', da: 'Hvorfor vælge WorkAdvice?', ru: 'Почему WorkAdvice?', ky: 'Эмне үчүн WorkAdvice?' },
+  'why.title': { en: 'Why choose Nordic Nomad Group?', da: 'Hvorfor vælge Nordic Nomad Group?', ru: 'Почему Nordic Nomad Group?', ky: 'Эмне үчүн Nordic Nomad Group?' },
   'why.desc': {
-    en: 'WorkAdvice offers qualified foreign workforce to Danish companies in multiple industries. Through our large candidate database, we ensure you get access to employees who match your specific needs.',
-    da: 'WorkAdvice tilbyder kvalificeret udenlandsk arbejdskraft til danske virksomheder i flere brancher. Gennem vores store kandidatdatabase sikrer vi, at du får adgang til medarbejdere, der matcher dine specifikke behov.',
-    ru: 'WorkAdvice предлагает квалифицированную иностранную рабочую силу для датских компаний. Через нашу базу кандидатов мы обеспечиваем доступ к сотрудникам, соответствующим вашим потребностям.',
-    ky: 'WorkAdvice дания компанияларына квалификациялуу чет элдик жумушчу күчүн сунуштайт. Талапкерлер базабыз аркылуу сиздин муктаждыктарыңызга ылайык кызматкерлерди камсыз кылабыз.',
+    en: 'Nordic Nomad Group offers qualified foreign workforce to Danish companies in multiple industries. Through our large candidate database, we ensure you get access to employees who match your specific needs.',
+    da: 'Nordic Nomad Group tilbyder kvalificeret udenlandsk arbejdskraft til danske virksomheder i flere brancher. Gennem vores store kandidatdatabase sikrer vi, at du får adgang til medarbejdere, der matcher dine specifikke behov.',
+    ru: 'Nordic Nomad Group предлагает квалифицированную иностранную рабочую силу для датских компаний. Через нашу базу кандидатов мы обеспечиваем доступ к сотрудникам, соответствующим вашим потребностям.',
+    ky: 'Nordic Nomad Group дания компанияларына квалификациялуу чет элдик жумушчу күчүн сунуштайт. Талапкерлер базабыз аркылуу сиздин муктаждыктарыңызга ылайык кызматкерлерди камсыз кылабыз.',
   },
 
   'why1.title': { en: '15 years of specialization', da: '15 års specialisering', ru: '15 лет специализации', ky: '15 жыл адистик' },
