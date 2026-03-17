@@ -17,8 +17,8 @@ const Header = () => {
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
       <div className="container flex h-16 items-center justify-between">
         <a href="#" className="font-display text-2xl tracking-tight text-foreground">
-          <span className="font-bold">WORK</span>
-          <span className="text-primary">advice</span>
+          <span className="font-bold">NORDIC</span>
+          <span className="text-primary"> Nomad Group</span>
         </a>
 
         {/* Desktop nav */}
