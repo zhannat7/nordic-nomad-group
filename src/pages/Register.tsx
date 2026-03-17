@@ -185,15 +185,10 @@ const Register = () => {
           .upload(`${userId}/${name}.${ext}`, file, { upsert: true });
       }
 
-      toast({
-        title: t('Заявка отправлена!', 'Арыз жөнөтүлдү!'),
-        description: t(
-          'Ваш профиль отправлен. Администратор рассмотрит вашу заявку.',
-          'Сиздин профилиңиз жөнөтүлдү. Администратор кароого алат.'
-        ),
-      });
+      // Sign out after registration so user logs in fresh
+      await supabase.auth.signOut();
 
-      navigate('/profile', { replace: true });
+      navigate('/registration-success', { replace: true });
     } catch (err: any) {
       setError(err.message || t('Ошибка регистрации', 'Каттоо катасы'));
     } finally {
