@@ -79,6 +79,38 @@ export type Database = {
         }
         Relationships: []
       }
+      document_views: {
+        Row: {
+          admin_id: string
+          application_id: string
+          file_name: string
+          id: string
+          viewed_at: string
+        }
+        Insert: {
+          admin_id: string
+          application_id: string
+          file_name: string
+          id?: string
+          viewed_at?: string
+        }
+        Update: {
+          admin_id?: string
+          application_id?: string
+          file_name?: string
+          id?: string
+          viewed_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "document_views_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
