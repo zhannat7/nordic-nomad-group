@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '@/lib/i18n';
-import { Heart, Target, ShieldCheck, Scale } from 'lucide-react';
+import { Heart, Target, ShieldCheck, Scale, X } from 'lucide-react';
 
 const cards = [
   { icon: Heart, key: 'about.card1' },
@@ -12,6 +13,19 @@ const cards = [
 const AboutSection = () => {
   const { t, isCyrillic } = useI18n();
   const cx = isCyrillic ? 'cyrillic-text' : '';
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+
+  const handleView = async () => {
+    const res = await fetch('/documents/registration-certificate.pdf');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
+    setPdfUrl(url);
+  };
+
+  const handleCloseModal = () => {
+    if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+    setPdfUrl(null);
+  };
 
   return (
     <section id="about" className="section-padding border-t border-border">
@@ -91,12 +105,7 @@ const AboutSection = () => {
           <div className="mt-4 flex gap-3">
             <button
               type="button"
-              onClick={async () => {
-                const res = await fetch('/documents/registration-certificate.pdf');
-                const blob = await res.blob();
-                const url = URL.createObjectURL(blob);
-                window.open(url, '_blank');
-              }}
+              onClick={handleView}
               className="inline-flex items-center justify-center rounded-md border border-primary/30 bg-card px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
               {t('about.cert_view')}
@@ -122,6 +131,29 @@ const AboutSection = () => {
           </div>
         </motion.div>
       </div>
+
+      {pdfUrl && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 p-4" onClick={handleCloseModal}>
+          <div
+            className="relative w-full max-w-4xl rounded-lg border border-border bg-card shadow-lg"
+            style={{ height: '85vh' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={handleCloseModal}
+              className="absolute -right-3 -top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-sm transition-colors hover:text-foreground"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <iframe
+              src={pdfUrl}
+              className="h-full w-full rounded-lg"
+              title="Registration Certificate"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
