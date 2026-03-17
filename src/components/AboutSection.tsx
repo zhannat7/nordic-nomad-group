@@ -13,6 +13,19 @@ const cards = [
 const AboutSection = () => {
   const { t, isCyrillic } = useI18n();
   const cx = isCyrillic ? 'cyrillic-text' : '';
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+
+  const handleView = async () => {
+    const res = await fetch('/documents/registration-certificate.pdf');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
+    setPdfUrl(url);
+  };
+
+  const handleCloseModal = () => {
+    if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+    setPdfUrl(null);
+  };
 
   return (
     <section id="about" className="section-padding border-t border-border">
