@@ -117,8 +117,17 @@ const DocumentsViewer = ({ application, open, onClose }: DocumentsViewerProps) =
         </DialogHeader>
 
         {previewUrl ? (
-          <div className="flex-1 min-h-[60vh]">
-            <iframe src={previewUrl} className="h-full w-full rounded border border-border" title={previewName} />
+          <div className="flex-1 min-h-[60vh] flex flex-col gap-2">
+            <iframe
+              src={`https://docs.google.com/viewer?url=${encodeURIComponent(previewUrl)}&embedded=true`}
+              className="h-full w-full rounded border border-border flex-1 min-h-[55vh]"
+              title={previewName}
+            />
+            <div className="flex justify-end">
+              <Button variant="outline" size="sm" onClick={() => handleDownload(previewName)}>
+                <Download className="mr-2 h-4 w-4" /> Download
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="space-y-2 max-h-[60vh] overflow-y-auto">
