@@ -1,31 +1,26 @@
 import { useState, useEffect } from 'react';
 
-interface Rates {
-  kgsToEur: number | null;
-  kgsToDkk: number | null;
-  kgsToUsd: number | null;
-}
+const FIXED_EUR_TO_KGS = 95.23;
 
 const CurrencyTicker = () => {
-  const [rates, setRates] = useState<Rates>({ kgsToEur: null, kgsToDkk: null, kgsToUsd: null });
+  const [text, setText] = useState('Loading exchange rates...');
 
   const fetchRates = async () => {
     try {
-      const res = await fetch('https://api.frankfurter.app/latest?from=EUR&to=KGS,DKK,USD');
+      const res = await fetch('https://api.frankfurter.app/latest?from=EUR&to=DKK,USD');
       if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
-      const kgs = data.rates?.KGS;
       const dkk = data.rates?.DKK;
       const usd = data.rates?.USD;
-      if (kgs) {
-        setRates({
-          kgsToEur: 1 / kgs,
-          kgsToDkk: dkk / kgs,
-          kgsToUsd: usd / kgs,
-        });
+      if (dkk && usd) {
+        const kgsToEur = 1 / FIXED_EUR_TO_KGS;
+        const kgsToDkk = dkk / FIXED_EUR_TO_KGS;
+        const kgsToUsd = usd / FIXED_EUR_TO_KGS;
+        setText(`🇰🇬 1 KGS = ${kgsToEur.toFixed(4)} EUR  •  🇰🇬 1 KGS = ${kgsToDkk.toFixed(4)} DKK  •  🇰🇬 1 KGS = ${kgsToUsd.toFixed(4)} USD`);
       }
     } catch {
-      setRates({ kgsToEur: 0.0105, kgsToDkk: 0.074, kgsToUsd: 0.011 });
+      const kgsToEur = 1 / FIXED_EUR_TO_KGS;
+      setText(`🇰🇬 1 KGS = ${kgsToEur.toFixed(4)} EUR  •  🇰🇬 1 KGS = 0.0785 DKK  •  🇰🇬 1 KGS = 0.0121 USD`);
     }
   };
 
@@ -34,11 +29,6 @@ const CurrencyTicker = () => {
     const interval = setInterval(fetchRates, 60000);
     return () => clearInterval(interval);
   }, []);
-
-  const { kgsToEur, kgsToDkk, kgsToUsd } = rates;
-  const text = kgsToEur !== null
-    ? `🇰🇬 1 KGS = ${kgsToEur.toFixed(4)} EUR  •  🇰🇬 1 KGS = ${kgsToDkk!.toFixed(4)} DKK  •  🇰🇬 1 KGS = ${kgsToUsd!.toFixed(4)} USD`
-    : 'Loading exchange rates...';
 
   return (
     <div className="overflow-hidden whitespace-nowrap" style={{ backgroundColor: '#1B3A6B' }}>
