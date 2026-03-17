@@ -12,6 +12,7 @@ import ResetPassword from "./pages/ResetPassword.tsx";
 import AdminDashboard from "./pages/AdminDashboard.tsx";
 import Profile from "./pages/Profile.tsx";
 import Register from "./pages/Register.tsx";
+import RegistrationSuccess from "./pages/RegistrationSuccess.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
