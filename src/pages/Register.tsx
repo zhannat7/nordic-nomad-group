@@ -388,8 +388,8 @@ const Register = () => {
                   </PopoverContent>
                 </Popover>
                 {passportWarning && (
-                  <Alert className="border-amber-500/50 bg-amber-50 text-amber-800">
-                    <AlertTriangle className="h-4 w-4 text-amber-600" />
+                  <Alert className="border-accent/50 bg-accent/10 text-foreground">
+                    <AlertTriangle className="h-4 w-4 text-accent" />
                     <AlertDescription>{passportWarning}</AlertDescription>
                   </Alert>
                 )}
