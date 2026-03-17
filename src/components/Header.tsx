@@ -97,6 +97,15 @@ const Header = () => {
                   {t(item.key)}
                 </a>
               ))}
+              {(lang === 'ru' || lang === 'ky') && (
+                <a
+                  href="/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
+                >
+                  {lang === 'ky' ? 'Кирүү' : 'Войти'}
+                </a>
+              )}
             </nav>
           </motion.div>
         )}
