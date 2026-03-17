@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useI18n } from '@/lib/i18n';
@@ -10,7 +10,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { format, differenceInYears, differenceInMonths } from 'date-fns';
+import { format, differenceInYears, differenceInMonths, parse, isValid } from 'date-fns';
 import { CalendarIcon, CheckCircle2, XCircle, Upload, ArrowLeft, ArrowRight, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
@@ -28,6 +28,8 @@ const Register = () => {
 
   // Step 1
   const [dob, setDob] = useState<Date>();
+  const [dobText, setDobText] = useState('');
+  const [dobOpen, setDobOpen] = useState(false);
   const [studyYear, setStudyYear] = useState('');
   const [fieldOfStudy, setFieldOfStudy] = useState('');
   const [prevInternship, setPrevInternship] = useState('');
@@ -39,11 +41,12 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
   const [passportExpiry, setPassportExpiry] = useState<Date>();
+  const [passportExpiryText, setPassportExpiryText] = useState('');
+  const [passportExpiryOpen, setPassportExpiryOpen] = useState(false);
   const [passportPdf, setPassportPdf] = useState<File | null>(null);
   const [engCert, setEngCert] = useState<File | null>(null);
   const [enrollmentLetter, setEnrollmentLetter] = useState<File | null>(null);
   const [transcript, setTranscript] = useState<File | null>(null);
-  const [powerOfAttorney, setPowerOfAttorney] = useState<File | null>(null);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
@@ -104,16 +107,49 @@ const Register = () => {
     return null;
   }, [passportExpiry, lang]);
 
-  const allStep2Filled = fullName.trim() && email.trim() && password.length >= 6 && passportPdf && engCert && enrollmentLetter && transcript && powerOfAttorney;
+  // Button enabled when name + email + password >= 6 (docs are optional)
+  const canSubmit = fullName.trim().length > 0 && email.trim().length > 0 && password.length >= 6;
+
+  // Date text input handler
+  const handleDobTextChange = (value: string) => {
+    setDobText(value);
+    const parsed = parse(value, 'dd.MM.yyyy', new Date());
+    if (isValid(parsed) && parsed.getFullYear() >= 1990 && parsed.getFullYear() <= 2010) {
+      setDob(parsed);
+    }
+  };
+
+  const handleDobCalendarSelect = (date: Date | undefined) => {
+    setDob(date);
+    if (date) {
+      setDobText(format(date, 'dd.MM.yyyy'));
+      setDobOpen(false);
+    }
+  };
+
+  const handlePassportExpiryTextChange = (value: string) => {
+    setPassportExpiryText(value);
+    const parsed = parse(value, 'dd.MM.yyyy', new Date());
+    if (isValid(parsed) && parsed >= new Date()) {
+      setPassportExpiry(parsed);
+    }
+  };
+
+  const handlePassportExpiryCalendarSelect = (date: Date | undefined) => {
+    setPassportExpiry(date);
+    if (date) {
+      setPassportExpiryText(format(date, 'dd.MM.yyyy'));
+      setPassportExpiryOpen(false);
+    }
+  };
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!allStep2Filled) return;
+    if (!canSubmit) return;
     setError('');
     setSubmitting(true);
 
     try {
-      // 1. Sign up user
       const { data: authData, error: signUpError } = await supabase.auth.signUp({
         email: email.trim(),
         password,
@@ -124,10 +160,8 @@ const Register = () => {
       const userId = authData.user?.id;
       if (!userId) throw new Error('Registration failed');
 
-      // 2. Assign intern role
       await supabase.from('user_roles').insert({ user_id: userId, role: 'intern' as const });
 
-      // 3. Create application
       await supabase.from('applications').insert({
         user_id: userId,
         full_name: fullName.trim(),
@@ -136,18 +170,13 @@ const Register = () => {
         status: 'pending',
       });
 
-      // 4. Upload files
-      const uploads: { file: File; name: string }[] = [
-        { file: passportPdf!, name: 'passport.pdf' },
-        { file: engCert!, name: 'english_certificate' },
-        { file: enrollmentLetter!, name: 'enrollment_letter' },
-        { file: transcript!, name: 'transcript' },
-        { file: powerOfAttorney!, name: 'power_of_attorney' },
-      ];
-
-      if (profilePhoto) {
-        uploads.push({ file: profilePhoto, name: 'profile_photo' });
-      }
+      // Upload files (all optional)
+      const uploads: { file: File; name: string }[] = [];
+      if (passportPdf) uploads.push({ file: passportPdf, name: 'passport.pdf' });
+      if (engCert) uploads.push({ file: engCert, name: 'english_certificate' });
+      if (enrollmentLetter) uploads.push({ file: enrollmentLetter, name: 'enrollment_letter' });
+      if (transcript) uploads.push({ file: transcript, name: 'transcript' });
+      if (profilePhoto) uploads.push({ file: profilePhoto, name: 'profile_photo' });
 
       for (const { file, name } of uploads) {
         const ext = file.name.split('.').pop() || 'pdf';
@@ -216,7 +245,6 @@ const Register = () => {
               ? t('Шаг 1: Проверка соответствия требованиям', 'Кадам 1: Талаптарга ылайыктуулукту текшерүү')
               : t('Шаг 2: Заполните форму регистрации', 'Кадам 2: Каттоо формасын толтуруңуз')}
           </CardDescription>
-          {/* Step indicator */}
           <div className="mt-3 flex items-center justify-center gap-2">
             <div className={cn("h-2 w-16 rounded-full", step === 1 ? "bg-primary" : "bg-primary/30")} />
             <div className={cn("h-2 w-16 rounded-full", step === 2 ? "bg-primary" : "bg-muted")} />
@@ -236,26 +264,33 @@ const Register = () => {
               {/* Date of birth */}
               <div className="space-y-2">
                 <Label>{t('Дата рождения', 'Туулган күн')}</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button variant="outline" className={cn("w-full justify-start text-left font-normal", !dob && "text-muted-foreground")}>
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {dob ? format(dob, 'dd.MM.yyyy') : t('Выберите дату', 'Күндү тандаңыз')}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={dob}
-                      onSelect={setDob}
-                      defaultMonth={new Date(2000, 0)}
-                      fromYear={1990}
-                      toYear={2010}
-                      captionLayout="dropdown-buttons"
-                      className="p-3 pointer-events-auto"
-                    />
-                  </PopoverContent>
-                </Popover>
+                <div className="flex gap-2">
+                  <Input
+                    placeholder="дд.мм.гггг"
+                    value={dobText}
+                    onChange={(e) => handleDobTextChange(e.target.value)}
+                    className="flex-1"
+                  />
+                  <Popover open={dobOpen} onOpenChange={setDobOpen}>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" size="icon" className="shrink-0">
+                        <CalendarIcon className="h-4 w-4" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="end">
+                      <Calendar
+                        mode="single"
+                        selected={dob}
+                        onSelect={handleDobCalendarSelect}
+                        defaultMonth={new Date(2000, 0)}
+                        fromYear={1990}
+                        toYear={2010}
+                        captionLayout="dropdown-buttons"
+                        className="p-3 pointer-events-auto"
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
                 {dob && (
                   <p className="text-xs text-muted-foreground">
                     {t('Возраст', 'Жашы')}: {differenceInYears(new Date(), dob)} {t('лет', 'жаш')}
@@ -301,7 +336,6 @@ const Register = () => {
                 </Select>
               </div>
 
-              {/* Eligibility results */}
               {eligibilityChecked && eligibilityErrors.length > 0 && (
                 <div className="space-y-2">
                   {eligibilityErrors.map((err, i) => (
@@ -346,17 +380,17 @@ const Register = () => {
               </Button>
 
               <div className="space-y-2">
-                <Label>{t('Полное имя', 'Толук аты-жөнү')}</Label>
+                <Label>{t('Полное имя', 'Толук аты-жөнү')} *</Label>
                 <Input value={fullName} onChange={(e) => setFullName(e.target.value)} required placeholder={t('Иванов Иван Иванович', 'Аты-жөнүңүз')} />
               </div>
 
               <div className="space-y-2">
-                <Label>Email</Label>
+                <Label>Email *</Label>
                 <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="email@example.com" />
               </div>
 
               <div className="space-y-2">
-                <Label>{t('Пароль (мин. 6 символов)', 'Сырсөз (мин. 6 белги)')}</Label>
+                <Label>{t('Пароль (мин. 6 символов)', 'Сырсөз (мин. 6 белги)')} *</Label>
                 <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
               </div>
 
@@ -370,23 +404,30 @@ const Register = () => {
               {/* Passport expiry */}
               <div className="space-y-2">
                 <Label>{t('Срок действия паспорта', 'Паспорттун мөөнөтү')}</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button variant="outline" className={cn("w-full justify-start text-left font-normal", !passportExpiry && "text-muted-foreground")}>
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {passportExpiry ? format(passportExpiry, 'dd.MM.yyyy') : t('Выберите дату', 'Күндү тандаңыз')}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={passportExpiry}
-                      onSelect={setPassportExpiry}
-                      fromDate={new Date()}
-                      className="p-3 pointer-events-auto"
-                    />
-                  </PopoverContent>
-                </Popover>
+                <div className="flex gap-2">
+                  <Input
+                    placeholder="дд.мм.гггг"
+                    value={passportExpiryText}
+                    onChange={(e) => handlePassportExpiryTextChange(e.target.value)}
+                    className="flex-1"
+                  />
+                  <Popover open={passportExpiryOpen} onOpenChange={setPassportExpiryOpen}>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" size="icon" className="shrink-0">
+                        <CalendarIcon className="h-4 w-4" />
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="end">
+                      <Calendar
+                        mode="single"
+                        selected={passportExpiry}
+                        onSelect={handlePassportExpiryCalendarSelect}
+                        fromDate={new Date()}
+                        className="p-3 pointer-events-auto"
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
                 {passportWarning && (
                   <Alert className="border-accent/50 bg-accent/10 text-foreground">
                     <AlertTriangle className="h-4 w-4 text-accent" />
@@ -395,8 +436,19 @@ const Register = () => {
                 )}
               </div>
 
+              {/* Documents warning */}
+              <Alert className="border-yellow-500/50 bg-yellow-500/10 text-foreground">
+                <AlertTriangle className="h-4 w-4 text-yellow-600" />
+                <AlertDescription className="text-sm">
+                  {t(
+                    'Важно: Ваш профиль будет рассмотрен только при наличии всех необходимых документов. Профили с неполными документами будут автоматически удалены через 30 дней.',
+                    'Маанилүү: Профилиңиз бардык документтер жүктөлгөндө гана каралат. Толук эмес профилдер 30 күндөн кийин автоматтык түрдө жок кылынат.'
+                  )}
+                </AlertDescription>
+              </Alert>
+
               <div className="space-y-1 pt-2">
-                <p className="text-sm font-medium">{t('Обязательные документы', 'Милдеттүү документтер')}</p>
+                <p className="text-sm font-medium">{t('Документы (необязательно)', 'Документтер (милдеттүү эмес)')}</p>
               </div>
 
               <FileInput
@@ -423,13 +475,7 @@ const Register = () => {
                 onChange={setTranscript}
               />
 
-              <FileInput
-                label={t('Подписанная доверенность', 'Кол коюлган ишеним кат')}
-                file={powerOfAttorney}
-                onChange={setPowerOfAttorney}
-              />
-
-              <Button type="submit" className="w-full" disabled={submitting || !allStep2Filled}>
+              <Button type="submit" className="w-full" disabled={submitting || !canSubmit}>
                 {submitting ? '...' : t('Зарегистрироваться', 'Катталуу')}
               </Button>
             </form>
