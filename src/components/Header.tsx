@@ -56,6 +56,16 @@ const Header = () => {
           </div>
 
 
+          {/* Login button - only RU and KY */}
+          {(lang === 'ru' || lang === 'ky') && (
+            <a
+              href="/login"
+              className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            >
+              {lang === 'ky' ? 'Кирүү' : 'Войти'}
+            </a>
+          )}
+
           {/* Mobile toggle */}
           <button
             className="md:hidden"
