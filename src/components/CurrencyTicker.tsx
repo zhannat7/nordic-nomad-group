@@ -1,26 +1,24 @@
 import { useState, useEffect } from 'react';
 
-const FIXED_EUR_TO_KGS = 95.23;
-
 const CurrencyTicker = () => {
   const [text, setText] = useState('Loading exchange rates...');
 
   const fetchRates = async () => {
     try {
-      const res = await fetch('https://api.frankfurter.app/latest?from=EUR&to=DKK,USD');
+      const res = await fetch('https://open.er-api.com/v6/latest/EUR');
       if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
+      const kgs = data.rates?.KGS;
       const dkk = data.rates?.DKK;
       const usd = data.rates?.USD;
-      if (dkk && usd) {
-        const kgsToEur = 1 / FIXED_EUR_TO_KGS;
-        const kgsToDkk = dkk / FIXED_EUR_TO_KGS;
-        const kgsToUsd = usd / FIXED_EUR_TO_KGS;
-        setText(`🇰🇬 1 KGS = ${kgsToEur.toFixed(4)} EUR  •  🇰🇬 1 KGS = ${kgsToDkk.toFixed(4)} DKK  •  🇰🇬 1 KGS = ${kgsToUsd.toFixed(4)} USD`);
+      if (kgs) {
+        const kgsToEur = (1 / kgs).toFixed(4);
+        const kgsToDkk = (dkk / kgs).toFixed(4);
+        const kgsToUsd = (usd / kgs).toFixed(4);
+        setText(`🇰🇬 1 KGS = ${kgsToEur} EUR  •  🇰🇬 1 KGS = ${kgsToDkk} DKK  •  🇰🇬 1 KGS = ${kgsToUsd} USD`);
       }
     } catch {
-      const kgsToEur = 1 / FIXED_EUR_TO_KGS;
-      setText(`🇰🇬 1 KGS = ${kgsToEur.toFixed(4)} EUR  •  🇰🇬 1 KGS = 0.0785 DKK  •  🇰🇬 1 KGS = 0.0121 USD`);
+      setText('🇰🇬 1 KGS = 0.0097 EUR  •  🇰🇬 1 KGS = 0.0724 DKK  •  🇰🇬 1 KGS = 0.0112 USD');
     }
   };
 
