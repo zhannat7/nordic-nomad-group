@@ -25,8 +25,8 @@ const t: Translations = {
   'hero.title': {
     en: 'Optimize your business with workforce from around the world',
     da: 'Optimer din virksomhed med arbejdskraft fra hele verden',
-    ru: 'Оптимизируйте свой бизнес с рабочей силой со всего мира',
-    ky: 'Бүт дүйнөдөн жумушчу күчү менен бизнесиңизди оптималдаштырыңыз',
+    ru: 'Практика и стажировка в Европе',
+    ky: 'Европада практика жана стажировка',
   },
   'hero.subtitle': {
     en: 'We make it easy and reliable to hire skilled interns and employees from abroad, so your business can grow and thrive.',
