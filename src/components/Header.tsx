@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useI18n, languages } from '@/lib/i18n';
 import logo from '@/assets/logo.jpeg';
 
@@ -55,14 +55,6 @@ const Header = () => {
             ))}
           </div>
 
-          {/* CTA */}
-          <a
-            href="tel:+4552808621"
-            className="hidden items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform active:scale-[0.98] md:flex"
-          >
-            <Phone size={14} />
-            +45 52 80 86 21
-          </a>
 
           {/* Mobile toggle */}
           <button
@@ -95,13 +87,6 @@ const Header = () => {
                   {t(item.key)}
                 </a>
               ))}
-              <a
-                href="tel:+4552808621"
-                className="flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
-              >
-                <Phone size={14} />
-                +45 52 80 86 21
-              </a>
             </nav>
           </motion.div>
         )}
