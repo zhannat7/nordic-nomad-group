@@ -3,8 +3,6 @@ import { Phone, MessageCircle } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 import heroBg from '@/assets/hero-bg.jpg';
 
-const ease = [0.2, 0, 0, 1] as const;
-
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -12,7 +10,6 @@ const containerVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: ease as unknown as number[],
       staggerChildren: 0.1,
     },
   },
