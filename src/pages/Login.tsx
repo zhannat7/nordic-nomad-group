@@ -72,7 +72,11 @@ const Login = () => {
   const isKyrgyz = lang === 'ky';
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 relative">
+      <a href="/" className="absolute top-4 left-4 flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <ArrowLeft className="h-4 w-4" />
+        {isKyrgyz ? 'Башкы бетке кайтуу' : 'Назад на главную'}
+      </a>
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
           <a href="/" className="mx-auto mb-4 block">

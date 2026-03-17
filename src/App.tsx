@@ -12,6 +12,7 @@ import ResetPassword from "./pages/ResetPassword.tsx";
 import AdminDashboard from "./pages/AdminDashboard.tsx";
 import Profile from "./pages/Profile.tsx";
 import Register from "./pages/Register.tsx";
+import RegistrationSuccess from "./pages/RegistrationSuccess.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
               <Route path="/login" element={<Login />} />
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/registration-success" element={<RegistrationSuccess />} />
               <Route
                 path="/admin"
                 element={
