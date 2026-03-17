@@ -74,6 +74,38 @@ const AboutSection = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mx-auto mt-12 max-w-xl rounded-lg border-2 border-primary/30 bg-primary/5 p-5"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">🏛️</span>
+            <p className={`text-sm font-medium text-foreground ${cx}`}>
+              {t('about.cert_registered')}
+            </p>
+          </div>
+          <div className="mt-4 flex gap-3">
+            <a
+              href="/documents/registration-certificate.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-md border border-primary/30 bg-card px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              {t('about.cert_view')}
+            </a>
+            <a
+              href="/documents/registration-certificate.pdf"
+              download="Nordic-Nomad-Group-Certificate.pdf"
+              className="inline-flex items-center justify-center rounded-md border border-primary/30 bg-card px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              {t('about.cert_download')}
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
