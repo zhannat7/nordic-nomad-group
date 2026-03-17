@@ -64,13 +64,20 @@ const DocumentsViewer = ({ application, open, onClose }: DocumentsViewerProps) =
     setViews((prev) => ({ ...prev, [fileName]: now }));
   };
 
+  const getFullSignedUrl = (signedUrl: string) => {
+    if (signedUrl.startsWith('http')) return signedUrl;
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    return `${supabaseUrl}/storage/v1${signedUrl}`;
+  };
+
   const handlePreview = async (fileName: string) => {
     if (!application) return;
     const { data } = await supabase.storage
       .from('documents')
       .createSignedUrl(`${application.user_id}/${fileName}`, 3600);
     if (data?.signedUrl) {
-      setPreviewUrl(data.signedUrl);
+      const fullUrl = getFullSignedUrl(data.signedUrl);
+      setPreviewUrl(fullUrl);
       setPreviewName(fileName);
       await markViewed(fileName);
     }
@@ -82,8 +89,9 @@ const DocumentsViewer = ({ application, open, onClose }: DocumentsViewerProps) =
       .from('documents')
       .createSignedUrl(`${application.user_id}/${fileName}`, 3600);
     if (data?.signedUrl) {
+      const fullUrl = getFullSignedUrl(data.signedUrl);
       const a = document.createElement('a');
-      a.href = data.signedUrl;
+      a.href = fullUrl;
       a.download = fileName;
       a.click();
       await markViewed(fileName);
@@ -110,8 +118,17 @@ const DocumentsViewer = ({ application, open, onClose }: DocumentsViewerProps) =
         </DialogHeader>
 
         {previewUrl ? (
-          <div className="flex-1 min-h-[60vh]">
-            <iframe src={previewUrl} className="h-full w-full rounded border border-border" title={previewName} />
+          <div className="flex-1 min-h-[60vh] flex flex-col gap-2">
+            <iframe
+              src={`https://docs.google.com/viewer?url=${encodeURIComponent(previewUrl)}&embedded=true`}
+              className="h-full w-full rounded border border-border flex-1 min-h-[55vh]"
+              title={previewName}
+            />
+            <div className="flex justify-end">
+              <Button variant="outline" size="sm" onClick={() => handleDownload(previewName)}>
+                <Download className="mr-2 h-4 w-4" /> Download
+              </Button>
+            </div>
           </div>
         ) : (
           <div className="space-y-2 max-h-[60vh] overflow-y-auto">
