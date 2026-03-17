@@ -89,9 +89,14 @@ const DocumentsViewer = ({ application, open, onClose }: DocumentsViewerProps) =
       .from('documents')
       .createSignedUrl(`${application.user_id}/${fileName}`, 3600);
     if (data?.signedUrl) {
+      const fullUrl = getFullSignedUrl(data.signedUrl);
       const a = document.createElement('a');
-      a.href = data.signedUrl;
+      a.href = fullUrl;
       a.download = fileName;
+      a.click();
+      await markViewed(fileName);
+    }
+  };
       a.click();
       await markViewed(fileName);
     }
