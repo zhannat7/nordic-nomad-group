@@ -31,8 +31,8 @@ const t: Translations = {
   'hero.subtitle': {
     en: 'We make it easy and reliable to hire skilled interns and employees from abroad, so your business can grow and thrive.',
     da: 'Vi gør det nemt og pålideligt at ansætte dygtige praktikanter og medarbejdere fra udlandet, så din virksomhed kan vokse og trives.',
-    ru: 'Мы делаем наём квалифицированных стажёров и сотрудников из-за рубежа простым и надёжным, чтобы ваш бизнес мог расти и процветать.',
-    ky: 'Чет өлкөлөрдөн квалификациялуу стажёрлорду жана кызматкерлерди жалдоону жеңил жана ишенимдүү кылабыз.',
+    ru: 'Nordic Nomad Group помогает талантливым и ответственным студентам из Кыргызстана найти практику в Дании',
+    ky: 'Nordic Nomad Group Кыргызстандын талантуу жана жооптуу студенттерге Дания мамлекетинде практика табууга жардам берет',
   },
 
   // Service cards
