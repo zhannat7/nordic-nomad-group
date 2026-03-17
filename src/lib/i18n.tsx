@@ -79,17 +79,65 @@ const t: Translations = {
   'service3.link': { en: 'Read more here', da: 'Læs mere her', ru: 'Подробнее', ky: 'Толугураак' },
 
   // About section
-  'about.intro': {
-    en: 'We understand that finding the right employees and interns can be a crucial factor for your company\'s success. That\'s why we\'re here to help you build a stronger workforce that meets your unique needs and goals.',
-    da: 'Vi forstår, at det at finde de rette medarbejdere og praktikanter kan være en afgørende faktor for din virksomheds succes. Derfor er vi her for at hjælpe dig med at bygge en stærkere arbejdsstyrke, der kan imødekomme dine unikke behov og mål.',
-    ru: 'Мы понимаем, что поиск правильных сотрудников может быть решающим фактором успеха вашей компании. Поэтому мы здесь, чтобы помочь вам.',
-    ky: 'Биз туура кызматкерлерди табуу компанияңыздын ийгилиги үчүн маанилүү фактор болоорун түшүнөбүз. Ошондуктан сизге жардам берүү үчүн бул жердебиз.',
+  'about.title': {
+    en: 'About Nordic Nomad Group',
+    da: 'Om Nordic Nomad Group',
+    ru: 'О Nordic Nomad Group',
+    ky: 'Nordic Nomad Group жөнүндө',
   },
-  'about.body': {
-    en: 'With over 15 years of experience, Nordic Nomad Group specializes in recruiting employees from abroad for Danish companies. Our goal is to be the preferred bridge between foreign labor and Danish employers – with a focus on delivering qualified, motivated, and stable candidates.',
-    da: 'Med over 15 års erfaring er Nordic Nomad Group specialiseret i rekruttering af medarbejdere fra udlandet til danske virksomheder. Vores mål er at være den foretrukne brobygger mellem udenlandsk arbejdskraft og danske arbejdsgivere – med fokus på at levere kvalificerede, motiverede og stabile kandidater.',
-    ru: 'Имея более 15 лет опыта, Nordic Nomad Group специализируется на подборе сотрудников из-за рубежа для датских компаний. Наша цель — быть надёжным мостом между иностранной рабочей силой и датскими работодателями.',
-    ky: '15 жылдан ашуун тажрыйбасы менен Nordic Nomad Group дания компаниялары үчүн чет өлкөлүк кызматкерлерди тандоого адистешкен. Биздин максат — чет элдик жумушчу күчү менен дания иш берүүчүлөрүнүн ортосунда ишенимдүү көпүрө болуу.',
+  'about.subtitle': {
+    en: 'We are a Danish recruitment agency that helps talented and hardworking students aged 18-30 from Kyrgyzstan find internships and training in Europe.',
+    da: 'Vi er et dansk rekrutteringsbureau, der hjælper talentfulde og hårdtarbejdende studerende i alderen 18-30 fra Kirgisistan med at finde praktik og uddannelse i Europa.',
+    ru: 'Мы — датское рекрутинговое агентство, которое помогает талантливым и трудолюбивым студентам в возрасте 18-30 лет из Кыргызстана найти практику и обучение в Европе.',
+    ky: 'Биз — Кыргызстандан 18-30 жаштагы таланттуу жана эмгекчил студенттерге Европада стажировка жана окуу табууга жардам берген дания рекрутинг агенттиги.',
+  },
+  'about.mission_title': {
+    en: 'Our mission',
+    da: 'Vores mission',
+    ru: 'Наша миссия',
+    ky: 'Биздин миссия',
+  },
+  'about.mission': {
+    en: 'Nordic Nomad Group was founded with a clear mission: to build a bridge between talented people from Kyrgyzstan and employers in Europe who need qualified, motivated workers. As a company registered in Denmark (CVR 44829363), we operate with full transparency and compliance with European standards. We believe that international mobility creates opportunities for both candidates and employers.',
+    da: 'Nordic Nomad Group blev grundlagt med en klar mission: at bygge bro mellem talentfulde mennesker fra Kirgisistan og arbejdsgivere i Europa, der har brug for kvalificerede, motiverede medarbejdere. Som en virksomhed registreret i Danmark (CVR 44829363) arbejder vi med fuld gennemsigtighed og overholdelse af europæiske standarder. Vi tror på, at international mobilitet skaber muligheder for både kandidater og arbejdsgivere.',
+    ru: 'Nordic Nomad Group была основана с чёткой миссией: создать мост между талантливыми людьми из Кыргызстана и работодателями в Европе, которым нужны квалифицированные, мотивированные работники. Как компания, зарегистрированная в Дании (CVR 44829363), мы работаем с полной прозрачностью и соблюдением европейских норм. Мы верим, что международная мобильность создаёт возможности для кандидатов и работодателей.',
+    ky: 'Nordic Nomad Group так миссия менен негизделген: Кыргызстандагы таланттуу адамдар менен квалификациялуу, мотивациялуу жумушчуларга муктаж Европадагы иш берүүчүлөрдүн ортосунда көпүрө куруу. Данияда катталган компания катары (CVR 44829363) биз толук ачыктык жана европалык стандарттарга ылайык иштейбиз.',
+  },
+  'about.card1.title': {
+    en: 'People first', da: 'Mennesker først', ru: 'Люди на первом месте', ky: 'Адамдар биринчи',
+  },
+  'about.card1.desc': {
+    en: 'We treat every candidate with respect and individual attention.',
+    da: 'Vi behandler hver kandidat med respekt og individuel opmærksomhed.',
+    ru: 'К каждому кандидату мы относимся с уважением и индивидуальным вниманием.',
+    ky: 'Ар бир талапкерге урмат жана жеке көңүл бурабыз.',
+  },
+  'about.card2.title': {
+    en: 'Quality matching', da: 'Kvalitetsmatch', ru: 'Качественный подбор', ky: 'Сапаттуу тандоо',
+  },
+  'about.card2.desc': {
+    en: 'We carefully match candidates to suitable positions.',
+    da: 'Vi matcher omhyggeligt kandidater til passende stillinger.',
+    ru: 'Мы тщательно подбираем кандидатов к подходящим вакансиям.',
+    ky: 'Талапкерлерди ылайыктуу вакансияларга кылдаттык менен тандайбыз.',
+  },
+  'about.card3.title': {
+    en: 'Full support', da: 'Fuld support', ru: 'Полная поддержка', ky: 'Толук колдоо',
+  },
+  'about.card3.desc': {
+    en: 'From application to employment — we accompany you every step of the way.',
+    da: 'Fra ansøgning til ansættelse — vi følger dig hele vejen.',
+    ru: 'От заявки до трудоустройства — мы сопровождаем вас на каждом шагу.',
+    ky: 'Арыздан жумушка орношууга чейин — ар бир кадамда коштойбуз.',
+  },
+  'about.card4.title': {
+    en: 'Legal and transparent', da: 'Lovligt og gennemsigtigt', ru: 'Законно и прозрачно', ky: 'Мыйзамдуу жана ачык',
+  },
+  'about.card4.desc': {
+    en: 'All placements are fully legal and compliant with regulations.',
+    da: 'Alle ansættelser er fuldt lovlige og overholder reglerne.',
+    ru: 'Все трудоустройства полностью законны и соответствуют нормам.',
+    ky: 'Бардык жумушка орноштуруулар толугу менен мыйзамдуу.',
   },
 
   // Why choose
