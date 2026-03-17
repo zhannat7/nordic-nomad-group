@@ -7,23 +7,20 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import StatusBar from '@/components/StatusBar';
-import { I18nProvider } from '@/lib/i18n';
 
 const Index = () => {
   return (
-    <I18nProvider>
-      <div className="min-h-screen">
-        <Header />
-        <HeroSection />
-        <ServicesSection />
-        <AboutSection />
-        <WhySection />
-        <TestimonialsSection />
-        <ContactSection />
-        <Footer />
-        <StatusBar />
-      </div>
-    </I18nProvider>
+    <div className="min-h-screen">
+      <Header />
+      <HeroSection />
+      <ServicesSection />
+      <AboutSection />
+      <WhySection />
+      <TestimonialsSection />
+      <ContactSection />
+      <Footer />
+      <StatusBar />
+    </div>
   );
 };
 
