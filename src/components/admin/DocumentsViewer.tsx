@@ -87,13 +87,16 @@ const DocumentsViewer = ({ application, open, onClose }: DocumentsViewerProps) =
     if (!application) return;
     const { data } = await supabase.storage
       .from('documents')
-      .createSignedUrl(`${application.user_id}/${fileName}`, 3600);
-    if (data?.signedUrl) {
-      const fullUrl = getFullSignedUrl(data.signedUrl);
+      .download(`${application.user_id}/${fileName}`);
+    if (data) {
+      const url = URL.createObjectURL(data);
       const a = document.createElement('a');
-      a.href = fullUrl;
+      a.href = url;
       a.download = fileName;
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
       await markViewed(fileName);
     }
   };
