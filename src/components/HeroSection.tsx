@@ -73,7 +73,7 @@ const HeroSection = () => {
               <Phone size={20} />
             </div>
             <div>
-              <p className="text-sm font-semibold text-foreground">+45 52 80 86 21</p>
+              <p className="text-sm font-semibold text-foreground">+45 28 57 53 50</p>
               <p className="text-xs text-muted-foreground">{t('contact.phone_hours')}</p>
             </div>
           </a>
