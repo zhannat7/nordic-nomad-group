@@ -1,23 +1,31 @@
 import { useState, useEffect } from 'react';
 
+interface Rates {
+  kgsToEur: number | null;
+  kgsToDkk: number | null;
+  kgsToUsd: number | null;
+}
+
 const CurrencyTicker = () => {
-  const [kgsToEur, setKgsToEur] = useState<number | null>(null);
-  const [eurToKgs, setEurToKgs] = useState<number | null>(null);
+  const [rates, setRates] = useState<Rates>({ kgsToEur: null, kgsToDkk: null, kgsToUsd: null });
 
   const fetchRates = async () => {
     try {
-      const res = await fetch('https://api.frankfurter.app/latest?from=EUR&to=KGS');
+      const res = await fetch('https://api.frankfurter.app/latest?from=EUR&to=KGS,DKK,USD');
       if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
-      const rate = data.rates?.KGS;
-      if (rate) {
-        setEurToKgs(rate);
-        setKgsToEur(1 / rate);
+      const kgs = data.rates?.KGS;
+      const dkk = data.rates?.DKK;
+      const usd = data.rates?.USD;
+      if (kgs) {
+        setRates({
+          kgsToEur: 1 / kgs,
+          kgsToDkk: dkk / kgs,
+          kgsToUsd: usd / kgs,
+        });
       }
     } catch {
-      // fallback values
-      setEurToKgs(95.23);
-      setKgsToEur(0.0105);
+      setRates({ kgsToEur: 0.0105, kgsToDkk: 0.074, kgsToUsd: 0.011 });
     }
   };
 
@@ -27,8 +35,9 @@ const CurrencyTicker = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const text = kgsToEur !== null && eurToKgs !== null
-    ? `🇰🇬 1 KGS = ${kgsToEur.toFixed(4)} EUR  •  🇪🇺 1 EUR = ${eurToKgs.toFixed(2)} KGS`
+  const { kgsToEur, kgsToDkk, kgsToUsd } = rates;
+  const text = kgsToEur !== null
+    ? `🇰🇬 1 KGS = ${kgsToEur.toFixed(4)} EUR  •  🇰🇬 1 KGS = ${kgsToDkk!.toFixed(4)} DKK  •  🇰🇬 1 KGS = ${kgsToUsd!.toFixed(4)} USD`
     : 'Loading exchange rates...';
 
   return (
