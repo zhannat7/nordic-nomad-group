@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '@/lib/i18n';
-import { Heart, Target, ShieldCheck, Scale } from 'lucide-react';
+import { Heart, Target, ShieldCheck, Scale, X } from 'lucide-react';
 
 const cards = [
   { icon: Heart, key: 'about.card1' },
