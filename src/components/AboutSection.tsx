@@ -89,21 +89,36 @@ const AboutSection = () => {
             </p>
           </div>
           <div className="mt-4 flex gap-3">
-            <a
-              href="/documents/registration-certificate.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={async () => {
+                const res = await fetch('/documents/registration-certificate.pdf');
+                const blob = await res.blob();
+                const url = URL.createObjectURL(blob);
+                window.open(url, '_blank');
+              }}
               className="inline-flex items-center justify-center rounded-md border border-primary/30 bg-card px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
               {t('about.cert_view')}
-            </a>
-            <a
-              href="/documents/registration-certificate.pdf"
-              download="Nordic-Nomad-Group-Certificate.pdf"
+            </button>
+            <button
+              type="button"
+              onClick={async () => {
+                const res = await fetch('/documents/registration-certificate.pdf');
+                const blob = await res.blob();
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Nordic-Nomad-Group-Certificate.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+              }}
               className="inline-flex items-center justify-center rounded-md border border-primary/30 bg-card px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
               {t('about.cert_download')}
-            </a>
+            </button>
           </div>
         </motion.div>
       </div>
