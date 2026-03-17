@@ -8,7 +8,7 @@ type Translations = Record<string, Record<Lang, string>>;
 const t: Translations = {
   // Nav
   'nav.about': { en: 'About us', da: 'Om os', ru: 'О нас', ky: 'Биз жөнүндө' },
-  'nav.services': { en: 'Our services', da: 'Vores ydelser', ru: 'Наши услуги', ky: 'Биздин кызматтар' },
+  'nav.services': { en: 'Candidate Profiles', da: 'Candidate Profiles', ru: 'Candidate Profiles', ky: 'Candidate Profiles' },
   'nav.faq': { en: 'FAQ', da: 'FAQ', ru: 'Вопросы', ky: 'Суроолор' },
   'nav.contact': { en: 'Contact us', da: 'Kontakt os', ru: 'Контакты', ky: 'Байланыш' },
   'nav.privacy': { en: 'Privacy policy', da: 'Privatlivspolitik', ru: 'Политика конф.', ky: 'Купуялуулук' },
