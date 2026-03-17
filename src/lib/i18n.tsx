@@ -87,8 +87,8 @@ const t: Translations = {
     ky: 'Nordic Nomad Group жөнүндө',
   },
   'about.subtitle': {
-    en: 'We are a Danish recruitment agency that helps talented and hardworking students aged 18-30 from Kyrgyzstan find internships and training in Europe.',
-    da: 'Vi er et dansk rekrutteringsbureau, der hjælper talentfulde og hårdtarbejdende studerende i alderen 18-30 fra Kirgisistan med at finde praktik og uddannelse i Europa.',
+    en: 'Nordic Nomad Group is a Denmark-registered recruitment agency (CVR: 44829363). We connect qualified, motivated interns from Kyrgyzstan with Danish farms and businesses. Our interns are aged 18-29, speak English, and are ready to work. We handle all documentation and coordination — making the hiring process simple and reliable for you.',
+    da: 'Nordic Nomad Group er et dansk-registreret rekrutteringsbureau (CVR: 44829363). Vi forbinder kvalificerede, motiverede praktikanter fra Kirgisistan med danske gårde og virksomheder. Vores praktikanter er mellem 18-29 år, taler engelsk og er klar til at arbejde. Vi håndterer al dokumentation og koordinering.',
     ru: 'Мы — датское рекрутинговое агентство, которое помогает талантливым и трудолюбивым студентам в возрасте 18-30 лет из Кыргызстана найти практику и обучение в Европе.',
     ky: 'Биз — Кыргызстандан 18-30 жаштагы таланттуу жана эмгекчил студенттерге Европада стажировка жана окуу табууга жардам берген дания рекрутинг агенттиги.',
   },
