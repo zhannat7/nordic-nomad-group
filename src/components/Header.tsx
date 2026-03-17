@@ -87,13 +87,6 @@ const Header = () => {
                   {t(item.key)}
                 </a>
               ))}
-              <a
-                href="tel:+4552808621"
-                className="flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground"
-              >
-                <Phone size={14} />
-                +45 52 80 86 21
-              </a>
             </nav>
           </motion.div>
         )}

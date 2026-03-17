@@ -79,7 +79,7 @@ const HeroSection = () => {
           </a>
 
           <a
-            href="https://wa.me/4552808621"
+            href="https://wa.me/4528575350"
             target="_blank"
             rel="noopener noreferrer"
             className="legal-card flex items-center gap-4 !border-accent/30 !bg-card/95 transition-transform active:scale-[0.98]"
