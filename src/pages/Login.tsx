@@ -37,13 +37,20 @@ const Login = () => {
     setError('');
     setSubmitting(true);
 
-    const { error: authError } = await supabase.auth.signInWithPassword({
+    const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
       email: email.trim(),
       password,
     });
 
     if (authError) {
-      setError(lang === 'ky' ? 'Туура эмес email же сырсөз' : lang === 'ru' ? 'Неверный email или пароль' : 'Invalid email or password');
+      // Check if email not confirmed
+      if (authError.message?.toLowerCase().includes('email not confirmed')) {
+        setError(lang === 'ky'
+          ? 'Сураныч, адегенде электрондук почтаңызды ырастаңыз. Кирүүчү кутуңузду текшериңиз.'
+          : 'Пожалуйста, сначала подтвердите вашу электронную почту. Проверьте входящие сообщения.');
+      } else {
+        setError(lang === 'ky' ? 'Туура эмес email же сырсөз' : 'Неверный email или пароль');
+      }
       setSubmitting(false);
       return;
     }
