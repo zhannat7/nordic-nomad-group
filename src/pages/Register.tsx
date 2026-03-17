@@ -226,7 +226,11 @@ const Register = () => {
   );
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8">
+    <div className="flex min-h-screen items-center justify-center bg-background px-4 py-8 relative">
+      <a href="/" className="absolute top-4 left-4 flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <ArrowLeft className="h-4 w-4" />
+        {t('Назад на главную', 'Башкы бетке кайтуу')}
+      </a>
       <Card className="w-full max-w-lg">
         <CardHeader className="text-center">
           <a href="/" className="mx-auto mb-2 block">
