@@ -314,8 +314,8 @@ const Register = () => {
               )}
 
               {eligibilityChecked && isEligible && (
-                <Alert className="border-green-500/50 bg-green-50 text-green-800">
-                  <CheckCircle2 className="h-4 w-4 text-green-600" />
+                <Alert className="border-primary/50 bg-primary/5 text-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-primary" />
                   <AlertDescription>
                     {t('Вы соответствуете требованиям! Переход к регистрации...', 'Сиз талаптарга жооп бересиз! Каттоого өтүү...')}
                   </AlertDescription>
