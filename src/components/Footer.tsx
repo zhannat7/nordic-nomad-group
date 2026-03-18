@@ -9,7 +9,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-border bg-secondary/30 py-12">
+    <footer className="border-t border-border bg-foreground py-12 text-background">
       <div className="container max-w-5xl">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div>
