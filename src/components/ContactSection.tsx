@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, CheckCircle, MapPin, Send } from 'lucide-react';
+import { Phone, Mail, CheckCircle, MapPin, Send, Instagram } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
 const ContactSection = () => {
@@ -57,6 +57,17 @@ const ContactSection = () => {
                   <p className="text-sm text-muted-foreground">Lillemosevej 6, 4070 Kirke Hyllinge, Denmark</p>
                   <p className="text-sm text-muted-foreground">CVR: 44829363</p>
                 </div>
+              </div>
+              <div className="flex items-center gap-3 mt-2">
+                <a
+                  href="https://www.instagram.com/nordic_nomad_group/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/30 hover:text-primary hover:-translate-y-0.5"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
               </div>
             </div>
           </motion.div>
