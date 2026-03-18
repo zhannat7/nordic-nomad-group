@@ -263,7 +263,15 @@ export const I18nProvider = ({ children }: { children: ReactNode }) => {
 
 export const useI18n = () => {
   const ctx = useContext(I18nContext);
-  if (!ctx) throw new Error('useI18n must be used within I18nProvider');
+  if (!ctx) {
+    // Fallback for HMR edge cases — return safe defaults
+    return {
+      lang: 'en' as Lang,
+      setLang: (() => {}) as (l: Lang) => void,
+      t: (key: string) => key,
+      isCyrillic: false,
+    };
+  }
   return ctx;
 };
 
