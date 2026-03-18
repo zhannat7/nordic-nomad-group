@@ -2,19 +2,24 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useI18n } from '@/lib/i18n';
 import { motion } from 'framer-motion';
-import { UserCheck, Building2, ArrowRight } from 'lucide-react';
+import {
+  UserCheck, Building2, ArrowRight,
+  FileText, Search, Video, Handshake, Stamp, Plane, Rocket,
+  Send, Users, ClipboardCheck, FolderCheck, Briefcase, HeadsetIcon,
+} from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 
 const HowItWorks = () => {
   const { t, isCyrillic } = useI18n();
 
-  const applicantSteps = [
-    { key: 'hiw.a.step1' },
-    { key: 'hiw.a.step2' },
-    { key: 'hiw.a.step3' },
-    { key: 'hiw.a.step4' },
-    { key: 'hiw.a.step5' },
-    { key: 'hiw.a.step6' },
-    { key: 'hiw.a.step7' },
+  const applicantSteps: { key: string; icon: LucideIcon }[] = [
+    { key: 'hiw.a.step1', icon: FileText },
+    { key: 'hiw.a.step2', icon: Search },
+    { key: 'hiw.a.step3', icon: Video },
+    { key: 'hiw.a.step4', icon: Handshake },
+    { key: 'hiw.a.step5', icon: Stamp },
+    { key: 'hiw.a.step6', icon: Plane },
+    { key: 'hiw.a.step7', icon: Rocket },
   ];
 
   const companySteps = [
