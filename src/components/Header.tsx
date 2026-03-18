@@ -143,14 +143,14 @@ const Header = () => {
                 <div className="flex flex-col gap-2">
                   <span className="text-sm font-semibold text-foreground">{t('nav.programs')}</span>
                   {programs.map((p) => (
-                    <a
+                    <Link
                       key={p.key}
-                      href={p.href}
+                      to={p.href}
                       onClick={() => setMobileOpen(false)}
                       className="pl-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {t(p.key)}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
