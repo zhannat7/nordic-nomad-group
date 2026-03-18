@@ -86,7 +86,7 @@
 
 @layer components {
   .section-padding {
-    @apply py-10 md:py-16;
+    @apply py-7 md:py-9;
   }
 
   .section-label {
