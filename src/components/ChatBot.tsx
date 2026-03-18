@@ -161,33 +161,35 @@ export default function ChatBot() {
     setMessages([{ role: 'assistant', content: labels[newLang].greeting }]);
   };
 
-  const handleSpeak = async (text: string, idx: number) => {
+  const handleSpeak = (text: string, idx: number) => {
     if (speakingIdx === idx) {
-      audioRef.current?.pause();
+      window.speechSynthesis?.cancel();
       audioRef.current = null;
       setSpeakingIdx(null);
       return;
     }
 
     // Stop any current playback
-    audioRef.current?.pause();
+    window.speechSynthesis?.cancel();
     audioRef.current = null;
-    setTtsLoading(idx);
 
-    try {
-      const audio = await speakTextElevenLabs(text, lang);
-      audioRef.current = audio;
-      setSpeakingIdx(idx);
-      setTtsLoading(null);
+    const audio = speakText(text, lang);
+    audioRef.current = audio;
+    setSpeakingIdx(idx);
 
-      audio.onended = () => {
+    audio.addEventListener('ended', () => {
+      setSpeakingIdx(null);
+      audioRef.current = null;
+    });
+
+    // Fallback: check speechSynthesis speaking state
+    const check = setInterval(() => {
+      if (!window.speechSynthesis?.speaking) {
         setSpeakingIdx(null);
         audioRef.current = null;
-      };
-    } catch (e) {
-      console.error('TTS error:', e);
-      setTtsLoading(null);
-    }
+        clearInterval(check);
+      }
+    }, 500);
   };
 
   const send = useCallback(async () => {
