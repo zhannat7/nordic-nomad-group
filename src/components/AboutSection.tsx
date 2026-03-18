@@ -16,10 +16,19 @@ const AboutSection = () => {
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
   const handleView = async () => {
-    const res = await fetch('/documents/registration-certificate.pdf');
-    const blob = await res.blob();
-    const url = URL.createObjectURL(blob);
-    setPdfUrl(url);
+    try {
+      if (pdfUrl) URL.revokeObjectURL(pdfUrl);
+
+      const res = await fetch('/documents/registration-certificate.pdf');
+      if (!res.ok) return;
+
+      const buffer = await res.arrayBuffer();
+      const blob = new Blob([buffer], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      setPdfUrl(url);
+    } catch {
+      setPdfUrl(null);
+    }
   };
 
   const handleCloseModal = () => {
@@ -146,11 +155,11 @@ const AboutSection = () => {
             >
               <X className="h-4 w-4" />
             </button>
-            <iframe
-              src={pdfUrl}
-              className="h-full w-full rounded-lg"
-              title="Registration Certificate"
-            />
+            <div className="h-full w-full overflow-hidden rounded-lg">
+              <object data={pdfUrl} type="application/pdf" className="h-full w-full">
+                <embed src={pdfUrl} type="application/pdf" className="h-full w-full" />
+              </object>
+            </div>
           </div>
         </div>
       )}
