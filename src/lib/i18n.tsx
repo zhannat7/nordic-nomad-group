@@ -51,6 +51,15 @@ const t: Translations = {
     ru: 'Nordic Nomad Group помогает талантливым и ответственным студентам из Кыргызстана найти практику в Дании',
     ky: 'Nordic Nomad Group Кыргызстандын талантуу жана жооптуу студенттерге Дания мамлекетинде практика табууга жардам берет',
   },
+  'hero.stat_interns': {
+    en: 'Interns placed', da: 'Praktikanter formidlet', ru: 'Практикантов устроено', ky: 'Практиканттар жайгаштырылды',
+  },
+  'hero.stat_years': {
+    en: 'Years experience', da: 'Års erfaring', ru: 'Года опыта', ky: 'Жыл тажрыйба',
+  },
+  'hero.stat_legal': {
+    en: 'Legal & compliant', da: 'Lovligt og korrekt', ru: 'Законно и прозрачно', ky: 'Мыйзамдуу',
+  },
 
   // Service cards
   'service1.title': {
