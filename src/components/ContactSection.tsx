@@ -57,10 +57,12 @@ const ContactSection = () => {
                 href="https://www.instagram.com/nordic_nomad_group/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary/20 hover:text-primary"
-                aria-label="Instagram"
+                className="flex items-center gap-3"
               >
-                <Instagram className="h-4 w-4" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/8 text-primary">
+                  <Instagram size={18} />
+                </div>
+                <p className="text-sm font-semibold text-foreground hover:text-primary transition-colors">@nordic_nomad_group</p>
               </a>
             </div>
           </motion.div>
