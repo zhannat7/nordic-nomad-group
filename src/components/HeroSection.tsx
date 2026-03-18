@@ -52,10 +52,6 @@ const HeroSection = () => {
           <motion.div variants={itemVariants} className="mt-8">
             <a
               href="#services"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-              }}
               className="inline-flex h-12 items-center rounded-md bg-primary px-8 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
             >
               {t('hero.tagline')}
