@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="container flex h-18 items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <img src={logo} alt="Nordic Nomad Group logo" className="h-[56px] w-auto rounded-lg shadow-sm transition-transform group-hover:scale-105" />
           <span className="text-2xl tracking-tight transition-colors" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#1B3A6B', fontWeight: 700 }}>
             Nordic Nomad Group
