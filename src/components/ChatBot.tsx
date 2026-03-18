@@ -109,8 +109,18 @@ async function streamChat({
 }
 
 function speakText(text: string, lang: Lang): HTMLAudioElement {
-  // Strip markdown for cleaner speech
-  const cleanText = text.replace(/[*_#`>\[\]()!~]/g, '').replace(/\n+/g, ' ').trim();
+  // Strip markdown formatting and clean up for natural speech
+  const cleanText = text
+    .replace(/\*\*/g, '')           // bold markers
+    .replace(/\*/g, '')             // italic markers
+    .replace(/[#`>\[\]()!~|]/g, '') // other markdown chars
+    .replace(/^[-•]\s*/gm, '')      // list bullets
+    .replace(/^\d+\.\s*/gm, '')     // numbered lists
+    .replace(/https?:\/\/\S+/g, '') // URLs
+    .replace(/CVR:\s*\d+/g, '')     // CVR numbers
+    .replace(/\n+/g, '. ')          // newlines to pauses
+    .replace(/\s{2,}/g, ' ')        // multiple spaces
+    .trim();
 
   window.speechSynthesis?.cancel();
   const utterance = new SpeechSynthesisUtterance(cleanText);
