@@ -23,6 +23,7 @@ const AboutSection = () => {
   };
 
   const handleCloseModal = () => {
+    if (pdfUrl) URL.revokeObjectURL(pdfUrl);
     setPdfUrl(null);
   };
 
