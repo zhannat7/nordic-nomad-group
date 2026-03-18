@@ -1,12 +1,25 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useI18n, languages } from '@/lib/i18n';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import logo from '@/assets/logo.jpeg';
+
+const programs = [
+  { key: 'program.agriculture', href: '/programs/agriculture' },
+  { key: 'program.ausbildung', href: '/programs/ausbildung' },
+  { key: 'program.medical', href: '/programs/medical' },
+];
 
 const Header = () => {
   const { lang, setLang, t } = useI18n();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const showPrograms = lang === 'ru' || lang === 'ky';
 
   const navItems = [
     { key: 'nav.about', href: '/#about' },
@@ -35,6 +48,25 @@ const Header = () => {
               {t(item.key)}
             </a>
           ))}
+
+          {/* Programs dropdown — RU/KY only */}
+          {showPrograms && (
+            <DropdownMenu>
+              <DropdownMenuTrigger className="relative flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground outline-none animated-underline">
+                {t('nav.programs')}
+                <ChevronDown className="h-3.5 w-3.5" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="min-w-[260px]">
+                {programs.map((p) => (
+                  <DropdownMenuItem key={p.key} asChild>
+                    <a href={p.href} className="cursor-pointer">
+                      {t(p.key)}
+                    </a>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -104,6 +136,24 @@ const Header = () => {
                   {t(item.key)}
                 </a>
               ))}
+
+              {/* Programs in mobile — RU/KY only */}
+              {showPrograms && (
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm font-semibold text-foreground">{t('nav.programs')}</span>
+                  {programs.map((p) => (
+                    <a
+                      key={p.key}
+                      href={p.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="pl-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {t(p.key)}
+                    </a>
+                  ))}
+                </div>
+              )}
+
               {(lang === 'ru' || lang === 'ky') && (
                 <>
                   <a

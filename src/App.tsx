@@ -52,6 +52,9 @@ const App = () => (
                   </ProtectedRoute>
                 }
               />
+              <Route path="/programs/agriculture" element={<ProgramAgriculture />} />
+              <Route path="/programs/ausbildung" element={<ProgramAusbildung />} />
+              <Route path="/programs/medical" element={<ProgramMedical />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
