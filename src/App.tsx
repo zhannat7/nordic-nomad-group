@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound.tsx";
 import ProgramAgriculture from "./pages/ProgramAgriculture.tsx";
 import ProgramAusbildung from "./pages/ProgramAusbildung.tsx";
 import ProgramMedical from "./pages/ProgramMedical.tsx";
+import ProgramLanguageGuard from "./components/ProgramLanguageGuard.tsx";
 
 const queryClient = new QueryClient();
 
