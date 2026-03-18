@@ -400,6 +400,39 @@ const Register = () => {
                 <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
               </div>
 
+              {/* English level */}
+              <div className="space-y-2">
+                <Label>{t('Уровень английского языка', 'Англис тилинин деңгээли')}</Label>
+                <Select value={englishLevel} onValueChange={setEnglishLevel}>
+                  <SelectTrigger><SelectValue placeholder={t('Выберите уровень', 'Деңгээл тандаңыз')} /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="A2">A2</SelectItem>
+                    <SelectItem value="B1">B1</SelectItem>
+                    <SelectItem value="B2">B2</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Animals */}
+              <div className="space-y-2">
+                <Label>{t('С какими животными умеете работать?', 'Кайсы жаныбарлар менен иштей аласыз?')}</Label>
+                <Input
+                  value={animals}
+                  onChange={(e) => setAnimals(e.target.value)}
+                  placeholder={t('Напр.: коровы, лошади, овцы', 'Мис.: уйлар, жылкылар, коюлар')}
+                />
+              </div>
+
+              {/* Agriculture interest */}
+              <div className="space-y-2">
+                <Label>{t('Почему вам интересно сельское хозяйство?', 'Эмне үчүн айыл чарба сизге кызыктуу?')}</Label>
+                <Input
+                  value={agricultureInterest}
+                  onChange={(e) => setAgricultureInterest(e.target.value)}
+                  placeholder={t('Кратко опишите...', 'Кыскача жазыңыз...')}
+                />
+              </div>
+
               <FileInput
                 label={t('Фото профиля (необязательно)', 'Профиль сүрөтү (милдеттүү эмес)')}
                 file={profilePhoto}
