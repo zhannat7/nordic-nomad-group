@@ -3,9 +3,9 @@ import { useI18n } from '@/lib/i18n';
 import { Quote } from 'lucide-react';
 
 const testimonials = [
-  { quote: 'Altid parate til at hjælpe og meget meget løsningsorienterede.', name: 'Torben Hauskov', role: 'Landmand' },
-  { quote: 'Professionel rekruttering af praktikanter. Hurtig sagsbehandling, og derefter skattekort før medarbejderen kommer til Danmark.', name: 'Jesper Kaag Andersen', role: 'Landmand' },
-  { quote: '100% opfølgning, troværdighed, fuld fart, forståelse.', name: 'Anders Kappel', role: 'Landmand' },
+  { quote: 'Altid parate til at hjælpe og meget meget løsningsorienterede.', name: 'Torben Hauskov', role: 'Landmand, Danmark 🇩🇰' },
+  { quote: 'Professionel rekruttering af praktikanter. Hurtig sagsbehandling, og derefter skattekort før medarbejderen kommer til Danmark.', name: 'Jesper Kaag Andersen', role: 'Landmand, Danmark 🇩🇰' },
+  { quote: '100% opfølgning, troværdighed, fuld fart, forståelse.', name: 'Anders Kappel', role: 'Landmand, Danmark 🇩🇰' },
 ];
 
 const TestimonialsSection = () => {
@@ -23,7 +23,7 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] as const }}
           className="mb-16 max-w-2xl"
         >
-          <span className="section-badge mb-4">⭐ Testimonials</span>
+          <span className="section-badge mb-4">🤝 Partners</span>
           <h2 className="mt-4 font-display text-3xl tracking-tight text-foreground md:text-5xl">
             {t('testimonials.title')}
           </h2>
