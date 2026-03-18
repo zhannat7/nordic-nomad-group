@@ -10,6 +10,7 @@ import InternProfileModal from '@/components/InternProfileModal';
 const ServicesSection = () => {
   const { t, lang } = useI18n();
   const [selectedInterns, setSelectedInterns] = useState<Set<string>>(new Set());
+  const [modalIntern, setModalIntern] = useState<typeof interns[number] | null>(null);
 
   const { data: interns = [] } = useQuery({
     queryKey: ['approved-interns'],
