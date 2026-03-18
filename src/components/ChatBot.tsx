@@ -149,6 +149,10 @@ export default function ChatBot() {
 
   const l = labels[lang];
 
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
   const handleOpen = () => {
     setOpen(true);
     if (messages.length === 0) {
