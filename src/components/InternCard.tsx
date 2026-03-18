@@ -50,14 +50,15 @@ const InternCard = ({ intern, selected, onToggle, onClick }: InternCardProps) =>
 
   return (
     <div
-      className={`relative rounded-xl border bg-card p-5 transition-all duration-200 ${
+      onClick={onClick}
+      className={`relative rounded-xl border bg-card p-5 transition-all duration-200 cursor-pointer ${
         selected
           ? 'border-primary ring-2 ring-primary/20 shadow-md'
           : 'border-border hover:border-primary/30 hover:shadow-sm'
       }`}
     >
       {/* Checkbox */}
-      <div className="absolute top-4 right-4">
+      <div className="absolute top-4 right-4" onClick={(e) => e.stopPropagation()}>
         <Checkbox
           checked={selected}
           onCheckedChange={() => onToggle(intern.id)}
