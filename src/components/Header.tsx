@@ -91,18 +91,18 @@ const Header = () => {
           {/* Login & Register buttons - only RU and KY */}
           {(lang === 'ru' || lang === 'ky') && (
             <>
-              <a
-                href="/register"
+              <Link
+                to="/register"
                 className="rounded-lg border border-primary/30 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary/10 hover:-translate-y-0.5"
               >
                 {lang === 'ky' ? 'Каттоо' : 'Регистрация'}
-              </a>
-              <a
-                href="/login"
+              </Link>
+              <Link
+                to="/login"
                 className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm shadow-primary/20 transition-all hover:bg-primary/90 hover:-translate-y-0.5"
               >
                 {lang === 'ky' ? 'Кирүү' : 'Войти'}
-              </a>
+              </Link>
             </>
           )}
 
