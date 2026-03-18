@@ -44,22 +44,22 @@ const t: Translations = {
 
   // Hero
   'hero.tagline': {
-    en: 'We help find interns and employees for your company',
-    da: 'Vi hjælper med at finde praktikanter og medarbejdere til din virksomhed',
-    ru: 'Мы помогаем найти стажёров и сотрудников для вашей компании',
-    ky: 'Биз сиздин компанияңызга стажёрлорду жана кызматкерлерди табууга жардам беребиз',
+    en: 'We help find interns for your company',
+    da: 'Vi hjælper med at finde praktikanter til din virksomhed',
+    ru: 'Мы помогаем найти стажёров для вашей компании',
+    ky: 'Биз сиздин компанияңызга стажёрлорду табууга жардам беребиз',
   },
   'hero.title': {
-    en: 'Optimize your business with workforce from around the world',
-    da: 'Optimer din virksomhed med arbejdskraft fra hele verden',
-    ru: 'Практика и стажировка в Европе',
-    ky: 'Европада практика жана стажировка',
+    en: 'Optimize your business with workforce from Kyrgyzstan',
+    da: 'Optimer din virksomhed med arbejdskraft fra Kirgisistan',
+    ru: 'Оптимизируйте свой бизнес с рабочей силой из Кыргызстана',
+    ky: 'Кыргызстандын жумушчу күчү менен бизнесиңизди оптималдаштырыңыз',
   },
   'hero.subtitle': {
-    en: 'We make it easy and reliable to hire skilled interns and employees from abroad, so your business can grow and thrive.',
-    da: 'Vi gør det nemt og pålideligt at ansætte dygtige praktikanter og medarbejdere fra udlandet, så din virksomhed kan vokse og trives.',
-    ru: 'Nordic Nomad Group помогает талантливым и ответственным студентам из Кыргызстана найти практику в Дании',
-    ky: 'Nordic Nomad Group Кыргызстандын талантуу жана жооптуу студенттерге Дания мамлекетинде практика табууга жардам берет',
+    en: 'We connect you with motivated and skilled interns, making international hiring simple and reliable.',
+    da: 'Vi forbinder dig med motiverede og dygtige praktikanter og gør international ansættelse enkel og pålidelig.',
+    ru: 'Мы связываем вас с мотивированными и квалифицированными стажёрами, делая международный найм простым и надёжным.',
+    ky: 'Биз сизди мотивацияланган жана квалификациялуу стажёрлор менен байланыштырабыз, эл аралык жалдоону жөнөкөй жана ишенимдүү кылабыз.',
   },
   'hero.stat_interns': {
     en: 'Interns placed', da: 'Praktikanter formidlet', ru: 'Практикантов устроено', ky: 'Практиканттар жайгаштырылды',
