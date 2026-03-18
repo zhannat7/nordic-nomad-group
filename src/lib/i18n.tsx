@@ -89,8 +89,8 @@ const t: Translations = {
   'about.subtitle': {
     en: 'Nordic Nomad Group is a Denmark-registered recruitment agency (CVR: 44829363). We connect qualified, motivated interns from Kyrgyzstan with Danish farms and businesses. Our interns are aged 18-29, speak English, and are ready to work. We handle all documentation and coordination — making the hiring process simple and reliable for you.',
     da: 'Nordic Nomad Group er et dansk-registreret rekrutteringsbureau (CVR: 44829363). Vi forbinder kvalificerede, motiverede praktikanter fra Kirgisistan med danske gårde og virksomheder. Vores praktikanter er mellem 18-29 år, taler engelsk og er klar til at arbejde. Vi håndterer al dokumentation og koordinering.',
-    ru: 'Мы — датское рекрутинговое агентство, которое помогает талантливым и трудолюбивым студентам в возрасте 18-30 лет из Кыргызстана найти практику и обучение в Европе.',
-    ky: 'Биз — Кыргызстандан 18-30 жаштагы таланттуу жана эмгекчил студенттерге Европада стажировка жана окуу табууга жардам берген дания рекрутинг агенттиги.',
+    ru: 'Мы — датское рекрутинговое агентство, которое помогает талантливым и трудолюбивым студентам в возрасте 18-29 лет из Кыргызстана найти практику и обучение в Европе.',
+    ky: 'Биз — Кыргызстандан 18-29 жаштагы таланттуу жана эмгекчил студенттерге Европада стажировка жана окуу табууга жардам берген дания рекрутинг агенттиги.',
   },
   'about.mission_title': {
     en: 'Our mission',
