@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useI18n, languages } from '@/lib/i18n';
 import {
   DropdownMenu,
@@ -19,35 +20,58 @@ const programs = [
 const Header = () => {
   const { lang, setLang, t } = useI18n();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
   const showPrograms = lang === 'ru' || lang === 'ky';
 
   const navItems = [
-    { key: 'nav.about', href: '/#about' },
-    { key: 'nav.services', href: '/candidates' },
-    { key: 'nav.contact', href: '/#contact' },
+    { key: 'nav.about', href: '/#about', isHash: true },
+    { key: 'nav.services', href: '/candidates', isHash: false },
+    { key: 'nav.contact', href: '/#contact', isHash: true },
   ];
+
+  const handleHashNav = (href: string) => {
+    const hash = href.replace('/', '');
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <div className="container flex h-18 items-center justify-between">
-        <a href="#" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <img src={logo} alt="Nordic Nomad Group logo" className="h-[56px] w-auto rounded-lg shadow-sm transition-transform group-hover:scale-105" />
           <span className="text-2xl tracking-tight transition-colors" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#1B3A6B', fontWeight: 700 }}>
             Nordic Nomad Group
           </span>
-        </a>
+          </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.key}
-              href={item.href}
-              className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground animated-underline"
-            >
-              {t(item.key)}
-            </a>
-          ))}
+          {navItems.map((item) =>
+            item.isHash ? (
+              <button
+                key={item.key}
+                onClick={() => handleHashNav(item.href)}
+                className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground animated-underline"
+              >
+                {t(item.key)}
+              </button>
+            ) : (
+              <Link
+                key={item.key}
+                to={item.href}
+                className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground animated-underline"
+              >
+                {t(item.key)}
+              </Link>
+            )
+          )}
 
           {/* Programs dropdown — RU/KY only */}
           {showPrograms && (
@@ -59,9 +83,9 @@ const Header = () => {
               <DropdownMenuContent align="start" className="min-w-[260px]">
                 {programs.map((p) => (
                   <DropdownMenuItem key={p.key} asChild>
-                    <a href={p.href} className="cursor-pointer">
+                    <Link to={p.href} className="cursor-pointer">
                       {t(p.key)}
-                    </a>
+                    </Link>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
@@ -90,18 +114,18 @@ const Header = () => {
           {/* Login & Register buttons - only RU and KY */}
           {(lang === 'ru' || lang === 'ky') && (
             <>
-              <a
-                href="/register"
+              <Link
+                to="/register"
                 className="rounded-lg border border-primary/30 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary/10 hover:-translate-y-0.5"
               >
                 {lang === 'ky' ? 'Каттоо' : 'Регистрация'}
-              </a>
-              <a
-                href="/login"
+              </Link>
+              <Link
+                to="/login"
                 className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm shadow-primary/20 transition-all hover:bg-primary/90 hover:-translate-y-0.5"
               >
                 {lang === 'ky' ? 'Кирүү' : 'Войти'}
-              </a>
+              </Link>
             </>
           )}
 
@@ -126,50 +150,60 @@ const Header = () => {
             className="overflow-hidden border-t border-border/50 md:hidden"
           >
             <nav className="container flex flex-col gap-4 py-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.key}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-sm font-medium text-foreground"
-                >
-                  {t(item.key)}
-                </a>
-              ))}
+              {navItems.map((item) =>
+                item.isHash ? (
+                  <button
+                    key={item.key}
+                    onClick={() => { handleHashNav(item.href); setMobileOpen(false); }}
+                    className="text-sm font-medium text-foreground text-left"
+                  >
+                    {t(item.key)}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.key}
+                    to={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-sm font-medium text-foreground"
+                  >
+                    {t(item.key)}
+                  </Link>
+                )
+              )}
 
               {/* Programs in mobile — RU/KY only */}
               {showPrograms && (
                 <div className="flex flex-col gap-2">
                   <span className="text-sm font-semibold text-foreground">{t('nav.programs')}</span>
                   {programs.map((p) => (
-                    <a
+                    <Link
                       key={p.key}
-                      href={p.href}
+                      to={p.href}
                       onClick={() => setMobileOpen(false)}
                       className="pl-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {t(p.key)}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
 
               {(lang === 'ru' || lang === 'ky') && (
                 <>
-                  <a
-                    href="/register"
+                  <Link
+                    to="/register"
                     onClick={() => setMobileOpen(false)}
                     className="rounded-lg border border-primary px-4 py-2 text-center text-sm font-medium text-primary"
                   >
                     {lang === 'ky' ? 'Каттоо' : 'Регистрация'}
-                  </a>
-                  <a
-                    href="/login"
+                  </Link>
+                  <Link
+                    to="/login"
                     onClick={() => setMobileOpen(false)}
                     className="rounded-lg bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
                   >
                     {lang === 'ky' ? 'Кирүү' : 'Войти'}
-                  </a>
+                  </Link>
                 </>
               )}
             </nav>
