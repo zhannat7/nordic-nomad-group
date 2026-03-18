@@ -15,12 +15,15 @@ const AboutSection = () => {
   const cx = isCyrillic ? 'cyrillic-text' : '';
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
-  const handleView = () => {
-    const absoluteUrl = `${window.location.origin}/documents/registration-certificate.pdf`;
-    setPdfUrl(`https://docs.google.com/viewer?url=${encodeURIComponent(absoluteUrl)}&embedded=true`);
+  const handleView = async () => {
+    const res = await fetch('/documents/registration-certificate.pdf');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    setPdfUrl(url);
   };
 
   const handleCloseModal = () => {
+    if (pdfUrl) URL.revokeObjectURL(pdfUrl);
     setPdfUrl(null);
   };
 
