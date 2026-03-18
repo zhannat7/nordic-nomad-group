@@ -226,19 +226,15 @@ const t: Translations = {
     ky: 'Жүйөлүү жана уюшкан тажрыйба үчүн аракеттенебиз. Үзгүлтүксүз жардам бардыгын колдойт.',
   },
 
-  // Testimonials
-  'testimonials.title': { en: 'What our partners say', da: 'Det siger vores partnere', ru: 'Отзывы наших партнёров', ky: 'Өнөктөштөрүбүздүн пикирлери' },
-  'testimonials.subtitle': {
-    en: 'Danish farmers who work with Nordic Nomad Group share their experience.',
-    da: 'Danske landmænd, der samarbejder med Nordic Nomad Group, deler deres oplevelser.',
-    ru: 'Датские фермеры, сотрудничающие с Nordic Nomad Group, делятся своим опытом.',
-    ky: 'Nordic Nomad Group менен иштеген дания фермерлери тажрыйбалары менен бөлүшөт.',
-  },
-  'testimonials.empty': {
-    en: 'Reviews from our partners are coming soon.',
-    da: 'Anmeldelser fra vores partnere kommer snart.',
-    ru: 'Отзывы наших партнёров скоро появятся.',
-    ky: 'Өнөктөштөрүбүздүн пикирлери жакында жарыяланат.',
+  // Founder
+  'founder.label': { en: 'Leadership', da: 'Ledelse', ru: 'Руководство', ky: 'Жетекчилик' },
+  'founder.title': { en: 'Meet our Founder', da: 'Mød vores grundlægger', ru: 'Наш основатель', ky: 'Биздин негиздөөчү' },
+  'founder.role': { en: 'CEO & Founder', da: 'CEO & Grundlægger', ru: 'CEO и основатель', ky: 'CEO жана негиздөөчү' },
+  'founder.bio': {
+    en: 'Tahmina founded Nordic Nomad Group with a clear vision: to bridge the gap between talented professionals from Central Asia and European companies in need of dedicated, skilled workforce. With deep expertise in international recruitment and cross-cultural management, she leads the company with a hands-on approach — ensuring every candidate and partner receives personal, transparent, and reliable support throughout the entire process.',
+    da: 'Tahmina grundlagde Nordic Nomad Group med en klar vision: at bygge bro mellem talentfulde fagfolk fra Centralasien og europæiske virksomheder, der har brug for en dedikeret og dygtig arbejdsstyrke. Med dyb ekspertise inden for international rekruttering og tværkulturel ledelse leder hun virksomheden med en praktisk tilgang — og sikrer, at hver kandidat og partner modtager personlig, gennemsigtig og pålidelig støtte gennem hele processen.',
+    ru: 'Тахмина основала Nordic Nomad Group с ясной целью: соединить талантливых специалистов из Центральной Азии с европейскими компаниями, нуждающимися в квалифицированных сотрудниках. Обладая глубокой экспертизой в международном рекрутинге и межкультурном управлении, она руководит компанией лично — обеспечивая каждому кандидату и партнёру прозрачную и надёжную поддержку на всех этапах.',
+    ky: 'Тахмина Nordic Nomad Group компаниясын так максат менен негиздеген: Борбордук Азиядагы таланттуу адистерди квалификациялуу кызматкерлерге муктаж Европа компаниялары менен байланыштыруу. Эл аралык рекрутинг жана маданияттар аралык башкаруу боюнча терең тажрыйбасы менен, ал компанияны жеке башкарат — ар бир талапкерге жана өнөктөшкө бардык этаптарда ачык жана ишенимдүү колдоо көрсөтөт.',
   },
 
   // Contact

@@ -15,8 +15,8 @@ const Index = () => {
       <CurrencyTicker />
       <HeroSection />
       <AboutSection />
+      <FounderSection />
       <WhySection />
-      <TestimonialsSection />
       <ContactSection />
       <Footer />
       <ChatBot />
