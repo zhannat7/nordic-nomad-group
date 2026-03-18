@@ -5,10 +5,12 @@ import { useI18n } from '@/lib/i18n';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import InternCard from '@/components/InternCard';
+import InternProfileModal from '@/components/InternProfileModal';
 
 const ServicesSection = () => {
   const { t, lang } = useI18n();
   const [selectedInterns, setSelectedInterns] = useState<Set<string>>(new Set());
+  const [modalIntern, setModalIntern] = useState<typeof interns[number] | null>(null);
 
   const { data: interns = [] } = useQuery({
     queryKey: ['approved-interns'],
@@ -82,10 +84,19 @@ const ServicesSection = () => {
                 intern={intern}
                 selected={selectedInterns.has(intern.id)}
                 onToggle={toggleIntern}
+                onClick={() => setModalIntern(intern)}
               />
             ))}
           </motion.div>
         )}
+
+        <InternProfileModal
+          intern={modalIntern}
+          open={!!modalIntern}
+          onOpenChange={(open) => { if (!open) setModalIntern(null); }}
+          selected={modalIntern ? selectedInterns.has(modalIntern.id) : false}
+          onToggle={toggleIntern}
+        />
       </div>
     </section>
   );
