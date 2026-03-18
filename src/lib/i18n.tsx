@@ -6,6 +6,23 @@ export type Lang = 'en' | 'da' | 'ru' | 'ky';
 type Translations = Record<string, Record<Lang, string>>;
 
 const t: Translations = {
+  // Candidates page
+  'candidates.title': {
+    en: 'Browse Available Interns for Your Farm',
+    da: 'Gennemse tilgængelige praktikanter til din gård',
+    ru: '', ky: '',
+  },
+  'candidates.desc': {
+    en: 'Discover qualified, motivated young people from Kyrgyzstan ready to work on your farm. All candidates speak English and have a genuine interest in agriculture. Select the ones you like and send us an inquiry.',
+    da: 'Mød kvalificerede, motiverede unge fra Kirgisistan, der er klar til at arbejde på din gård. Alle kandidater taler engelsk og har en ægte interesse i landbrug.',
+    ru: '', ky: '',
+  },
+  'candidates.count': {
+    en: 'Available Interns',
+    da: 'Tilgængelige praktikanter',
+    ru: '', ky: '',
+  },
+
   // Nav
   'nav.about': { en: 'About us', da: 'Om os', ru: 'О нас', ky: 'Биз жөнүндө' },
   'nav.services': { en: 'Candidate Profiles', da: 'Candidate Profiles', ru: 'Candidate Profiles', ky: 'Candidate Profiles' },
