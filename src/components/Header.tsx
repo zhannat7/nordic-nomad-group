@@ -20,13 +20,26 @@ const programs = [
 const Header = () => {
   const { lang, setLang, t } = useI18n();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
   const showPrograms = lang === 'ru' || lang === 'ky';
 
   const navItems = [
-    { key: 'nav.about', href: '/#about' },
-    { key: 'nav.services', href: '/candidates' },
-    { key: 'nav.contact', href: '/#contact' },
+    { key: 'nav.about', href: '/#about', isHash: true },
+    { key: 'nav.services', href: '/candidates', isHash: false },
+    { key: 'nav.contact', href: '/#contact', isHash: true },
   ];
+
+  const handleHashNav = (href: string) => {
+    const hash = href.replace('/', '');
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
