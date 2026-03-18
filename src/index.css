@@ -86,11 +86,11 @@
 
 @layer components {
   .section-padding {
-    @apply py-7 md:py-9;
+    @apply py-16 md:py-24;
   }
 
   .section-label {
-    @apply inline-block text-xs font-semibold uppercase tracking-[0.15em] text-primary mb-3;
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-4;
   }
 
   .section-title {
@@ -98,7 +98,7 @@
   }
 
   .section-desc {
-    @apply mt-4 text-base text-muted-foreground leading-relaxed max-w-2xl;
+    @apply mt-5 text-base text-muted-foreground leading-relaxed max-w-2xl;
   }
 
   .cyrillic-text {
