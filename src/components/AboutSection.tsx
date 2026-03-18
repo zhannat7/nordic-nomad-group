@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '@/lib/i18n';
 import { Heart, Target, ShieldCheck, Scale, X } from 'lucide-react';
+import { getDocument, GlobalWorkerOptions } from 'pdfjs-dist';
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+
+GlobalWorkerOptions.workerSrc = pdfWorker;
 
 const cards = [
   { icon: Heart, key: 'about.card1' },
@@ -14,26 +18,84 @@ const AboutSection = () => {
   const { t, isCyrillic } = useI18n();
   const cx = isCyrillic ? 'cyrillic-text' : '';
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [isPdfLoading, setIsPdfLoading] = useState(false);
+  const [pdfError, setPdfError] = useState<string | null>(null);
+  const pdfContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!pdfUrl || !pdfContainerRef.current) return;
+
+    let cancelled = false;
+    const container = pdfContainerRef.current;
+    container.innerHTML = '';
+
+    const renderPdf = async () => {
+      setPdfError(null);
+      setIsPdfLoading(true);
+
+      try {
+        const loadingTask = getDocument({ url: pdfUrl });
+        const pdf = await loadingTask.promise;
+
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum += 1) {
+          if (cancelled) return;
+
+          const page = await pdf.getPage(pageNum);
+          const viewport = page.getViewport({ scale: 1.35 });
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+
+          if (!context) continue;
+
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.className = 'mx-auto w-full max-w-4xl rounded-md border border-border bg-card shadow-sm';
+
+          container.appendChild(canvas);
+
+          await page.render({ canvasContext: context, viewport }).promise;
+        }
+      } catch {
+        if (!cancelled) {
+          setPdfError('PDF konnte in diesem Browser nicht angezeigt werden.');
+        }
+      } finally {
+        if (!cancelled) setIsPdfLoading(false);
+      }
+    };
+
+    renderPdf();
+
+    return () => {
+      cancelled = true;
+      container.innerHTML = '';
+    };
+  }, [pdfUrl]);
 
   const handleView = async () => {
     try {
       if (pdfUrl) URL.revokeObjectURL(pdfUrl);
 
       const res = await fetch('/documents/registration-certificate.pdf');
-      if (!res.ok) return;
+      if (!res.ok) {
+        setPdfError('PDF konnte nicht geladen werden.');
+        return;
+      }
 
-      const buffer = await res.arrayBuffer();
-      const blob = new Blob([buffer], { type: 'application/pdf' });
+      const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       setPdfUrl(url);
     } catch {
       setPdfUrl(null);
+      setPdfError('PDF konnte nicht geladen werden.');
     }
   };
 
   const handleCloseModal = () => {
     if (pdfUrl) URL.revokeObjectURL(pdfUrl);
     setPdfUrl(null);
+    setPdfError(null);
+    setIsPdfLoading(false);
   };
 
   return (
@@ -144,7 +206,7 @@ const AboutSection = () => {
       {pdfUrl && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 p-4" onClick={handleCloseModal}>
           <div
-            className="relative w-full max-w-4xl rounded-lg border border-border bg-card shadow-lg"
+            className="relative w-full max-w-5xl rounded-lg border border-border bg-card shadow-lg"
             style={{ height: '85vh' }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -155,11 +217,16 @@ const AboutSection = () => {
             >
               <X className="h-4 w-4" />
             </button>
-            <embed
-              src={`${pdfUrl}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
-              type="application/pdf"
-              className="block h-full w-full rounded-lg"
-            />
+
+            <div className="h-full w-full overflow-auto rounded-lg bg-muted/20 p-3">
+              {isPdfLoading && (
+                <p className="pb-3 text-sm text-muted-foreground">PDF wird geladen…</p>
+              )}
+              {pdfError && (
+                <p className="pb-3 text-sm text-destructive">{pdfError}</p>
+              )}
+              <div ref={pdfContainerRef} className="flex flex-col gap-3" />
+            </div>
           </div>
         </div>
       )}
