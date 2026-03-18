@@ -41,13 +41,13 @@ const Header = () => {
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.key}
-              href={item.href}
+              to={item.href}
               className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground animated-underline"
             >
               {t(item.key)}
-            </a>
+            </Link>
           ))}
 
           {/* Programs dropdown — RU/KY only */}
