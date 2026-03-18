@@ -108,30 +108,25 @@ async function streamChat({
   onDone();
 }
 
-const TTS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/elevenlabs-tts`;
-
-async function speakTextElevenLabs(text: string, lang: Lang): Promise<HTMLAudioElement> {
+function speakText(text: string, lang: Lang): HTMLAudioElement {
   // Strip markdown for cleaner speech
   const cleanText = text.replace(/[*_#`>\[\]()!~]/g, '').replace(/\n+/g, ' ').trim();
 
-  const response = await fetch(TTS_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-    },
-    body: JSON.stringify({ text: cleanText, lang }),
-  });
+  window.speechSynthesis?.cancel();
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+  utterance.lang = lang === 'ru' ? 'ru-RU' : 'ky-KG';
+  utterance.rate = 0.95;
 
-  if (!response.ok) {
-    throw new Error(`TTS failed: ${response.status}`);
-  }
+  const voices = window.speechSynthesis.getVoices();
+  const langCode = lang === 'ru' ? 'ru' : 'ky';
+  const match = voices.find(v => v.lang.startsWith(langCode));
+  if (match) utterance.voice = match;
 
-  const audioBlob = await response.blob();
-  const audioUrl = URL.createObjectURL(audioBlob);
-  const audio = new Audio(audioUrl);
-  await audio.play();
+  window.speechSynthesis.speak(utterance);
+
+  // Return a dummy audio element for API compatibility
+  const audio = new Audio();
+  utterance.onend = () => audio.dispatchEvent(new Event('ended'));
   return audio;
 }
 
@@ -142,7 +137,7 @@ export default function ChatBot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [speakingIdx, setSpeakingIdx] = useState<number | null>(null);
-  const [ttsLoading, setTtsLoading] = useState<number | null>(null);
+  
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -166,33 +161,35 @@ export default function ChatBot() {
     setMessages([{ role: 'assistant', content: labels[newLang].greeting }]);
   };
 
-  const handleSpeak = async (text: string, idx: number) => {
+  const handleSpeak = (text: string, idx: number) => {
     if (speakingIdx === idx) {
-      audioRef.current?.pause();
+      window.speechSynthesis?.cancel();
       audioRef.current = null;
       setSpeakingIdx(null);
       return;
     }
 
     // Stop any current playback
-    audioRef.current?.pause();
+    window.speechSynthesis?.cancel();
     audioRef.current = null;
-    setTtsLoading(idx);
 
-    try {
-      const audio = await speakTextElevenLabs(text, lang);
-      audioRef.current = audio;
-      setSpeakingIdx(idx);
-      setTtsLoading(null);
+    const audio = speakText(text, lang);
+    audioRef.current = audio;
+    setSpeakingIdx(idx);
 
-      audio.onended = () => {
+    audio.addEventListener('ended', () => {
+      setSpeakingIdx(null);
+      audioRef.current = null;
+    });
+
+    // Fallback: check speechSynthesis speaking state
+    const check = setInterval(() => {
+      if (!window.speechSynthesis?.speaking) {
         setSpeakingIdx(null);
         audioRef.current = null;
-      };
-    } catch (e) {
-      console.error('TTS error:', e);
-      setTtsLoading(null);
-    }
+        clearInterval(check);
+      }
+    }, 500);
   };
 
   const send = useCallback(async () => {
@@ -312,13 +309,10 @@ export default function ChatBot() {
                     {msg.role === 'assistant' && msg.content && !isLoading && (
                       <button
                         onClick={() => handleSpeak(msg.content, i)}
-                        disabled={ttsLoading === i}
                         className="absolute -bottom-5 right-1 rounded-full bg-background border border-border p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm"
                         title={lang === 'ru' ? 'Прослушать' : 'Угуу'}
                       >
-                        {ttsLoading === i ? (
-                          <Loader2 className="h-3.5 w-3.5 animate-spin text-muted-foreground" />
-                        ) : speakingIdx === i ? (
+                        {speakingIdx === i ? (
                           <VolumeX className="h-3.5 w-3.5 text-destructive" />
                         ) : (
                           <Volume2 className="h-3.5 w-3.5 text-muted-foreground" />
