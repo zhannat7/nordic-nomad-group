@@ -206,13 +206,6 @@ const t: Translations = {
     ru: 'Мы стремимся к гладкому и организованному процессу. Наша постоянная помощь обеспечивает поддержку.',
     ky: 'Жүйөлүү жана уюшкан тажрыйба үчүн аракеттенебиз. Үзгүлтүксүз жардам бардыгын колдойт.',
   },
-  'why4.title': { en: 'Immigration help', da: 'Hjælp til immigrationsproces', ru: 'Помощь с иммиграцией', ky: 'Иммиграция жардамы' },
-  'why4.desc': {
-    en: 'Our diverse team has firsthand experience with the immigration process in Denmark and cultural differences.',
-    da: 'Vores mangfoldige team har førstehåndserfaring med immigrationsprocessen i Danmark og kulturforskelle.',
-    ru: 'Наша команда имеет личный опыт иммиграционного процесса в Дании и культурных различий.',
-    ky: 'Биздин команда Даниядагы иммиграция процессин жана маданий айырмачылыктарды жеке тажрыйбадан билет.',
-  },
 
   // Testimonials
   'testimonials.title': { en: 'What our clients say', da: 'Hvad siger vores kunder?', ru: 'Отзывы клиентов', ky: 'Кардарлардын пикирлери' },

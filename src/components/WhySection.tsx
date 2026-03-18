@@ -5,7 +5,6 @@ const reasons = [
   { titleKey: 'why1.title', descKey: 'why1.desc' },
   { titleKey: 'why2.title', descKey: 'why2.desc' },
   { titleKey: 'why3.title', descKey: 'why3.desc' },
-  { titleKey: 'why4.title', descKey: 'why4.desc' },
 ];
 
 const WhySection = () => {
