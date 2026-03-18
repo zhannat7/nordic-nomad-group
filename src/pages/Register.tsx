@@ -171,6 +171,10 @@ const Register = () => {
         email: email.trim(),
         program: 'Agricultural Internship - Denmark',
         status: 'pending',
+        date_of_birth: dob ? format(dob, 'yyyy-MM-dd') : null,
+        english_level: englishLevel || null,
+        animals: animals.trim() || null,
+        agriculture_interest: agricultureInterest.trim() || null,
       });
 
       // Upload files (all optional)
