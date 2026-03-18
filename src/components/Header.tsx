@@ -150,16 +150,26 @@ const Header = () => {
             className="overflow-hidden border-t border-border/50 md:hidden"
           >
             <nav className="container flex flex-col gap-4 py-6">
-              {navItems.map((item) => (
-                <Link
-                  key={item.key}
-                  to={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-sm font-medium text-foreground"
-                >
-                  {t(item.key)}
-                </Link>
-              ))}
+              {navItems.map((item) =>
+                item.isHash ? (
+                  <button
+                    key={item.key}
+                    onClick={() => { handleHashNav(item.href); setMobileOpen(false); }}
+                    className="text-sm font-medium text-foreground text-left"
+                  >
+                    {t(item.key)}
+                  </button>
+                ) : (
+                  <Link
+                    key={item.key}
+                    to={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-sm font-medium text-foreground"
+                  >
+                    {t(item.key)}
+                  </Link>
+                )
+              )}
 
               {/* Programs in mobile — RU/KY only */}
               {showPrograms && (
