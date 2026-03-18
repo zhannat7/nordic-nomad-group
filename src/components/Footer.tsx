@@ -1,5 +1,5 @@
 import { useI18n } from '@/lib/i18n';
-import { ArrowUp, Clock, CircleDot } from 'lucide-react';
+import { ArrowUp, Clock, CircleDot, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useI18n();
