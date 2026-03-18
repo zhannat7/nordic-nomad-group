@@ -253,6 +253,10 @@ const t: Translations = {
   'contact.send': { en: 'Send message', da: 'Send besked', ru: 'Отправить', ky: 'Жөнөтүү' },
   'contact.success': { en: 'We will call you within 24 hours', da: 'Vi ringer dig inden for 24 timer', ru: 'Мы позвоним вам в течение 24 часов', ky: 'Биз 24 сааттын ичинде чалабыз' },
 
+  // Map
+  'map.badge': { en: 'Location', da: 'Lokation', ru: 'Локация', ky: 'Жайгашкан жери' },
+  'map.title': { en: 'Find us', da: 'Find os', ru: 'Найдите нас', ky: 'Бизди табыңыз' },
+
   // Footer
   'footer.rights': { en: 'All rights reserved.', da: 'Alle rettigheder forbeholdes.', ru: 'Все права защищены.', ky: 'Бардык укуктар корголгон.' },
   'footer.services_link': { en: 'Our services', da: 'Vores ydelser', ru: 'Наши услуги', ky: 'Биздин кызматтар' },
