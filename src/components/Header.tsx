@@ -45,13 +45,13 @@ const Header = () => {
     <header className="sticky top-0 z-50 border-b border-border bg-background/98 backdrop-blur-lg">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-2.5 group shrink-0">
           <img
             src={logo}
             alt="Nordic Nomad Group"
-            className="h-10 w-auto object-contain"
+            className="h-9 w-auto object-contain"
           />
-          <span className="text-lg font-bold tracking-tight text-foreground font-display">
+          <span className="hidden sm:inline text-lg font-bold tracking-tight text-foreground font-display">
             Nordic Nomad
           </span>
         </Link>
