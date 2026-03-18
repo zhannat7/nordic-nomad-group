@@ -217,11 +217,11 @@ const t: Translations = {
   },
 
   // Testimonials
-  'testimonials.title': { en: 'What our clients say', da: 'Hvad siger vores kunder?', ru: 'Отзывы клиентов', ky: 'Кардарлардын пикирлери' },
+  'testimonials.title': { en: 'What our partners say', da: 'Det siger vores partnere', ru: 'Отзывы наших партнёров', ky: 'Өнөктөштөрүбүздүн пикирлери' },
   'testimonials.subtitle': {
-    en: 'From increased productivity to transformative results, our partners share their success stories.',
-    da: 'Fra øget produktivitet til transformative resultater deler vores partnere deres succeshistorier.',
-    ru: 'От повышения производительности до трансформационных результатов — истории успеха наших партнёров.',
+    en: 'Danish farmers who work with Nordic Nomad Group share their experience.',
+    da: 'Danske landmænd, der samarbejder med Nordic Nomad Group, deler deres oplevelser.',
+    ru: 'Датские фермеры, сотрудничающие с Nordic Nomad Group, делятся своим опытом.',
     ky: 'Өндүрүмдүүлүктүн жогорулашынан баштап трансформациялуу натыйжаларга чейин — өнөктөштөрүбүздүн ийгилик тарыхтары.',
   },
 

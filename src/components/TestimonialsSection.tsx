@@ -23,7 +23,7 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] as const }}
           className="mb-16 max-w-2xl"
         >
-          <span className="section-badge mb-4">⭐ Testimonials</span>
+          <span className="section-badge mb-4">🤝 Partners</span>
           <h2 className="mt-4 font-display text-3xl tracking-tight text-foreground md:text-5xl">
             {t('testimonials.title')}
           </h2>
