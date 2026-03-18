@@ -224,6 +224,12 @@ const t: Translations = {
     ru: 'Датские фермеры, сотрудничающие с Nordic Nomad Group, делятся своим опытом.',
     ky: 'Nordic Nomad Group менен иштеген дания фермерлери тажрыйбалары менен бөлүшөт.',
   },
+  'testimonials.empty': {
+    en: 'Reviews from our partners are coming soon.',
+    da: 'Anmeldelser fra vores partnere kommer snart.',
+    ru: 'Отзывы наших партнёров скоро появятся.',
+    ky: 'Өнөктөштөрүбүздүн пикирлери жакында жарыяланат.',
+  },
 
   // Contact
   'contact.title': { en: 'Contact us', da: 'Kontakt os', ru: 'Свяжитесь с нами', ky: 'Биз менен байланышыңыз' },
