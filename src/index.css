@@ -9,39 +9,41 @@
     --font-display: 'DM Serif Display', serif;
     --font-sans: 'DM Sans', sans-serif;
 
-    --background: 0 0% 99%;
-    --foreground: 220 25% 14%;
+    --background: 210 20% 98%;
+    --foreground: 220 30% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 25% 14%;
+    --card-foreground: 220 30% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 14%;
+    --popover-foreground: 220 30% 12%;
 
-    --primary: 220 70% 45%;
+    --primary: 216 72% 42%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 25% 14%;
+    --secondary: 214 18% 93%;
+    --secondary-foreground: 220 30% 12%;
 
-    --muted: 220 10% 94%;
-    --muted-foreground: 220 10% 44%;
+    --muted: 214 14% 90%;
+    --muted-foreground: 220 12% 38%;
 
-    --accent: 36 85% 50%;
+    --accent: 32 90% 50%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 220 70% 45%;
+    --border: 216 16% 87%;
+    --input: 216 16% 87%;
+    --ring: 216 72% 42%;
 
     --radius: 0.625rem;
 
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
-    --shadow-md: 0 4px 16px -2px rgb(0 0 0 / 0.08);
-    --shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.1);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06);
+    --shadow-md: 0 4px 20px -4px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 12px 40px -8px rgb(0 0 0 / 0.12);
+
+    --section-alt: 214 20% 95%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -76,11 +78,12 @@
     font-family: var(--font-display);
     letter-spacing: -0.01em;
     line-height: 1.15;
+    color: hsl(var(--foreground));
   }
 
   ::selection {
-    background: hsl(220 70% 45% / 0.12);
-    color: hsl(220 70% 25%);
+    background: hsl(216 72% 42% / 0.15);
+    color: hsl(216 72% 25%);
   }
 }
 
@@ -89,8 +92,12 @@
     @apply py-16 md:py-24;
   }
 
+  .section-alt {
+    background-color: hsl(var(--section-alt));
+  }
+
   .section-label {
-    @apply inline-block text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-4;
+    @apply inline-block text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4;
   }
 
   .section-title {
@@ -113,7 +120,7 @@
   .card-base:hover {
     box-shadow: var(--shadow-md);
     border-color: hsl(var(--primary) / 0.2);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
 }
 

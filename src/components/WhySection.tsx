@@ -12,7 +12,7 @@ const WhySection = () => {
   const cx = isCyrillic ? 'cyrillic-text' : '';
 
   return (
-    <section className="section-padding bg-secondary/50">
+    <section className="section-padding section-alt">
       <div className="container max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

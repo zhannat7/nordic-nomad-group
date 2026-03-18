@@ -40,12 +40,12 @@ const Footer = () => {
               </button>
             </div>
 
-            <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <div className="flex items-center gap-3 text-xs text-background/50">
               <span className="flex items-center gap-1.5">
-                <CircleDot className="h-3 w-3 text-green-500" />
+                <CircleDot className="h-3 w-3 text-green-400" />
                 {t('status.online')}
               </span>
-              <span className="text-border">·</span>
+              <span className="text-background/20">·</span>
               <span className="flex items-center gap-1.5">
                 <Clock className="h-3 w-3" />
                 {t('status.response')}

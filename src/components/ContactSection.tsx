@@ -14,7 +14,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-padding bg-background">
       <div className="container max-w-5xl">
         <div className="grid gap-14 lg:grid-cols-2">
           <motion.div
