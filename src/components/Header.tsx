@@ -42,14 +42,35 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <div className="container flex h-18 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
-          <img src={logo} alt="Nordic Nomad Group logo" className="h-[56px] w-auto rounded-lg shadow-sm transition-transform group-hover:scale-105" />
-          <span className="text-2xl tracking-tight transition-colors" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#1B3A6B', fontWeight: 700 }}>
-            Nordic Nomad Group
-          </span>
-          </Link>
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur-xl shadow-[0_1px_3px_0_hsl(var(--foreground)/0.04)]">
+      <div className="container flex h-20 items-center justify-between">
+        <Link to="/" className="flex items-center gap-4 group">
+          <div className="relative">
+            <img
+              src={logo}
+              alt="Nordic Nomad Group logo"
+              className="h-[52px] w-[52px] rounded-xl object-cover shadow-md ring-1 ring-border/30 transition-all duration-300 group-hover:shadow-lg group-hover:scale-[1.03]"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span
+              className="text-[22px] leading-tight tracking-[-0.01em] font-extrabold"
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                color: '#0F2B52',
+                letterSpacing: '-0.02em',
+              }}
+            >
+              Nordic Nomad
+            </span>
+            <span
+              className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/80"
+              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
+            >
+              Group
+            </span>
+          </div>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
