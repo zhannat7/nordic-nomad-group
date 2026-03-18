@@ -108,20 +108,31 @@ async function streamChat({
   onDone();
 }
 
-function speakText(text: string, lang: Lang) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = lang === 'ru' ? 'ru-RU' : 'ky-KG';
-  utterance.rate = 0.95;
+const TTS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/elevenlabs-tts`;
 
-  // Try to find a matching voice
-  const voices = window.speechSynthesis.getVoices();
-  const langCode = lang === 'ru' ? 'ru' : 'ky';
-  const match = voices.find(v => v.lang.startsWith(langCode));
-  if (match) utterance.voice = match;
+async function speakTextElevenLabs(text: string, lang: Lang): Promise<HTMLAudioElement> {
+  // Strip markdown for cleaner speech
+  const cleanText = text.replace(/[*_#`>\[\]()!~]/g, '').replace(/\n+/g, ' ').trim();
 
-  window.speechSynthesis.speak(utterance);
+  const response = await fetch(TTS_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+      Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+    },
+    body: JSON.stringify({ text: cleanText, lang }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`TTS failed: ${response.status}`);
+  }
+
+  const audioBlob = await response.blob();
+  const audioUrl = URL.createObjectURL(audioBlob);
+  const audio = new Audio(audioUrl);
+  await audio.play();
+  return audio;
 }
 
 export default function ChatBot() {
@@ -131,20 +142,16 @@ export default function ChatBot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [speakingIdx, setSpeakingIdx] = useState<number | null>(null);
+  const [ttsLoading, setTtsLoading] = useState<number | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const l = labels[lang];
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
-
-  // Load voices
-  useEffect(() => {
-    window.speechSynthesis?.getVoices();
-    window.speechSynthesis?.addEventListener('voiceschanged', () => {});
-  }, []);
 
   const handleOpen = () => {
     setOpen(true);
@@ -159,20 +166,32 @@ export default function ChatBot() {
     setMessages([{ role: 'assistant', content: labels[newLang].greeting }]);
   };
 
-  const handleSpeak = (text: string, idx: number) => {
+  const handleSpeak = async (text: string, idx: number) => {
     if (speakingIdx === idx) {
-      window.speechSynthesis?.cancel();
+      audioRef.current?.pause();
+      audioRef.current = null;
       setSpeakingIdx(null);
-    } else {
-      speakText(text, lang);
+      return;
+    }
+
+    // Stop any current playback
+    audioRef.current?.pause();
+    audioRef.current = null;
+    setTtsLoading(idx);
+
+    try {
+      const audio = await speakTextElevenLabs(text, lang);
+      audioRef.current = audio;
       setSpeakingIdx(idx);
-      // Reset when done
-      const check = setInterval(() => {
-        if (!window.speechSynthesis?.speaking) {
-          setSpeakingIdx(null);
-          clearInterval(check);
-        }
-      }, 300);
+      setTtsLoading(null);
+
+      audio.onended = () => {
+        setSpeakingIdx(null);
+        audioRef.current = null;
+      };
+    } catch (e) {
+      console.error('TTS error:', e);
+      setTtsLoading(null);
     }
   };
 
@@ -293,10 +312,13 @@ export default function ChatBot() {
                     {msg.role === 'assistant' && msg.content && !isLoading && (
                       <button
                         onClick={() => handleSpeak(msg.content, i)}
+                        disabled={ttsLoading === i}
                         className="absolute -bottom-5 right-1 rounded-full bg-background border border-border p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm"
                         title={lang === 'ru' ? 'Прослушать' : 'Угуу'}
                       >
-                        {speakingIdx === i ? (
+                        {ttsLoading === i ? (
+                          <Loader2 className="h-3.5 w-3.5 animate-spin text-muted-foreground" />
+                        ) : speakingIdx === i ? (
                           <VolumeX className="h-3.5 w-3.5 text-destructive" />
                         ) : (
                           <Volume2 className="h-3.5 w-3.5 text-muted-foreground" />
