@@ -15,11 +15,11 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="container flex h-16 items-center justify-between">
-        <a href="#" className="flex items-center gap-3">
-          <img src={logo} alt="Nordic Nomad Group logo" className="h-[60px] w-auto" />
-          <span className="text-2xl tracking-tight" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#1B3A6B', fontWeight: 700 }}>
+    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
+      <div className="container flex h-18 items-center justify-between">
+        <a href="#" className="flex items-center gap-3 group">
+          <img src={logo} alt="Nordic Nomad Group logo" className="h-[56px] w-auto rounded-lg shadow-sm transition-transform group-hover:scale-105" />
+          <span className="text-2xl tracking-tight transition-colors" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#1B3A6B', fontWeight: 700 }}>
             Nordic Nomad Group
           </span>
         </a>
@@ -30,7 +30,7 @@ const Header = () => {
             <a
               key={item.key}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground animated-underline"
             >
               {t(item.key)}
             </a>
@@ -39,15 +39,15 @@ const Header = () => {
 
         <div className="flex items-center gap-3">
           {/* Language switcher */}
-          <div className="flex items-center rounded-md border border-border bg-card p-0.5">
+          <div className="flex items-center rounded-lg border border-border/70 bg-card/50 p-0.5 backdrop-blur-sm">
             {languages.map((l) => (
               <button
                 key={l.code}
                 onClick={() => setLang(l.code)}
-                className={`rounded px-2 py-1 text-xs font-medium transition-all ${
+                className={`rounded-md px-2.5 py-1.5 text-xs font-medium transition-all ${
                   lang === l.code
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-muted-foreground hover:text-foreground'
+                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                 }`}
               >
                 {l.label}
@@ -55,19 +55,18 @@ const Header = () => {
             ))}
           </div>
 
-
           {/* Login & Register buttons - only RU and KY */}
           {(lang === 'ru' || lang === 'ky') && (
             <>
               <a
                 href="/register"
-                className="rounded-md border border-primary px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+                className="rounded-lg border border-primary/30 px-4 py-2 text-sm font-medium text-primary transition-all hover:bg-primary/10 hover:-translate-y-0.5"
               >
                 {lang === 'ky' ? 'Каттоо' : 'Регистрация'}
               </a>
               <a
                 href="/login"
-                className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+                className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm shadow-primary/20 transition-all hover:bg-primary/90 hover:-translate-y-0.5"
               >
                 {lang === 'ky' ? 'Кирүү' : 'Войти'}
               </a>
@@ -91,8 +90,8 @@ const Header = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2, ease: [0.2, 0, 0, 1] }}
-            className="overflow-hidden border-t border-border md:hidden"
+            transition={{ duration: 0.2, ease: [0.2, 0, 0, 1] as const }}
+            className="overflow-hidden border-t border-border/50 md:hidden"
           >
             <nav className="container flex flex-col gap-4 py-6">
               {navItems.map((item) => (
@@ -110,14 +109,14 @@ const Header = () => {
                   <a
                     href="/register"
                     onClick={() => setMobileOpen(false)}
-                    className="rounded-md border border-primary px-4 py-2 text-center text-sm font-medium text-primary"
+                    className="rounded-lg border border-primary px-4 py-2 text-center text-sm font-medium text-primary"
                   >
                     {lang === 'ky' ? 'Каттоо' : 'Регистрация'}
                   </a>
                   <a
                     href="/login"
                     onClick={() => setMobileOpen(false)}
-                    className="rounded-md bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
+                    className="rounded-lg bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
                   >
                     {lang === 'ky' ? 'Кирүү' : 'Войти'}
                   </a>
