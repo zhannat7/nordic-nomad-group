@@ -44,32 +44,12 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur-xl shadow-[0_1px_3px_0_hsl(var(--foreground)/0.04)]">
       <div className="container flex h-24 items-center justify-between">
-        <Link to="/" className="flex items-center gap-4 group">
-          <div className="relative flex-shrink-0">
-            <img
-              src={logo}
-              alt="Nordic Nomad Group logo"
-              className="h-[76px] w-auto object-contain transition-all duration-300 group-hover:scale-[1.04]"
-            />
-          </div>
-          <div className="flex flex-col">
-            <span
-              className="text-[22px] leading-tight tracking-[-0.01em] font-extrabold"
-              style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                color: '#0F2B52',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Nordic Nomad
-            </span>
-            <span
-              className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground/80"
-              style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-            >
-              Group
-            </span>
-          </div>
+        <Link to="/" className="flex items-center group">
+          <img
+            src={logo}
+            alt="Nordic Nomad Group logo"
+            className="h-[76px] w-auto object-contain transition-all duration-300 group-hover:scale-[1.04]"
+          />
         </Link>
 
         {/* Desktop nav */}
