@@ -157,20 +157,20 @@ const Header = () => {
 
               {(lang === 'ru' || lang === 'ky') && (
                 <>
-                  <a
-                    href="/register"
+                  <Link
+                    to="/register"
                     onClick={() => setMobileOpen(false)}
                     className="rounded-lg border border-primary px-4 py-2 text-center text-sm font-medium text-primary"
                   >
                     {lang === 'ky' ? 'Каттоо' : 'Регистрация'}
-                  </a>
-                  <a
-                    href="/login"
+                  </Link>
+                  <Link
+                    to="/login"
                     onClick={() => setMobileOpen(false)}
                     className="rounded-lg bg-primary px-4 py-2 text-center text-sm font-medium text-primary-foreground"
                   >
                     {lang === 'ky' ? 'Кирүү' : 'Войти'}
-                  </a>
+                  </Link>
                 </>
               )}
             </nav>
