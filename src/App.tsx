@@ -19,6 +19,7 @@ import ProgramAgriculture from "./pages/ProgramAgriculture.tsx";
 import ProgramAusbildung from "./pages/ProgramAusbildung.tsx";
 import ProgramMedical from "./pages/ProgramMedical.tsx";
 import ProgramLanguageGuard from "./components/ProgramLanguageGuard.tsx";
+import HowItWorks from "./pages/HowItWorks.tsx";
 
 const queryClient = new QueryClient();
 
