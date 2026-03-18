@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, CheckCircle, MapPin, Send } from 'lucide-react';
+import { Phone, Mail, CheckCircle, MapPin, Send, Instagram } from 'lucide-react';
 import { useI18n } from '@/lib/i18n';
 
 const ContactSection = () => {
