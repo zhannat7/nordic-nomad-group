@@ -114,13 +114,28 @@ function speakText(text: string, lang: Lang): HTMLAudioElement {
 
   window.speechSynthesis?.cancel();
   const utterance = new SpeechSynthesisUtterance(cleanText);
-  utterance.lang = lang === 'ru' ? 'ru-RU' : 'ky-KG';
   utterance.rate = 0.95;
 
   const voices = window.speechSynthesis.getVoices();
-  const langCode = lang === 'ru' ? 'ru' : 'ky';
-  const match = voices.find(v => v.lang.startsWith(langCode));
-  if (match) utterance.voice = match;
+  
+  if (lang === 'ru') {
+    utterance.lang = 'ru-RU';
+    const ruVoice = voices.find(v => v.lang.startsWith('ru'));
+    if (ruVoice) utterance.voice = ruVoice;
+  } else {
+    // Kyrgyz: try ky voice first, fall back to Russian voice (both use Cyrillic)
+    const kyVoice = voices.find(v => v.lang.startsWith('ky'));
+    const ruVoice = voices.find(v => v.lang.startsWith('ru'));
+    if (kyVoice) {
+      utterance.lang = 'ky-KG';
+      utterance.voice = kyVoice;
+    } else if (ruVoice) {
+      utterance.lang = 'ru-RU';
+      utterance.voice = ruVoice;
+    } else {
+      utterance.lang = 'ru-RU'; // last resort fallback
+    }
+  }
 
   window.speechSynthesis.speak(utterance);
 
