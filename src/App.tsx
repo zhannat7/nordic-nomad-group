@@ -15,6 +15,9 @@ import Profile from "./pages/Profile.tsx";
 import Register from "./pages/Register.tsx";
 import RegistrationSuccess from "./pages/RegistrationSuccess.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import ProgramAgriculture from "./pages/ProgramAgriculture.tsx";
+import ProgramAusbildung from "./pages/ProgramAusbildung.tsx";
+import ProgramMedical from "./pages/ProgramMedical.tsx";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +52,9 @@ const App = () => (
                   </ProtectedRoute>
                 }
               />
+              <Route path="/programs/agriculture" element={<ProgramAgriculture />} />
+              <Route path="/programs/ausbildung" element={<ProgramAusbildung />} />
+              <Route path="/programs/medical" element={<ProgramMedical />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

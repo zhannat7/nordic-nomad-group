@@ -31,6 +31,16 @@ const t: Translations = {
   'nav.privacy': { en: 'Privacy policy', da: 'Privatlivspolitik', ru: 'Политика конф.', ky: 'Купуялуулук' },
   'nav.candidates': { en: 'See candidates', da: 'Se kandidater', ru: 'Кандидаты', ky: 'Талапкерлер' },
   'nav.order': { en: 'Order intern/employee', da: 'Bestil praktikant/medarbejder', ru: 'Заказать стажёра', ky: 'Стажёр заказдоо' },
+  'nav.programs': { en: 'Programs', da: 'Programmer', ru: 'Программы', ky: 'Программалар' },
+  'program.agriculture': { en: 'Agricultural Internship – Denmark', da: 'Landbrugspraktik – Danmark', ru: 'Сельскохозяйственная стажировка – Дания', ky: 'Айыл чарба стажировкасы – Дания' },
+  'program.ausbildung': { en: 'Ausbildung – Germany', da: 'Ausbildung – Tyskland', ru: 'Аусбильдунг – Германия', ky: 'Аусбильдунг – Германия' },
+  'program.medical': { en: 'Medical Diploma Recognition – Germany', da: 'Medicinsk diplomgodkendelse – Tyskland', ru: 'Признание медицинского диплома – Германия', ky: 'Медициналык дипломду таануу – Германия' },
+  'program.agriculture.title': { en: 'Agricultural Internship – Denmark', da: 'Landbrugspraktik – Danmark', ru: 'Сельскохозяйственная стажировка – Дания', ky: 'Айыл чарба стажировкасы – Дания' },
+  'program.agriculture.desc': { en: 'Learn about our agricultural internship program in Denmark.', da: 'Lær mere om vores landbrugspraktikprogram i Danmark.', ru: 'Узнайте о нашей программе сельскохозяйственной стажировки в Дании.', ky: 'Данияда айыл чарба стажировкасы программабыз жөнүндө билиңиз.' },
+  'program.ausbildung.title': { en: 'Ausbildung – Germany', da: 'Ausbildung – Tyskland', ru: 'Аусбильдунг – Германия', ky: 'Аусбильдунг – Германия' },
+  'program.ausbildung.desc': { en: 'Explore vocational training opportunities in Germany.', da: 'Udforsk erhvervsuddannelsesmuligheder i Tyskland.', ru: 'Откройте возможности профессионального обучения в Германии.', ky: 'Германиядагы кесиптик окуу мүмкүнчүлүктөрүн изилдеңиз.' },
+  'program.medical.title': { en: 'Medical Diploma Recognition – Germany', da: 'Medicinsk diplomgodkendelse – Tyskland', ru: 'Признание медицинского диплома – Германия', ky: 'Медициналык дипломду таануу – Германия' },
+  'program.medical.desc': { en: 'Get your medical diploma recognized in Germany.', da: 'Få dit medicinske diplom anerkendt i Tyskland.', ru: 'Получите признание вашего медицинского диплома в Германии.', ky: 'Медициналык дипломуңузду Германияда тааныткылаңыз.' },
 
   // Hero
   'hero.tagline': {
