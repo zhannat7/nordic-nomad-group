@@ -19,6 +19,7 @@ import ProgramAgriculture from "./pages/ProgramAgriculture.tsx";
 import ProgramAusbildung from "./pages/ProgramAusbildung.tsx";
 import ProgramMedical from "./pages/ProgramMedical.tsx";
 import ProgramLanguageGuard from "./components/ProgramLanguageGuard.tsx";
+import HowItWorks from "./pages/HowItWorks.tsx";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/candidates" element={<Candidates />} />
+              <Route path="/how-it-works" element={<HowItWorks />} />
               <Route path="/login" element={<Login />} />
               <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/register" element={<Register />} />

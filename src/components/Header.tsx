@@ -25,6 +25,7 @@ const Header = () => {
 
   const navItems = [
     { key: 'nav.about', href: '/#about', isHash: true },
+    { key: 'nav.howitworks', href: '/how-it-works', isHash: false },
     ...(!showPrograms ? [{ key: 'nav.services', href: '/candidates', isHash: false }] : []),
     { key: 'nav.contact', href: '/#contact', isHash: true },
   ];
