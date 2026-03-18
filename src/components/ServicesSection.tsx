@@ -5,6 +5,7 @@ import { useI18n } from '@/lib/i18n';
 import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import InternCard from '@/components/InternCard';
+import InternProfileModal from '@/components/InternProfileModal';
 
 const ServicesSection = () => {
   const { t, lang } = useI18n();
