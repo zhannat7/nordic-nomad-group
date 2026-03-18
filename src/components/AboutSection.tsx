@@ -79,7 +79,7 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="section-padding bg-secondary/50">
-      <div className="container max-w-4xl">
+      <div className="container max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -106,7 +106,7 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="mt-12 text-center"
+          className="mt-14 text-center"
         >
           <h3 className={`font-display text-xl text-foreground md:text-2xl ${cx}`}>
             {t('about.mission_title')}
@@ -118,12 +118,12 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className={`mx-auto mt-3 max-w-3xl text-center text-sm text-muted-foreground leading-relaxed md:text-base ${cx}`}
+          className={`mx-auto mt-4 max-w-3xl text-center text-sm text-muted-foreground leading-relaxed md:text-base ${cx}`}
         >
           {t('about.mission')}
         </motion.p>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2">
           {cards.map(({ icon: Icon, key }, i) => (
             <motion.div
               key={key}
@@ -133,11 +133,11 @@ const AboutSection = () => {
               transition={{ duration: 0.4, delay: 0.08 * i }}
               className="card-base"
             >
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/8 text-primary">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-primary/8 text-primary">
                 <Icon className="h-5 w-5" />
               </div>
               <h4 className={`text-base font-semibold text-foreground ${cx}`}>{t(`${key}.title`)}</h4>
-              <p className={`mt-1.5 text-sm text-muted-foreground leading-relaxed ${cx}`}>{t(`${key}.desc`)}</p>
+              <p className={`mt-2 text-sm text-muted-foreground leading-relaxed ${cx}`}>{t(`${key}.desc`)}</p>
             </motion.div>
           ))}
         </div>
@@ -147,19 +147,19 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mx-auto mt-12 max-w-xl rounded-xl border border-primary/15 bg-primary/5 p-5"
+          className="mx-auto mt-14 max-w-xl rounded-xl border border-primary/15 bg-primary/5 p-6"
         >
           <div className="flex items-center gap-3">
-            <span className="text-xl">🏛️</span>
+            <span className="text-2xl">🏛️</span>
             <p className={`text-sm font-medium text-foreground ${cx}`}>
               {t('about.cert_registered')}
             </p>
           </div>
-          <div className="mt-4 flex gap-2">
+          <div className="mt-5 flex gap-3">
             <button
               type="button"
               onClick={handleView}
-              className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              className="rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               {t('about.cert_view')}
             </button>
@@ -177,7 +177,7 @@ const AboutSection = () => {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
               }}
-              className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              className="rounded-lg border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               {t('about.cert_download')}
             </button>
