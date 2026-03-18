@@ -282,8 +282,16 @@ type I18nContextType = {
 const I18nContext = createContext<I18nContextType | null>(null);
 
 export const I18nProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Lang>('da');
+  const [lang, setLangState] = useState<Lang>(() => {
+    const saved = localStorage.getItem('app-lang');
+    return (saved === 'en' || saved === 'da' || saved === 'ru' || saved === 'ky') ? saved : 'da';
+  });
   const isCyrillic = lang === 'ru' || lang === 'ky';
+
+  const setLang = (newLang: Lang) => {
+    setLangState(newLang);
+    localStorage.setItem('app-lang', newLang);
+  };
 
   const translate = (key: string): string => {
     return t[key]?.[lang] || t[key]?.['en'] || key;
