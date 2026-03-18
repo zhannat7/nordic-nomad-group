@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import logo from '@/assets/logo.jpeg';
+import logo from '@/assets/logo.png';
 
 const programs = [
   { key: 'program.agriculture', href: '/programs/agriculture' },
