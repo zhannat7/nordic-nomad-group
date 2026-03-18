@@ -39,6 +39,9 @@ const Register = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [englishLevel, setEnglishLevel] = useState('');
+  const [animals, setAnimals] = useState('');
+  const [agricultureInterest, setAgricultureInterest] = useState('');
   const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
   const [passportExpiry, setPassportExpiry] = useState<Date>();
   const [passportExpiryText, setPassportExpiryText] = useState('');
