@@ -2,28 +2,33 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useI18n } from '@/lib/i18n';
 import { motion } from 'framer-motion';
-import { UserCheck, Building2, ArrowRight } from 'lucide-react';
+import {
+  UserCheck, Building2, ArrowRight,
+  FileText, Search, Video, Handshake, Stamp, Plane, Rocket,
+  Send, Users, ClipboardCheck, FolderCheck, Briefcase, HeadsetIcon,
+} from 'lucide-react';
+import { LucideIcon } from 'lucide-react';
 
 const HowItWorks = () => {
   const { t, isCyrillic } = useI18n();
 
-  const applicantSteps = [
-    { key: 'hiw.a.step1' },
-    { key: 'hiw.a.step2' },
-    { key: 'hiw.a.step3' },
-    { key: 'hiw.a.step4' },
-    { key: 'hiw.a.step5' },
-    { key: 'hiw.a.step6' },
-    { key: 'hiw.a.step7' },
+  const applicantSteps: { key: string; icon: LucideIcon }[] = [
+    { key: 'hiw.a.step1', icon: FileText },
+    { key: 'hiw.a.step2', icon: Search },
+    { key: 'hiw.a.step3', icon: Video },
+    { key: 'hiw.a.step4', icon: Handshake },
+    { key: 'hiw.a.step5', icon: Stamp },
+    { key: 'hiw.a.step6', icon: Plane },
+    { key: 'hiw.a.step7', icon: Rocket },
   ];
 
-  const companySteps = [
-    { key: 'hiw.c.step1' },
-    { key: 'hiw.c.step2' },
-    { key: 'hiw.c.step3' },
-    { key: 'hiw.c.step4' },
-    { key: 'hiw.c.step5' },
-    { key: 'hiw.c.step6' },
+  const companySteps: { key: string; icon: LucideIcon }[] = [
+    { key: 'hiw.c.step1', icon: Send },
+    { key: 'hiw.c.step2', icon: Users },
+    { key: 'hiw.c.step3', icon: ClipboardCheck },
+    { key: 'hiw.c.step4', icon: FolderCheck },
+    { key: 'hiw.c.step5', icon: Briefcase },
+    { key: 'hiw.c.step6', icon: HeadsetIcon },
   ];
 
   const fadeUp = {
@@ -68,8 +73,8 @@ const HowItWorks = () => {
                     variants={fadeUp}
                     className="flex items-start gap-3"
                   >
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold mt-0.5">
-                      {i + 1}
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary mt-0.5">
+                      <step.icon size={16} />
                     </span>
                     <div className="flex items-center gap-2 flex-1 min-h-[28px]">
                       <span className="text-sm text-foreground leading-snug">{t(step.key)}</span>
@@ -101,8 +106,8 @@ const HowItWorks = () => {
                     variants={fadeUp}
                     className="flex items-start gap-3"
                   >
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground text-xs font-bold mt-0.5">
-                      {i + 1}
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent mt-0.5">
+                      <step.icon size={16} />
                     </span>
                     <div className="flex items-center gap-2 flex-1 min-h-[28px]">
                       <span className="text-sm text-foreground leading-snug">{t(step.key)}</span>
