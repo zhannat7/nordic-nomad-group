@@ -309,13 +309,10 @@ export default function ChatBot() {
                     {msg.role === 'assistant' && msg.content && !isLoading && (
                       <button
                         onClick={() => handleSpeak(msg.content, i)}
-                        disabled={ttsLoading === i}
                         className="absolute -bottom-5 right-1 rounded-full bg-background border border-border p-1 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm"
                         title={lang === 'ru' ? 'Прослушать' : 'Угуу'}
                       >
-                        {ttsLoading === i ? (
-                          <Loader2 className="h-3.5 w-3.5 animate-spin text-muted-foreground" />
-                        ) : speakingIdx === i ? (
+                        {speakingIdx === i ? (
                           <VolumeX className="h-3.5 w-3.5 text-destructive" />
                         ) : (
                           <Volume2 className="h-3.5 w-3.5 text-muted-foreground" />
