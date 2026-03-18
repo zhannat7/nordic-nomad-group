@@ -9,51 +9,42 @@ const reasons = [
 
 const WhySection = () => {
   const { t, isCyrillic } = useI18n();
+  const cx = isCyrillic ? 'cyrillic-text' : '';
 
   return (
-    <section className="section-padding border-t border-border relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl -translate-y-1/2 translate-x-1/2" />
-
-      <div className="container relative">
+    <section className="section-padding border-t border-border">
+      <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.2, 0, 0, 1] as const }}
-          className="mb-16 max-w-2xl"
+          transition={{ duration: 0.5 }}
+          className="mb-12 max-w-2xl"
         >
-          <span className="section-badge mb-4">
-            {t('why.title')}
-          </span>
-          <h2 className="mt-4 font-display text-3xl tracking-tight text-foreground md:text-5xl">
-            {t('why.title')}
-          </h2>
-          <p className={`mt-5 text-lg text-muted-foreground leading-relaxed ${isCyrillic ? 'cyrillic-text' : ''}`}>
-            {t('why.desc')}
-          </p>
+          <span className="section-label">{t('why.title')}</span>
+          <h2 className={`section-title ${cx}`}>{t('why.title')}</h2>
+          <p className={`section-desc ${cx}`}>{t('why.desc')}</p>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {reasons.map((reason, i) => (
             <motion.div
               key={reason.titleKey}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: [0.2, 0, 0, 1] as const }}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1"
+              transition={{ duration: 0.4, delay: i * 0.08 }}
+              className="card-base"
             >
-              <span className="mb-4 block font-display text-5xl font-bold text-primary/10 transition-colors group-hover:text-primary/20">
+              <span className="mb-3 block font-display text-4xl font-normal text-primary/15">
                 {reason.num}
               </span>
-              <h3 className={`font-display text-xl text-foreground ${isCyrillic ? 'cyrillic-text' : ''}`}>
+              <h3 className={`font-display text-lg text-foreground ${cx}`}>
                 {t(reason.titleKey)}
               </h3>
-              <p className={`mt-3 text-sm leading-relaxed text-muted-foreground ${isCyrillic ? 'cyrillic-text' : ''}`}>
+              <p className={`mt-2 text-sm text-muted-foreground leading-relaxed ${cx}`}>
                 {t(reason.descKey)}
               </p>
-              <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-primary/50 transition-all duration-500 group-hover:w-full" />
             </motion.div>
           ))}
         </div>

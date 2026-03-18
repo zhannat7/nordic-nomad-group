@@ -24,7 +24,6 @@ const AboutSection = () => {
 
   useEffect(() => {
     if (!pdfUrl || !pdfContainerRef.current) return;
-
     let cancelled = false;
     const container = pdfContainerRef.current;
     container.innerHTML = '';
@@ -32,59 +31,39 @@ const AboutSection = () => {
     const renderPdf = async () => {
       setPdfError(null);
       setIsPdfLoading(true);
-
       try {
         const loadingTask = getDocument({ url: pdfUrl });
         const pdf = await loadingTask.promise;
-
         for (let pageNum = 1; pageNum <= pdf.numPages; pageNum += 1) {
           if (cancelled) return;
-
           const page = await pdf.getPage(pageNum);
           const viewport = page.getViewport({ scale: 1.35 });
           const canvas = document.createElement('canvas');
           const context = canvas.getContext('2d');
-
           if (!context) continue;
-
           canvas.width = viewport.width;
           canvas.height = viewport.height;
-          canvas.className = 'mx-auto w-full max-w-4xl rounded-md border border-border bg-card shadow-sm';
-
+          canvas.className = 'mx-auto w-full max-w-4xl rounded-lg border border-border bg-card';
           container.appendChild(canvas);
-
           await page.render({ canvas, canvasContext: context, viewport }).promise;
         }
       } catch {
-        if (!cancelled) {
-          setPdfError('PDF konnte in diesem Browser nicht angezeigt werden.');
-        }
+        if (!cancelled) setPdfError('PDF konnte in diesem Browser nicht angezeigt werden.');
       } finally {
         if (!cancelled) setIsPdfLoading(false);
       }
     };
-
     renderPdf();
-
-    return () => {
-      cancelled = true;
-      container.innerHTML = '';
-    };
+    return () => { cancelled = true; container.innerHTML = ''; };
   }, [pdfUrl]);
 
   const handleView = async () => {
     try {
       if (pdfUrl) URL.revokeObjectURL(pdfUrl);
-
       const res = await fetch('/documents/registration-certificate.pdf');
-      if (!res.ok) {
-        setPdfError('PDF konnte nicht geladen werden.');
-        return;
-      }
-
+      if (!res.ok) { setPdfError('PDF konnte nicht geladen werden.'); return; }
       const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      setPdfUrl(url);
+      setPdfUrl(URL.createObjectURL(blob));
     } catch {
       setPdfUrl(null);
       setPdfError('PDF konnte nicht geladen werden.');
@@ -99,94 +78,88 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="section-padding border-t border-border relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute left-0 top-1/3 h-80 w-80 rounded-full bg-primary/5 blur-3xl -translate-x-1/2" />
-
-      <div className="container max-w-4xl relative">
+    <section id="about" className="section-padding border-t border-border">
+      <div className="container max-w-4xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <span className="section-badge mb-4">🏢 {t('about.title')}</span>
-          <h2 className={`mt-4 font-display text-3xl font-bold text-foreground md:text-5xl ${cx}`}>
-            {t('about.title')}
-          </h2>
+          <span className="section-label">🏢 {t('about.title')}</span>
+          <h2 className={`section-title ${cx}`}>{t('about.title')}</h2>
         </motion.div>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className={`mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-muted-foreground md:text-lg ${cx}`}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className={`section-desc mx-auto text-center ${cx}`}
         >
           {t('about.subtitle')}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 text-center"
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-12 text-center"
         >
-          <h3 className={`font-display text-xl font-semibold text-foreground md:text-2xl ${cx}`}>
+          <h3 className={`font-display text-xl text-foreground md:text-2xl ${cx}`}>
             {t('about.mission_title')}
           </h3>
         </motion.div>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className={`mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-muted-foreground md:text-base ${cx}`}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className={`mx-auto mt-3 max-w-3xl text-center text-sm text-muted-foreground leading-relaxed md:text-base ${cx}`}
         >
           {t('about.mission')}
         </motion.p>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {cards.map(({ icon: Icon, key }, i) => (
             <motion.div
               key={key}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1"
+              transition={{ duration: 0.4, delay: 0.08 * i }}
+              className="card-base"
             >
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/15">
-                <Icon className="h-6 w-6 text-primary" />
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/8 text-primary">
+                <Icon className="h-5 w-5" />
               </div>
-              <h4 className={`text-lg font-semibold text-foreground ${cx}`}>{t(`${key}.title`)}</h4>
-              <p className={`mt-2 text-sm leading-relaxed text-muted-foreground ${cx}`}>{t(`${key}.desc`)}</p>
-              <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-primary/50 transition-all duration-500 group-hover:w-full" />
+              <h4 className={`text-base font-semibold text-foreground ${cx}`}>{t(`${key}.title`)}</h4>
+              <p className={`mt-1.5 text-sm text-muted-foreground leading-relaxed ${cx}`}>{t(`${key}.desc`)}</p>
             </motion.div>
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mx-auto mt-14 max-w-xl rounded-2xl border-2 border-primary/20 bg-primary/5 p-6"
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mx-auto mt-12 max-w-xl rounded-xl border border-primary/15 bg-primary/5 p-5"
         >
           <div className="flex items-center gap-3">
-            <span className="text-2xl">🏛️</span>
+            <span className="text-xl">🏛️</span>
             <p className={`text-sm font-medium text-foreground ${cx}`}>
               {t('about.cert_registered')}
             </p>
           </div>
-          <div className="mt-5 flex gap-3">
+          <div className="mt-4 flex gap-2">
             <button
               type="button"
               onClick={handleView}
-              className="inline-flex items-center justify-center rounded-xl border border-primary/30 bg-card px-5 py-2.5 text-sm font-medium text-primary transition-all hover:bg-primary/10 hover:-translate-y-0.5"
+              className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               {t('about.cert_view')}
             </button>
@@ -204,7 +177,7 @@ const AboutSection = () => {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
               }}
-              className="inline-flex items-center justify-center rounded-xl border border-primary/30 bg-card px-5 py-2.5 text-sm font-medium text-primary transition-all hover:bg-primary/10 hover:-translate-y-0.5"
+              className="rounded-lg border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
             >
               {t('about.cert_download')}
             </button>
@@ -215,25 +188,20 @@ const AboutSection = () => {
       {pdfUrl && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 backdrop-blur-sm p-4" onClick={handleCloseModal}>
           <div
-            className="relative w-full max-w-5xl rounded-2xl border border-border bg-card shadow-2xl"
+            className="relative w-full max-w-5xl rounded-xl border border-border bg-card shadow-2xl"
             style={{ height: '85vh' }}
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={handleCloseModal}
-              className="absolute -right-3 -top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-md transition-all hover:text-foreground hover:scale-110"
+              className="absolute -right-3 -top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-md hover:text-foreground"
             >
               <X className="h-4 w-4" />
             </button>
-
-            <div className="h-full w-full overflow-auto rounded-2xl bg-muted/20 p-4">
-              {isPdfLoading && (
-                <p className="pb-3 text-sm text-muted-foreground">PDF wird geladen…</p>
-              )}
-              {pdfError && (
-                <p className="pb-3 text-sm text-destructive">{pdfError}</p>
-              )}
+            <div className="h-full w-full overflow-auto rounded-xl bg-muted/20 p-4">
+              {isPdfLoading && <p className="pb-3 text-sm text-muted-foreground">PDF wird geladen…</p>}
+              {pdfError && <p className="pb-3 text-sm text-destructive">{pdfError}</p>}
               <div ref={pdfContainerRef} className="flex flex-col gap-3" />
             </div>
           </div>
