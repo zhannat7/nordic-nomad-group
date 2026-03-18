@@ -53,15 +53,25 @@ const Header = () => {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.key}
-              to={item.href}
-              className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground animated-underline"
-            >
-              {t(item.key)}
-            </Link>
-          ))}
+          {navItems.map((item) =>
+            item.isHash ? (
+              <button
+                key={item.key}
+                onClick={() => handleHashNav(item.href)}
+                className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground animated-underline"
+              >
+                {t(item.key)}
+              </button>
+            ) : (
+              <Link
+                key={item.key}
+                to={item.href}
+                className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground animated-underline"
+              >
+                {t(item.key)}
+              </Link>
+            )
+          )}
 
           {/* Programs dropdown — RU/KY only */}
           {showPrograms && (
