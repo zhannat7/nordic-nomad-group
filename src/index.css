@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playfair+Display:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;400;500;600;700&family=DM+Serif+Display&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,50 +6,42 @@
 
 @layer base {
   :root {
-    --font-display: 'Instrument Serif', serif;
-    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-display: 'DM Serif Display', serif;
+    --font-sans: 'DM Sans', sans-serif;
 
-    --background: 210 20% 98%;
-    --foreground: 210 50% 12%;
+    --background: 0 0% 99%;
+    --foreground: 220 25% 14%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 50% 12%;
+    --card-foreground: 220 25% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 50% 12%;
+    --popover-foreground: 220 25% 14%;
 
-    --primary: 221 83% 53%;
+    --primary: 220 70% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 20% 95%;
-    --secondary-foreground: 210 50% 12%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 25% 14%;
 
-    --muted: 210 15% 93%;
-    --muted-foreground: 210 15% 46%;
+    --muted: 220 10% 94%;
+    --muted-foreground: 220 10% 44%;
 
-    --accent: 38 92% 50%;
+    --accent: 36 85% 50%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 210 15% 90%;
-    --input: 210 15% 90%;
-    --ring: 221 83% 53%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 70% 45%;
 
-    --radius: 0.75rem;
-    --radius-outer: 12px;
-    --radius-inner: 4px;
+    --radius: 0.625rem;
 
-    --shadow-soft: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px -4px rgba(0,0,0,0.06);
-    --shadow-hover: 0 12px 40px -12px rgba(0,0,0,0.15);
-    --shadow-elevated: 0 20px 60px -15px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.03);
-    --shadow-glow: 0 0 40px -10px hsl(221 83% 53% / 0.25);
-
-    --gradient-hero: linear-gradient(135deg, hsl(221 83% 20%) 0%, hsl(210 50% 12%) 50%, hsl(221 60% 15%) 100%);
-    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(221 90% 62%));
-    --gradient-accent: linear-gradient(135deg, hsl(38 92% 50%), hsl(30 95% 55%));
-    --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(210 25% 95%) 100%);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+    --shadow-md: 0 4px 16px -2px rgb(0 0 0 / 0.08);
+    --shadow-lg: 0 12px 32px -8px rgb(0 0 0 / 0.1);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -58,7 +50,7 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 220 70% 45%;
   }
 }
 
@@ -74,95 +66,54 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.6;
   }
 
-  h1, h2, h3 {
+  h1, h2, h3, h4 {
     font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
   }
 
   ::selection {
-    background: hsl(221 83% 53% / 0.15);
-    color: hsl(221 83% 30%);
+    background: hsl(220 70% 45% / 0.12);
+    color: hsl(220 70% 25%);
   }
 }
 
 @layer components {
-  .legal-card {
-    background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
-    padding: 2rem;
-    border-radius: var(--radius-outer);
-    box-shadow: var(--shadow-soft);
-    transition: all 0.35s cubic-bezier(0.2, 0, 0, 1);
-  }
-
-  .legal-card:hover {
-    border-color: hsl(var(--primary) / 0.3);
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-2px);
-  }
-
   .section-padding {
-    @apply py-10 md:py-16;
+    @apply py-16 md:py-24;
   }
 
-  .prose-legal {
-    @apply max-w-[65ch] leading-relaxed;
+  .section-label {
+    @apply inline-block text-xs font-semibold uppercase tracking-[0.15em] text-primary mb-3;
+  }
+
+  .section-title {
+    @apply font-display text-3xl text-foreground md:text-[2.75rem] leading-[1.1];
+  }
+
+  .section-desc {
+    @apply mt-4 text-base text-muted-foreground leading-relaxed max-w-2xl;
   }
 
   .cyrillic-text {
     line-height: 1.68;
   }
 
-  /* Decorative elements */
-  .section-badge {
-    @apply inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-primary;
+  .card-base {
+    @apply rounded-xl border border-border bg-card p-6 transition-all duration-200;
+    box-shadow: var(--shadow-sm);
   }
 
-  .glass-card {
-    background: hsl(var(--card) / 0.7);
-    backdrop-filter: blur(16px);
-    border: 1px solid hsl(var(--border) / 0.5);
-    border-radius: var(--radius-outer);
-    box-shadow: var(--shadow-soft);
-    transition: all 0.35s cubic-bezier(0.2, 0, 0, 1);
-  }
-
-  .glass-card:hover {
-    background: hsl(var(--card) / 0.9);
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-2px);
-  }
-
-  /* Gradient text */
-  .gradient-text {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Animated underline */
-  .animated-underline {
-    position: relative;
-  }
-  .animated-underline::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--gradient-primary);
-    border-radius: 2px;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
-  }
-  .animated-underline:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+  .card-base:hover {
+    box-shadow: var(--shadow-md);
+    border-color: hsl(var(--primary) / 0.2);
+    transform: translateY(-1px);
   }
 }
 
@@ -173,22 +124,4 @@
 
 .animate-ticker {
   animation: ticker 30s linear infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px -5px hsl(221 83% 53% / 0.3); }
-  50% { box-shadow: 0 0 40px -5px hsl(221 83% 53% / 0.5); }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
 }
