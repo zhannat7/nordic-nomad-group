@@ -10,9 +10,6 @@ const ServicesSection = () => {
   const { t, lang } = useI18n();
   const [selectedInterns, setSelectedInterns] = useState<Set<string>>(new Set());
 
-  // Hide section for Russian and Kyrgyz
-  if (lang === 'ru' || lang === 'ky') return null;
-
   const { data: interns = [] } = useQuery({
     queryKey: ['approved-interns'],
     queryFn: async () => {
@@ -24,6 +21,9 @@ const ServicesSection = () => {
       return data ?? [];
     },
   });
+
+  // Hide section for Russian and Kyrgyz (after all hooks)
+  if (lang === 'ru' || lang === 'ky') return null;
 
   const toggleIntern = (id: string) => {
     setSelectedInterns((prev) => {
@@ -37,7 +37,6 @@ const ServicesSection = () => {
   return (
     <section id="services" className="section-padding">
       <div className="container">
-        {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +47,6 @@ const ServicesSection = () => {
           >
             {t('candidates.title')}
           </motion.h2>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +56,6 @@ const ServicesSection = () => {
           >
             {t('candidates.desc')}
           </motion.p>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +68,6 @@ const ServicesSection = () => {
           </motion.div>
         </div>
 
-        {/* Intern cards grid */}
         {interns.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
