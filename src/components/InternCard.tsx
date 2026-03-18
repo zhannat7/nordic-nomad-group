@@ -16,9 +16,10 @@ interface InternCardProps {
   };
   selected: boolean;
   onToggle: (id: string) => void;
+  onClick?: () => void;
 }
 
-const InternCard = ({ intern, selected, onToggle }: InternCardProps) => {
+const InternCard = ({ intern, selected, onToggle, onClick }: InternCardProps) => {
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
 
   useEffect(() => {

@@ -84,10 +84,19 @@ const ServicesSection = () => {
                 intern={intern}
                 selected={selectedInterns.has(intern.id)}
                 onToggle={toggleIntern}
+                onClick={() => setModalIntern(intern)}
               />
             ))}
           </motion.div>
         )}
+
+        <InternProfileModal
+          intern={modalIntern}
+          open={!!modalIntern}
+          onOpenChange={(open) => { if (!open) setModalIntern(null); }}
+          selected={modalIntern ? selectedInterns.has(modalIntern.id) : false}
+          onToggle={toggleIntern}
+        />
       </div>
     </section>
   );
