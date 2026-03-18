@@ -33,8 +33,7 @@ const HeroSection = () => {
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       {/* Multi-layer overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-br from-foreground/85 via-foreground/70 to-primary/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-foreground/10" />
 
       {/* Decorative circles */}
       <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
