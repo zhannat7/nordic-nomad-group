@@ -48,8 +48,12 @@ export type Database = {
       }
       applications: {
         Row: {
+          agriculture_interest: string | null
+          animals: string | null
           created_at: string
+          date_of_birth: string | null
           email: string
+          english_level: string | null
           full_name: string
           id: string
           program: string
@@ -58,8 +62,12 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          agriculture_interest?: string | null
+          animals?: string | null
           created_at?: string
+          date_of_birth?: string | null
           email: string
+          english_level?: string | null
           full_name: string
           id?: string
           program: string
@@ -68,8 +76,12 @@ export type Database = {
           user_id: string
         }
         Update: {
+          agriculture_interest?: string | null
+          animals?: string | null
           created_at?: string
+          date_of_birth?: string | null
           email?: string
+          english_level?: string | null
           full_name?: string
           id?: string
           program?: string
