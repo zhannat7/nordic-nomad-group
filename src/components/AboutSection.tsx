@@ -2,9 +2,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '@/lib/i18n';
 import { Heart, Target, ShieldCheck, Scale, X } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
-
-const CERT_FILE = '44829363+-+Selvvalgt+visning.pdf';
 
 const cards = [
   { icon: Heart, key: 'about.card1' },
@@ -18,23 +15,15 @@ const AboutSection = () => {
   const cx = isCyrillic ? 'cyrillic-text' : '';
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
-  const getFullSignedUrl = (signedUrl: string) => {
-    if (signedUrl.startsWith('http')) return signedUrl;
-    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-    return `${supabaseUrl}/storage/v1${signedUrl}`;
-  };
-
   const handleView = async () => {
-    const { data } = await supabase.storage
-      .from('documents')
-      .createSignedUrl(CERT_FILE, 3600);
-    if (data?.signedUrl) {
-      const fullUrl = getFullSignedUrl(data.signedUrl);
-      setPdfUrl(`https://docs.google.com/viewer?url=${encodeURIComponent(fullUrl)}&embedded=true`);
-    }
+    const res = await fetch('/documents/registration-certificate.pdf');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    setPdfUrl(url);
   };
 
   const handleCloseModal = () => {
+    if (pdfUrl) URL.revokeObjectURL(pdfUrl);
     setPdfUrl(null);
   };
 
