@@ -60,9 +60,9 @@ const Header = () => {
               <DropdownMenuContent align="start" className="min-w-[260px]">
                 {programs.map((p) => (
                   <DropdownMenuItem key={p.key} asChild>
-                    <a href={p.href} className="cursor-pointer">
+                    <Link to={p.href} className="cursor-pointer">
                       {t(p.key)}
-                    </a>
+                    </Link>
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
