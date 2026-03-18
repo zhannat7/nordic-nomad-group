@@ -131,6 +131,14 @@ const HowItWorks = () => {
                   </motion.li>
                 ))}
               </ol>
+              <div className="mt-auto pt-5">
+                <Link
+                  to="/#contact"
+                  className="inline-flex w-full items-center justify-center rounded-lg border border-border bg-secondary/50 px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+                >
+                  {t('hiw.c.cta')}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
