@@ -73,8 +73,8 @@ const HowItWorks = () => {
                     variants={fadeUp}
                     className="flex items-start gap-3"
                   >
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold mt-0.5">
-                      {i + 1}
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary mt-0.5">
+                      <step.icon size={16} />
                     </span>
                     <div className="flex items-center gap-2 flex-1 min-h-[28px]">
                       <span className="text-sm text-foreground leading-snug">{t(step.key)}</span>
