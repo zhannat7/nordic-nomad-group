@@ -39,6 +39,9 @@ const Register = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [englishLevel, setEnglishLevel] = useState('');
+  const [animals, setAnimals] = useState('');
+  const [agricultureInterest, setAgricultureInterest] = useState('');
   const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
   const [passportExpiry, setPassportExpiry] = useState<Date>();
   const [passportExpiryText, setPassportExpiryText] = useState('');
@@ -168,6 +171,10 @@ const Register = () => {
         email: email.trim(),
         program: 'Agricultural Internship - Denmark',
         status: 'pending',
+        date_of_birth: dob ? format(dob, 'yyyy-MM-dd') : null,
+        english_level: englishLevel || null,
+        animals: animals.trim() || null,
+        agriculture_interest: agricultureInterest.trim() || null,
       });
 
       // Upload files (all optional)
@@ -391,6 +398,39 @@ const Register = () => {
               <div className="space-y-2">
                 <Label>{t('Пароль (мин. 6 символов)', 'Сырсөз (мин. 6 белги)')} *</Label>
                 <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} />
+              </div>
+
+              {/* English level */}
+              <div className="space-y-2">
+                <Label>{t('Уровень английского языка', 'Англис тилинин деңгээли')}</Label>
+                <Select value={englishLevel} onValueChange={setEnglishLevel}>
+                  <SelectTrigger><SelectValue placeholder={t('Выберите уровень', 'Деңгээл тандаңыз')} /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="A2">A2</SelectItem>
+                    <SelectItem value="B1">B1</SelectItem>
+                    <SelectItem value="B2">B2</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Animals */}
+              <div className="space-y-2">
+                <Label>{t('С какими животными умеете работать?', 'Кайсы жаныбарлар менен иштей аласыз?')}</Label>
+                <Input
+                  value={animals}
+                  onChange={(e) => setAnimals(e.target.value)}
+                  placeholder={t('Напр.: коровы, лошади, овцы', 'Мис.: уйлар, жылкылар, коюлар')}
+                />
+              </div>
+
+              {/* Agriculture interest */}
+              <div className="space-y-2">
+                <Label>{t('Почему вам интересно сельское хозяйство?', 'Эмне үчүн айыл чарба сизге кызыктуу?')}</Label>
+                <Input
+                  value={agricultureInterest}
+                  onChange={(e) => setAgricultureInterest(e.target.value)}
+                  placeholder={t('Кратко опишите...', 'Кыскача жазыңыз...')}
+                />
               </div>
 
               <FileInput
