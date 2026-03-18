@@ -43,13 +43,13 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur-xl shadow-[0_1px_3px_0_hsl(var(--foreground)/0.04)]">
-      <div className="container flex h-20 items-center justify-between">
+      <div className="container flex h-24 items-center justify-between">
         <Link to="/" className="flex items-center gap-4 group">
           <div className="relative flex-shrink-0">
             <img
               src={logo}
               alt="Nordic Nomad Group logo"
-              className="h-[60px] w-auto object-contain transition-all duration-300 group-hover:scale-[1.04]"
+              className="h-[76px] w-auto object-contain transition-all duration-300 group-hover:scale-[1.04]"
             />
           </div>
           <div className="flex flex-col">
