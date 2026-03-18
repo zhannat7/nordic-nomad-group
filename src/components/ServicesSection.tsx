@@ -24,8 +24,7 @@ const ServicesSection = () => {
     },
   });
 
-  // Hide section for Russian and Kyrgyz (after all hooks)
-  if (lang === 'ru' || lang === 'ky') return null;
+  // Visible for all languages now (on dedicated page)
 
   const toggleIntern = (id: string) => {
     setSelectedInterns((prev) => {

@@ -9,9 +9,9 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems = [
-    { key: 'nav.about', href: '#about' },
-    { key: 'nav.services', href: '#services' },
-    { key: 'nav.contact', href: '#contact' },
+    { key: 'nav.about', href: '/#about' },
+    { key: 'nav.services', href: '/candidates' },
+    { key: 'nav.contact', href: '/#contact' },
   ];
 
   return (
