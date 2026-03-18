@@ -179,18 +179,18 @@ const t: Translations = {
   // Why choose
   'why.title': { en: 'Why choose Nordic Nomad Group?', da: 'Hvorfor vælge Nordic Nomad Group?', ru: 'Почему Nordic Nomad Group?', ky: 'Эмне үчүн Nordic Nomad Group?' },
   'why.desc': {
-    en: 'Nordic Nomad Group offers qualified foreign workforce to Danish companies in multiple industries. Through our large candidate database, we ensure you get access to employees who match your specific needs.',
-    da: 'Nordic Nomad Group tilbyder kvalificeret udenlandsk arbejdskraft til danske virksomheder i flere brancher. Gennem vores store kandidatdatabase sikrer vi, at du får adgang til medarbejdere, der matcher dine specifikke behov.',
-    ru: 'Nordic Nomad Group предлагает квалифицированную иностранную рабочую силу для датских компаний. Через нашу базу кандидатов мы обеспечиваем доступ к сотрудникам, соответствующим вашим потребностям.',
-    ky: 'Nordic Nomad Group дания компанияларына квалификациялуу чет элдик жумушчу күчүн сунуштайт. Талапкерлер базабыз аркылуу сиздин муктаждыктарыңызга ылайык кызматкерлерди камсыз кылабыз.',
+    en: 'We recommend suitable, highly motivated and responsible interns from Kyrgyzstan for Danish farm businesses. We handle all administrative processes so you can focus on your farm.',
+    da: 'Vi anbefaler egnede, højt motiverede og ansvarlige praktikanter fra Kirgisistan til danske landbrugsvirksomheder. Vi håndterer alle administrative processer, så du kan fokusere på din gård.',
+    ru: 'Мы рекомендуем подходящих, высоко мотивированных и ответственных практикантов из Кыргызстана для датских фермерских предприятий. Мы берём на себя все административные процессы.',
+    ky: 'Биз Кыргызстандан ылайыктуу, мотивациялуу жана жоопкерчиликтүү практиканттарды Дания фермерлик ишканаларына сунуштайбыз. Бардык административдик процесстерди биз аткарабыз.',
   },
 
-  'why1.title': { en: '15 years of specialization', da: '15 års specialisering', ru: '15 лет специализации', ky: '15 жыл адистик' },
+  'why1.title': { en: '2 years of experience', da: '2 års erfaring', ru: '2 года опыта', ky: '2 жыл тажрыйба' },
   'why1.desc': {
-    en: 'With over 15 years specializing in placing foreign interns in agricultural businesses, we have built a large database of engaged interns.',
-    da: 'Med over 15 års specialisering i formidling af udenlandske praktikanter til landbrugsvirksomheder har vi opbygget en stor database af engagerede praktikanter.',
-    ru: 'Более 15 лет специализации в размещении иностранных стажёров — большая база мотивированных кандидатов.',
-    ky: '15 жылдан ашуун адистик — жигердүү стажёрлордун чоң базасы.',
+    en: 'For 2 years we have been successfully placing motivated interns from Kyrgyzstan on Danish farms, building trust with our partners.',
+    da: 'I 2 år har vi med succes formidlet motiverede praktikanter fra Kirgisistan til danske gårde og opbygget tillid hos vores partnere.',
+    ru: 'Уже 2 года мы успешно размещаем мотивированных практикантов из Кыргызстана на датских фермах, строя доверие с нашими партнёрами.',
+    ky: '2 жылдан бери Кыргызстандан мотивациялуу практиканттарды Дания фермаларына ийгиликтүү жайгаштырып, өнөктөштөр менен ишеним курабыз.',
   },
   'why2.title': { en: 'Extra hands for production', da: 'Ekstra hænder til produktionen', ru: 'Дополнительные руки', ky: 'Кошумча жумушчу күч' },
   'why2.desc': {
@@ -205,13 +205,6 @@ const t: Translations = {
     da: 'Vi stræber efter at skabe en problemfri og velorganiseret oplevelse. Vores kontinuerlige assistance sikrer, at alle er trygge.',
     ru: 'Мы стремимся к гладкому и организованному процессу. Наша постоянная помощь обеспечивает поддержку.',
     ky: 'Жүйөлүү жана уюшкан тажрыйба үчүн аракеттенебиз. Үзгүлтүксүз жардам бардыгын колдойт.',
-  },
-  'why4.title': { en: 'Immigration help', da: 'Hjælp til immigrationsproces', ru: 'Помощь с иммиграцией', ky: 'Иммиграция жардамы' },
-  'why4.desc': {
-    en: 'Our diverse team has firsthand experience with the immigration process in Denmark and cultural differences.',
-    da: 'Vores mangfoldige team har førstehåndserfaring med immigrationsprocessen i Danmark og kulturforskelle.',
-    ru: 'Наша команда имеет личный опыт иммиграционного процесса в Дании и культурных различий.',
-    ky: 'Биздин команда Даниядагы иммиграция процессин жана маданий айырмачылыктарды жеке тажрыйбадан билет.',
   },
 
   // Testimonials
