@@ -128,14 +128,14 @@ const Header = () => {
           >
             <nav className="container flex flex-col gap-4 py-6">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.key}
-                  href={item.href}
+                  to={item.href}
                   onClick={() => setMobileOpen(false)}
                   className="text-sm font-medium text-foreground"
                 >
                   {t(item.key)}
-                </a>
+                </Link>
               ))}
 
               {/* Programs in mobile — RU/KY only */}
