@@ -222,7 +222,7 @@ const t: Translations = {
     en: 'Danish farmers who work with Nordic Nomad Group share their experience.',
     da: 'Danske landmænd, der samarbejder med Nordic Nomad Group, deler deres oplevelser.',
     ru: 'Датские фермеры, сотрудничающие с Nordic Nomad Group, делятся своим опытом.',
-    ky: 'Өндүрүмдүүлүктүн жогорулашынан баштап трансформациялуу натыйжаларга чейин — өнөктөштөрүбүздүн ийгилик тарыхтары.',
+    ky: 'Nordic Nomad Group менен иштеген дания фермерлери тажрыйбалары менен бөлүшөт.',
   },
 
   // Contact
