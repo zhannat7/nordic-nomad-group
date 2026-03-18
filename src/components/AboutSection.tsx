@@ -53,7 +53,7 @@ const AboutSection = () => {
 
           container.appendChild(canvas);
 
-          await page.render({ canvasContext: context, viewport }).promise;
+          await page.render({ canvas, canvasContext: context, viewport }).promise;
         }
       } catch {
         if (!cancelled) {
