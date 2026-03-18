@@ -26,14 +26,14 @@ const Footer = () => {
 
           <div className="flex flex-col items-end gap-4">
             <div className="flex items-center gap-6">
-              <nav className="flex gap-5 text-sm text-muted-foreground">
-                <a href="#about" className="transition-colors hover:text-foreground">{t('nav.about')}</a>
-                <a href="#contact" className="transition-colors hover:text-foreground">{t('nav.contact')}</a>
-                <a href="#" className="transition-colors hover:text-foreground">{t('nav.privacy')}</a>
+              <nav className="flex gap-5 text-sm text-background/60">
+                <a href="#about" className="transition-colors hover:text-background">{t('nav.about')}</a>
+                <a href="#contact" className="transition-colors hover:text-background">{t('nav.contact')}</a>
+                <a href="#" className="transition-colors hover:text-background">{t('nav.privacy')}</a>
               </nav>
               <button
                 onClick={scrollToTop}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-background/20 text-background/60 transition-colors hover:text-background"
                 aria-label="Back to top"
               >
                 <ArrowUp className="h-3.5 w-3.5" />
