@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound.tsx";
 import ProgramAgriculture from "./pages/ProgramAgriculture.tsx";
 import ProgramAusbildung from "./pages/ProgramAusbildung.tsx";
 import ProgramMedical from "./pages/ProgramMedical.tsx";
+import ProgramLanguageGuard from "./components/ProgramLanguageGuard.tsx";
 
 const queryClient = new QueryClient();
 
@@ -52,9 +53,9 @@ const App = () => (
                   </ProtectedRoute>
                 }
               />
-              <Route path="/programs/agriculture" element={<ProgramAgriculture />} />
-              <Route path="/programs/ausbildung" element={<ProgramAusbildung />} />
-              <Route path="/programs/medical" element={<ProgramMedical />} />
+              <Route path="/programs/agriculture" element={<ProgramLanguageGuard><ProgramAgriculture /></ProgramLanguageGuard>} />
+              <Route path="/programs/ausbildung" element={<ProgramLanguageGuard><ProgramAusbildung /></ProgramLanguageGuard>} />
+              <Route path="/programs/medical" element={<ProgramLanguageGuard><ProgramMedical /></ProgramLanguageGuard>} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
