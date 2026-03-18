@@ -292,6 +292,8 @@ const t: Translations = {
   'hiw.c.step4': { en: 'We handle all documentation & permits', da: 'Vi håndterer al dokumentation & tilladelser', ru: 'Мы оформляем все документы и разрешения', ky: 'Биз бардык документтерди жана уруксаттарды тариздейбиз' },
   'hiw.c.step5': { en: 'Candidate arrives and starts working', da: 'Kandidaten ankommer og begynder at arbejde', ru: 'Кандидат приезжает и начинает работу', ky: 'Талапкер келип, иштей баштайт' },
   'hiw.c.step6': { en: 'Ongoing support from our team', da: 'Løbende support fra vores team', ru: 'Постоянная поддержка от нашей команды', ky: 'Биздин командадан үзгүлтүксүз колдоо' },
+  'hiw.a.cta': { en: 'Apply now', da: 'Ansøg nu', ru: 'Подать заявку', ky: 'Арыз берүү' },
+  'hiw.c.cta': { en: 'Request staff', da: 'Anmod om personale', ru: 'Запросить персонал', ky: 'Кадр суроо' },
 
   // Status bar
   'status.online': { en: 'Consultants online now', da: 'Konsulenter online nu', ru: 'Консультанты онлайн', ky: 'Консультанттар онлайн' },
