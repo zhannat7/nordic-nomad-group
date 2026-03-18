@@ -36,7 +36,7 @@ const Header = () => {
           <span className="text-2xl tracking-tight transition-colors" style={{ fontFamily: "'Playfair Display', Georgia, serif", color: '#1B3A6B', fontWeight: 700 }}>
             Nordic Nomad Group
           </span>
-        </a>
+          </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 md:flex">
