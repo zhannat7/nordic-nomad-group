@@ -27,14 +27,14 @@ const HeroSection = () => {
   const cx = isCyrillic ? 'cyrillic-text' : '';
 
   return (
-    <section className="relative overflow-hidden min-h-[600px] md:min-h-[720px] flex items-center">
+    <section className="relative overflow-hidden min-h-[420px] md:min-h-[520px] flex items-center">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(220_25%_14%/0.72)] via-[hsl(220_25%_14%/0.55)] to-[hsl(220_25%_14%/0.78)]" />
 
-      <div className="container relative z-10 py-24 md:py-32">
+      <div className="container relative z-10 py-14 md:py-20">
         <motion.div
           variants={containerVariants}
           initial="hidden"
