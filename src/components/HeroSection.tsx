@@ -25,7 +25,7 @@ const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
-      <div className="absolute inset-0 bg-foreground/60" />
+      <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/60 to-foreground/40" />
 
       <div className="container relative z-10 py-20 md:py-28">
         <motion.div
