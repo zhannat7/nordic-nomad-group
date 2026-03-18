@@ -9,43 +9,43 @@ const Footer = () => {
   };
 
   return (
-    <footer className="border-t border-border bg-secondary/30 py-12">
+    <footer className="border-t border-border bg-foreground py-12 text-background">
       <div className="container max-w-5xl">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <div>
-            <span className="text-lg font-bold tracking-tight text-foreground font-display">
+            <span className="text-lg font-bold tracking-tight text-background font-display">
               Nordic Nomad Group
             </span>
-            <p className="mt-1.5 text-sm text-muted-foreground">
+            <p className="mt-1.5 text-sm text-background/60">
               © {new Date().getFullYear()} Nordic Nomad Group. {t('footer.rights')}
             </p>
-            <p className="mt-1 text-xs text-muted-foreground">
+            <p className="mt-1 text-xs text-background/50">
               Lillemosevej 6, 4070 Kirke Hyllinge, Denmark · CVR: 44829363
             </p>
           </div>
 
           <div className="flex flex-col items-end gap-4">
             <div className="flex items-center gap-6">
-              <nav className="flex gap-5 text-sm text-muted-foreground">
-                <a href="#about" className="transition-colors hover:text-foreground">{t('nav.about')}</a>
-                <a href="#contact" className="transition-colors hover:text-foreground">{t('nav.contact')}</a>
-                <a href="#" className="transition-colors hover:text-foreground">{t('nav.privacy')}</a>
+              <nav className="flex gap-5 text-sm text-background/60">
+                <a href="#about" className="transition-colors hover:text-background">{t('nav.about')}</a>
+                <a href="#contact" className="transition-colors hover:text-background">{t('nav.contact')}</a>
+                <a href="#" className="transition-colors hover:text-background">{t('nav.privacy')}</a>
               </nav>
               <button
                 onClick={scrollToTop}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-background/20 text-background/60 transition-colors hover:text-background"
                 aria-label="Back to top"
               >
                 <ArrowUp className="h-3.5 w-3.5" />
               </button>
             </div>
 
-            <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <div className="flex items-center gap-3 text-xs text-background/50">
               <span className="flex items-center gap-1.5">
-                <CircleDot className="h-3 w-3 text-green-500" />
+                <CircleDot className="h-3 w-3 text-green-400" />
                 {t('status.online')}
               </span>
-              <span className="text-border">·</span>
+              <span className="text-background/20">·</span>
               <span className="flex items-center gap-1.5">
                 <Clock className="h-3 w-3" />
                 {t('status.response')}

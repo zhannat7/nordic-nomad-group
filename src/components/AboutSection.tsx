@@ -78,7 +78,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="section-padding bg-secondary/50">
+    <section id="about" className="section-padding section-alt">
       <div className="container max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
