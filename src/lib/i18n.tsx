@@ -267,6 +267,32 @@ const t: Translations = {
   'footer.rights': { en: 'All rights reserved.', da: 'Alle rettigheder forbeholdes.', ru: 'Все права защищены.', ky: 'Бардык укуктар корголгон.' },
   'footer.services_link': { en: 'Our services', da: 'Vores ydelser', ru: 'Наши услуги', ky: 'Биздин кызматтар' },
 
+  // How it works
+  'nav.howitworks': { en: 'How it works', da: 'Sådan fungerer det', ru: 'Как это работает', ky: 'Кантип иштейт' },
+  'hiw.label': { en: 'Process', da: 'Proces', ru: 'Процесс', ky: 'Процесс' },
+  'hiw.title': { en: 'How it works', da: 'Sådan fungerer det', ru: 'Как это работает', ky: 'Кантип иштейт' },
+  'hiw.desc': {
+    en: 'Whether you are an applicant or a company — here is the step-by-step process from start to finish.',
+    da: 'Uanset om du er ansøger eller virksomhed — her er processen trin for trin.',
+    ru: 'Независимо от того, кандидат вы или компания — вот пошаговый процесс от начала до конца.',
+    ky: 'Талапкер болсоңуз да, компания болсоңуз да — башынан аягына чейинки процесс.',
+  },
+  'hiw.a.title': { en: 'For Applicants', da: 'For ansøgere', ru: 'Для кандидатов', ky: 'Талапкерлер үчүн' },
+  'hiw.a.step1': { en: 'Submit your application online', da: 'Indsend din ansøgning online', ru: 'Подайте заявку онлайн', ky: 'Арызды онлайн жөнөтүңүз' },
+  'hiw.a.step2': { en: 'We review and select candidates', da: 'Vi gennemgår og udvælger kandidater', ru: 'Мы рассматриваем и отбираем кандидатов', ky: 'Биз талапкерлерди карап, тандайбыз' },
+  'hiw.a.step3': { en: 'Online interview with our team', da: 'Online interview med vores team', ru: 'Онлайн-собеседование с нашей командой', ky: 'Биздин команда менен онлайн-интервью' },
+  'hiw.a.step4': { en: 'Matching with a suitable employer', da: 'Matching med en passende arbejdsgiver', ru: 'Подбор подходящего работодателя', ky: 'Ылайыктуу иш берүүчүгө дал келтирүү' },
+  'hiw.a.step5': { en: 'Visa & work permit processing', da: 'Visum & arbejdstilladelse', ru: 'Оформление визы и разрешения на работу', ky: 'Виза жана жумуш уруксатын тариздөө' },
+  'hiw.a.step6': { en: 'Arrival and onboarding in Europe', da: 'Ankomst og onboarding i Europa', ru: 'Приезд и адаптация в Европе', ky: 'Европага келүү жана адаптация' },
+  'hiw.a.step7': { en: 'Start working and growing!', da: 'Begynd at arbejde og vækste!', ru: 'Начинайте работать и развиваться!', ky: 'Иштеп баштаңыз жана өсүңүз!' },
+  'hiw.c.title': { en: 'For Companies', da: 'For virksomheder', ru: 'Для компаний', ky: 'Компаниялар үчүн' },
+  'hiw.c.step1': { en: 'Send us your staffing request', da: 'Send os din bemandingsanmodning', ru: 'Отправьте нам запрос на персонал', ky: 'Бизге кадрлар боюнча суроо-талап жөнөтүңүз' },
+  'hiw.c.step2': { en: 'We select the best candidates for you', da: 'Vi udvælger de bedste kandidater til dig', ru: 'Мы подберём лучших кандидатов для вас', ky: 'Биз сиз үчүн мыкты талапкерлерди тандайбыз' },
+  'hiw.c.step3': { en: 'Review profiles and approve matches', da: 'Gennemgå profiler og godkend match', ru: 'Просмотрите профили и подтвердите выбор', ky: 'Профилдерди карап, тандоону бекитиңиз' },
+  'hiw.c.step4': { en: 'We handle all documentation & permits', da: 'Vi håndterer al dokumentation & tilladelser', ru: 'Мы оформляем все документы и разрешения', ky: 'Биз бардык документтерди жана уруксаттарды тариздейбиз' },
+  'hiw.c.step5': { en: 'Candidate arrives and starts working', da: 'Kandidaten ankommer og begynder at arbejde', ru: 'Кандидат приезжает и начинает работу', ky: 'Талапкер келип, иштей баштайт' },
+  'hiw.c.step6': { en: 'Ongoing support from our team', da: 'Løbende support fra vores team', ru: 'Постоянная поддержка от нашей команды', ky: 'Биздин командадан үзгүлтүксүз колдоо' },
+
   // Status bar
   'status.online': { en: 'Consultants online now', da: 'Konsulenter online nu', ru: 'Консультанты онлайн', ky: 'Консультанттар онлайн' },
   'status.response': { en: 'Response time: < 2 hours', da: 'Svartid: < 2 timer', ru: 'Время ответа: < 2 часов', ky: 'Жооп убактысы: < 2 саат' },
