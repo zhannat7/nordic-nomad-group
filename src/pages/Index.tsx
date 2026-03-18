@@ -6,7 +6,6 @@ import WhySection from '@/components/WhySection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
-import StatusBar from '@/components/StatusBar';
 
 const Index = () => {
   return (
@@ -19,7 +18,6 @@ const Index = () => {
       <TestimonialsSection />
       <ContactSection />
       <Footer />
-      <StatusBar />
     </div>
   );
 };
