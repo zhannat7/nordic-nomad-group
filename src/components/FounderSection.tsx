@@ -7,7 +7,7 @@ const FounderSection = () => {
   const cx = isCyrillic ? 'cyrillic-text' : '';
 
   return (
-    <section className="section-padding border-t border-border">
+    <section className="section-padding">
       <div className="container max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
