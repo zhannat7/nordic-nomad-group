@@ -24,17 +24,6 @@ const Footer = () => {
             <p className="mt-1 text-xs text-muted-foreground">
               Lillemosevej 6, 4070 Kirke Hyllinge, Denmark · CVR: 44829363
             </p>
-            <div className="mt-3 flex items-center gap-3">
-              <a
-                href="https://www.instagram.com/nordic_nomad_group/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/30 hover:text-primary hover:-translate-y-0.5"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-            </div>
           </div>
 
           <div className="flex flex-col items-end gap-4">
