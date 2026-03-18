@@ -155,11 +155,11 @@ const AboutSection = () => {
             >
               <X className="h-4 w-4" />
             </button>
-            <div className="h-full w-full overflow-hidden rounded-lg">
-              <object data={pdfUrl} type="application/pdf" className="h-full w-full">
-                <embed src={pdfUrl} type="application/pdf" className="h-full w-full" />
-              </object>
-            </div>
+            <embed
+              src={`${pdfUrl}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
+              type="application/pdf"
+              className="block h-full w-full rounded-lg"
+            />
           </div>
         </div>
       )}
