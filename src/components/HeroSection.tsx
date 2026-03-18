@@ -26,7 +26,7 @@ const stats = [
 const floatingVariants = {
   animate: {
     y: [0, -15, 0],
-    transition: { duration: 6, repeat: Infinity, ease: 'easeInOut' },
+    transition: { duration: 6, repeat: Infinity, ease: 'easeInOut' as const },
   },
 };
 
@@ -34,7 +34,7 @@ const floatingVariants2 = {
   animate: {
     y: [0, 12, 0],
     x: [0, -8, 0],
-    transition: { duration: 8, repeat: Infinity, ease: 'easeInOut' },
+    transition: { duration: 8, repeat: Infinity, ease: 'easeInOut' as const },
   },
 };
 
