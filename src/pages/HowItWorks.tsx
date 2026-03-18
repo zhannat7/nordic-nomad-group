@@ -22,13 +22,13 @@ const HowItWorks = () => {
     { key: 'hiw.a.step7', icon: Rocket },
   ];
 
-  const companySteps = [
-    { key: 'hiw.c.step1' },
-    { key: 'hiw.c.step2' },
-    { key: 'hiw.c.step3' },
-    { key: 'hiw.c.step4' },
-    { key: 'hiw.c.step5' },
-    { key: 'hiw.c.step6' },
+  const companySteps: { key: string; icon: LucideIcon }[] = [
+    { key: 'hiw.c.step1', icon: Send },
+    { key: 'hiw.c.step2', icon: Users },
+    { key: 'hiw.c.step3', icon: ClipboardCheck },
+    { key: 'hiw.c.step4', icon: FolderCheck },
+    { key: 'hiw.c.step5', icon: Briefcase },
+    { key: 'hiw.c.step6', icon: HeadsetIcon },
   ];
 
   const fadeUp = {
