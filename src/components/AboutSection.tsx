@@ -99,37 +99,45 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="section-padding border-t border-border">
-      <div className="container max-w-4xl">
-        <motion.h2
+    <section id="about" className="section-padding border-t border-border relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute left-0 top-1/3 h-80 w-80 rounded-full bg-primary/5 blur-3xl -translate-x-1/2" />
+
+      <div className="container max-w-4xl relative">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className={`text-center font-display text-3xl font-bold text-foreground md:text-4xl ${cx}`}
+          className="text-center"
         >
-          {t('about.title')}
-        </motion.h2>
+          <span className="section-badge mb-4">🏢 {t('about.title')}</span>
+          <h2 className={`mt-4 font-display text-3xl font-bold text-foreground md:text-5xl ${cx}`}>
+            {t('about.title')}
+          </h2>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className={`mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-muted-foreground md:text-lg ${cx}`}
+          className={`mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-muted-foreground md:text-lg ${cx}`}
         >
           {t('about.subtitle')}
         </motion.p>
 
-        <motion.h3
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className={`mt-12 text-center font-display text-xl font-semibold text-foreground md:text-2xl ${cx}`}
+          className="mt-16 text-center"
         >
-          {t('about.mission_title')}
-        </motion.h3>
+          <h3 className={`font-display text-xl font-semibold text-foreground md:text-2xl ${cx}`}>
+            {t('about.mission_title')}
+          </h3>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -141,21 +149,22 @@ const AboutSection = () => {
           {t('about.mission')}
         </motion.p>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2">
           {cards.map(({ icon: Icon, key }, i) => (
             <motion.div
               key={key}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * i }}
-              className="rounded-lg border border-border bg-card p-6 shadow-sm"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1"
             >
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
-                <Icon className="h-5 w-5 text-primary" />
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary/15">
+                <Icon className="h-6 w-6 text-primary" />
               </div>
-              <h4 className={`font-semibold text-foreground ${cx}`}>{t(`${key}.title`)}</h4>
-              <p className={`mt-1 text-sm leading-relaxed text-muted-foreground ${cx}`}>{t(`${key}.desc`)}</p>
+              <h4 className={`text-lg font-semibold text-foreground ${cx}`}>{t(`${key}.title`)}</h4>
+              <p className={`mt-2 text-sm leading-relaxed text-muted-foreground ${cx}`}>{t(`${key}.desc`)}</p>
+              <div className="absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-primary/50 transition-all duration-500 group-hover:w-full" />
             </motion.div>
           ))}
         </div>
@@ -165,7 +174,7 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mx-auto mt-12 max-w-xl rounded-lg border-2 border-primary/30 bg-primary/5 p-5"
+          className="mx-auto mt-14 max-w-xl rounded-2xl border-2 border-primary/20 bg-primary/5 p-6"
         >
           <div className="flex items-center gap-3">
             <span className="text-2xl">🏛️</span>
@@ -173,11 +182,11 @@ const AboutSection = () => {
               {t('about.cert_registered')}
             </p>
           </div>
-          <div className="mt-4 flex gap-3">
+          <div className="mt-5 flex gap-3">
             <button
               type="button"
               onClick={handleView}
-              className="inline-flex items-center justify-center rounded-md border border-primary/30 bg-card px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+              className="inline-flex items-center justify-center rounded-xl border border-primary/30 bg-card px-5 py-2.5 text-sm font-medium text-primary transition-all hover:bg-primary/10 hover:-translate-y-0.5"
             >
               {t('about.cert_view')}
             </button>
@@ -195,7 +204,7 @@ const AboutSection = () => {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
               }}
-              className="inline-flex items-center justify-center rounded-md border border-primary/30 bg-card px-4 py-2 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+              className="inline-flex items-center justify-center rounded-xl border border-primary/30 bg-card px-5 py-2.5 text-sm font-medium text-primary transition-all hover:bg-primary/10 hover:-translate-y-0.5"
             >
               {t('about.cert_download')}
             </button>
@@ -204,21 +213,21 @@ const AboutSection = () => {
       </div>
 
       {pdfUrl && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 p-4" onClick={handleCloseModal}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/50 backdrop-blur-sm p-4" onClick={handleCloseModal}>
           <div
-            className="relative w-full max-w-5xl rounded-lg border border-border bg-card shadow-lg"
+            className="relative w-full max-w-5xl rounded-2xl border border-border bg-card shadow-2xl"
             style={{ height: '85vh' }}
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={handleCloseModal}
-              className="absolute -right-3 -top-3 z-10 flex h-8 w-8 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-sm transition-colors hover:text-foreground"
+              className="absolute -right-3 -top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-md transition-all hover:text-foreground hover:scale-110"
             >
               <X className="h-4 w-4" />
             </button>
 
-            <div className="h-full w-full overflow-auto rounded-lg bg-muted/20 p-3">
+            <div className="h-full w-full overflow-auto rounded-2xl bg-muted/20 p-4">
               {isPdfLoading && (
                 <p className="pb-3 text-sm text-muted-foreground">PDF wird geladen…</p>
               )}
