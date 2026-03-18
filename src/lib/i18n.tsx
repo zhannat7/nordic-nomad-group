@@ -256,6 +256,7 @@ const t: Translations = {
   // Map
   'map.badge': { en: 'Location', da: 'Lokation', ru: 'Локация', ky: 'Жайгашкан жери' },
   'map.title': { en: 'Find us', da: 'Find os', ru: 'Найдите нас', ky: 'Бизди табыңыз' },
+  'map.directions': { en: 'Get directions', da: 'Få rutevejledning', ru: 'Проложить маршрут', ky: 'Маршрут алуу' },
 
   // Footer
   'footer.rights': { en: 'All rights reserved.', da: 'Alle rettigheder forbeholdes.', ru: 'Все права защищены.', ky: 'Бардык укуктар корголгон.' },
