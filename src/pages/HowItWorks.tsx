@@ -62,7 +62,7 @@ const HowItWorks = () => {
                 </div>
                 <h2 className="text-xl font-display text-foreground">{t('hiw.a.title')}</h2>
               </div>
-              <ol className="flex flex-col gap-3">
+              <ol className="flex flex-col gap-0">
                 {applicantSteps.map((step, i) => (
                   <motion.li
                     key={step.key}
@@ -71,16 +71,18 @@ const HowItWorks = () => {
                     whileInView="visible"
                     viewport={{ once: true }}
                     variants={fadeUp}
-                    className="flex items-start gap-3"
+                    className="flex items-stretch gap-3"
                   >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary mt-0.5">
-                      <step.icon size={16} />
-                    </span>
-                    <div className="flex items-center gap-2 flex-1 min-h-[28px]">
-                      <span className="text-sm text-foreground leading-snug">{t(step.key)}</span>
+                    <div className="flex flex-col items-center">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <step.icon size={16} />
+                      </span>
                       {i < applicantSteps.length - 1 && (
-                        <ArrowRight size={14} className="shrink-0 text-muted-foreground/40 hidden sm:block" />
+                        <div className="w-px flex-1 bg-border my-1" />
                       )}
+                    </div>
+                    <div className="flex items-start flex-1 pb-4">
+                      <span className="text-sm text-foreground leading-snug pt-1.5">{t(step.key)}</span>
                     </div>
                   </motion.li>
                 ))}
