@@ -45,11 +45,12 @@ const Header = () => {
     <header className="sticky top-0 z-50 border-b border-border/40 bg-background/95 backdrop-blur-xl shadow-[0_1px_3px_0_hsl(var(--foreground)/0.04)]">
       <div className="container flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-4 group">
-          <div className="relative">
+          <div className="relative flex-shrink-0">
             <img
               src={logo}
               alt="Nordic Nomad Group logo"
-              className="h-[52px] w-[52px] rounded-xl object-cover shadow-md ring-1 ring-border/30 transition-all duration-300 group-hover:shadow-lg group-hover:scale-[1.03]"
+              className="h-[56px] w-[56px] rounded-xl object-cover shadow-lg ring-2 ring-[#0F2B52]/10 transition-all duration-300 group-hover:shadow-xl group-hover:scale-[1.04]"
+              style={{ imageRendering: 'auto', WebkitFontSmoothing: 'antialiased' }}
             />
           </div>
           <div className="flex flex-col">
