@@ -49,8 +49,7 @@ const Header = () => {
             <img
               src={logo}
               alt="Nordic Nomad Group logo"
-              className="h-[56px] w-[56px] rounded-xl object-cover shadow-lg ring-2 ring-[#0F2B52]/10 transition-all duration-300 group-hover:shadow-xl group-hover:scale-[1.04]"
-              style={{ imageRendering: 'auto', WebkitFontSmoothing: 'antialiased' }}
+              className="h-[60px] w-auto object-contain transition-all duration-300 group-hover:scale-[1.04]"
             />
           </div>
           <div className="flex flex-col">
