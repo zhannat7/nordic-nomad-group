@@ -27,71 +27,48 @@ const HeroSection = () => {
   const cx = isCyrillic ? 'cyrillic-text' : '';
 
   return (
-    <section className="relative overflow-hidden min-h-[250px] md:min-h-[300px] flex items-center">
+    <section className="relative overflow-hidden min-h-[130px] flex items-center">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBg})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(220_25%_14%/0.72)] via-[hsl(220_25%_14%/0.55)] to-[hsl(220_25%_14%/0.78)]" />
 
-      <div className="container relative z-10 py-6 md:py-8">
+      <div className="container relative z-10 py-3 md:py-4">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           className="max-w-2xl"
         >
-          <motion.div variants={itemVariants} className="mb-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-medium tracking-wide text-white/90 backdrop-blur-sm">
-              🇩🇰 Denmark · 🇰🇬 Kyrgyzstan
-            </span>
-          </motion.div>
-
           <motion.h1
             variants={itemVariants}
-            className={`font-display text-4xl font-normal leading-[1.08] text-white md:text-5xl lg:text-6xl ${cx}`}
+            className={`font-display text-2xl font-normal leading-[1.12] text-white md:text-3xl ${cx}`}
           >
             {t('hero.title')}
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className={`mt-6 max-w-[50ch] text-base text-white/75 md:text-lg leading-relaxed ${cx}`}
+            className={`mt-2 max-w-[50ch] text-sm text-white/75 leading-relaxed hidden md:block ${cx}`}
           >
             {t('hero.subtitle')}
           </motion.p>
 
-          <motion.div variants={itemVariants} className="mt-10 flex flex-wrap gap-4">
+          <motion.div variants={itemVariants} className="mt-4 flex flex-wrap gap-3">
             <a
               href="#about"
-              className="group inline-flex h-12 items-center gap-2 rounded-lg bg-primary px-7 text-sm font-semibold text-primary-foreground transition-all hover:bg-primary/90"
+              className="group inline-flex h-9 items-center gap-2 rounded-lg bg-primary px-5 text-xs font-semibold text-primary-foreground transition-all hover:bg-primary/90"
             >
               {t('hero.tagline')}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
               href="#contact"
-              className="inline-flex h-12 items-center rounded-lg border border-white/20 bg-white/10 px-7 text-sm font-medium text-white backdrop-blur-sm transition-all hover:bg-white/15"
+              className="inline-flex h-9 items-center rounded-lg border border-white/20 bg-white/10 px-5 text-xs font-medium text-white backdrop-blur-sm transition-all hover:bg-white/15"
             >
               {t('nav.contact')}
             </a>
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            className="mt-14 flex flex-wrap gap-10 border-t border-white/10 pt-8"
-          >
-            {stats.map(({ icon: Icon, value, labelKey }) => (
-              <div key={labelKey} className="flex items-center gap-3.5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/10">
-                  <Icon className="h-[18px] w-[18px] text-white/70" />
-                </div>
-                <div>
-                  <p className="text-xl font-bold text-white leading-none">{value}</p>
-                  <p className="text-xs text-white/50 mt-1">{t(labelKey)}</p>
-                </div>
-              </div>
-            ))}
           </motion.div>
         </motion.div>
       </div>
