@@ -29,10 +29,10 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden min-h-[130px] flex items-center">
       <div
-        className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        className="absolute inset-0 bg-cover bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBg})`, backgroundPosition: 'center top' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(220_25%_14%/0.72)] via-[hsl(220_25%_14%/0.55)] to-[hsl(220_25%_14%/0.78)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220_25%_10%/0.75)] via-[hsl(220_25%_10%/0.45)] to-transparent" />
 
       <div className="container relative z-10 py-3 md:py-4">
         <motion.div
