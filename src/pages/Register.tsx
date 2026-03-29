@@ -212,6 +212,8 @@ const Register = () => {
   ];
 
   const fields = [
+    { value: 'zoology', label: t('Зоология', 'Зоология') },
+    { value: 'veterinary', label: t('Ветеринария', 'Ветеринария') },
     { value: 'agricultural', label: t('Сельское хозяйство', 'Айыл чарба') },
     { value: 'other', label: t('Другое', 'Башка') },
   ];
