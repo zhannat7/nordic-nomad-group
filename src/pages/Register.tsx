@@ -59,7 +59,13 @@ const Register = () => {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
-  // Eligibility validation
+  // Check if university is agrar
+  const isAgrarUni = useMemo(() => {
+    const lower = university.toLowerCase();
+    return lower.includes('аграр') || lower.includes('agrar');
+  }, [university]);
+
+  // Eligibility errors (hard blocks)
   const eligibilityErrors = useMemo(() => {
     const errors: string[] = [];
     if (dob) {
@@ -71,18 +77,6 @@ const Register = () => {
         ));
       }
     }
-    if (studyYear === '4' || studyYear === '5') {
-      errors.push(t(
-        'Только студенты 1-3 курса могут подать заявку',
-        '1-3 курстун студенттери гана катталса болот'
-      ));
-    }
-    if (fieldOfStudy && fieldOfStudy !== 'agricultural') {
-      errors.push(t(
-        'Только студенты сельскохозяйственных специальностей могут подать заявку',
-        'Айыл чарба адистигиндеги студенттер гана катталса болот'
-      ));
-    }
     if (prevInternship === 'yes') {
       errors.push(t(
         'Вы не можете подать заявку повторно',
@@ -90,10 +84,40 @@ const Register = () => {
       ));
     }
     return errors;
-  }, [dob, studyYear, fieldOfStudy, prevInternship, lang]);
+  }, [dob, prevInternship, lang]);
 
-  const allStep1Filled = !!dob && !!studyYear && !!fieldOfStudy && !!prevInternship;
-  const isEligible = allStep1Filled && eligibilityErrors.length === 0;
+  // University/course/field warning (soft block with orange warning)
+  const universityWarning = useMemo(() => {
+    if (!university.trim() || !studyYear || !fieldOfStudy) return null;
+    const isValidField = ['zoology', 'veterinary', 'agricultural'].includes(fieldOfStudy);
+
+    // Fall 1: nicht Agrar-Uni
+    if (!isAgrarUni) {
+      return 'Вы учитесь в другом университете. Для участия необходимо поступить в Аграрный университет на бакалавриат или магистратуру и предоставить подтверждение.';
+    }
+
+    // Agrar-Uni + Kurs 4/5
+    if (studyYear === '4' || studyYear === '5') {
+      if (isValidField) {
+        // Fall 2
+        return 'Вы учитесь на 4–5 курсе. Пожалуйста, поступите в магистратуру Аграрного университета и предоставьте подтверждение о зачислении.';
+      } else {
+        // Fall 3 (Другое)
+        return 'Вы учитесь на 4–5 курсе по направлению вне программы. Поступите в магистратуру Аграрного университета по направлению Зоология, Ветеринария или Сельское хозяйство и предоставьте подтверждение.';
+      }
+    }
+
+    // Agrar-Uni + Kurs 1-3 + Другое
+    if (fieldOfStudy === 'other') {
+      return 'Вы учитесь на 4–5 курсе по направлению вне программы. Поступите в магистратуру Аграрного университета по направлению Зоология, Ветеринария или Сельское хозяйство и предоставьте подтверждение.';
+    }
+
+    // Fall 4: Agrar + 1-3 + valid field → OK
+    return null;
+  }, [university, studyYear, fieldOfStudy, isAgrarUni]);
+
+  const allStep1Filled = !!dob && !!studyYear && !!fieldOfStudy && !!university.trim() && !!prevInternship;
+  const isEligible = allStep1Filled && eligibilityErrors.length === 0 && !universityWarning;
 
   const handleCheckEligibility = () => {
     setEligibilityChecked(true);
