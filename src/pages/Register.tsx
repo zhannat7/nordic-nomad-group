@@ -32,6 +32,7 @@ const Register = () => {
   const [dobOpen, setDobOpen] = useState(false);
   const [studyYear, setStudyYear] = useState('');
   const [fieldOfStudy, setFieldOfStudy] = useState('');
+  const [university, setUniversity] = useState('');
   const [prevInternship, setPrevInternship] = useState('');
   const [wasInEU, setWasInEU] = useState('');
   const [euCountry, setEuCountry] = useState('');
