@@ -381,6 +381,14 @@ const Register = () => {
                     <SelectItem value="yes">{t('Да', 'Ооба')}</SelectItem>
                   </SelectContent>
                 </Select>
+                {prevInternship === 'yes' && (
+                  <Alert variant="destructive" className="mt-2">
+                    <XCircle className="h-4 w-4" />
+                    <AlertDescription>
+                      К сожалению, вы не можете повторно участвовать в программе стажировки в Дании. Датское государство не выдаёт визу на повторную стажировку в данной сфере — каждый участник может пройти стажировку только один раз.
+                    </AlertDescription>
+                  </Alert>
+                )}
               </div>
 
               {/* Were you in an EU country before? */}
