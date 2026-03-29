@@ -32,6 +32,7 @@ const Register = () => {
   const [dobOpen, setDobOpen] = useState(false);
   const [studyYear, setStudyYear] = useState('');
   const [fieldOfStudy, setFieldOfStudy] = useState('');
+  const [university, setUniversity] = useState('');
   const [prevInternship, setPrevInternship] = useState('');
   const [wasInEU, setWasInEU] = useState('');
   const [euCountry, setEuCountry] = useState('');
@@ -58,7 +59,13 @@ const Register = () => {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
-  // Eligibility validation
+  // Check if university is agrar
+  const isAgrarUni = useMemo(() => {
+    const lower = university.toLowerCase();
+    return lower.includes('аграр') || lower.includes('agrar');
+  }, [university]);
+
+  // Eligibility errors (hard blocks)
   const eligibilityErrors = useMemo(() => {
     const errors: string[] = [];
     if (dob) {
@@ -70,18 +77,6 @@ const Register = () => {
         ));
       }
     }
-    if (studyYear === '4' || studyYear === '5') {
-      errors.push(t(
-        'Только студенты 1-3 курса могут подать заявку',
-        '1-3 курстун студенттери гана катталса болот'
-      ));
-    }
-    if (fieldOfStudy && fieldOfStudy !== 'agricultural') {
-      errors.push(t(
-        'Только студенты сельскохозяйственных специальностей могут подать заявку',
-        'Айыл чарба адистигиндеги студенттер гана катталса болот'
-      ));
-    }
     if (prevInternship === 'yes') {
       errors.push(t(
         'Вы не можете подать заявку повторно',
@@ -89,10 +84,40 @@ const Register = () => {
       ));
     }
     return errors;
-  }, [dob, studyYear, fieldOfStudy, prevInternship, lang]);
+  }, [dob, prevInternship, lang]);
 
-  const allStep1Filled = !!dob && !!studyYear && !!fieldOfStudy && !!prevInternship;
-  const isEligible = allStep1Filled && eligibilityErrors.length === 0;
+  // University/course/field warning (soft block with orange warning)
+  const universityWarning = useMemo(() => {
+    if (!university.trim() || !studyYear || !fieldOfStudy) return null;
+    const isValidField = ['zoology', 'veterinary', 'agricultural'].includes(fieldOfStudy);
+
+    // Fall 1: nicht Agrar-Uni
+    if (!isAgrarUni) {
+      return 'Вы учитесь в другом университете. Для участия необходимо поступить в Аграрный университет на бакалавриат или магистратуру и предоставить подтверждение.';
+    }
+
+    // Agrar-Uni + Kurs 4/5
+    if (studyYear === '4' || studyYear === '5') {
+      if (isValidField) {
+        // Fall 2
+        return 'Вы учитесь на 4–5 курсе. Пожалуйста, поступите в магистратуру Аграрного университета и предоставьте подтверждение о зачислении.';
+      } else {
+        // Fall 3 (Другое)
+        return 'Вы учитесь на 4–5 курсе по направлению вне программы. Поступите в магистратуру Аграрного университета по направлению Зоология, Ветеринария или Сельское хозяйство и предоставьте подтверждение.';
+      }
+    }
+
+    // Agrar-Uni + Kurs 1-3 + Другое
+    if (fieldOfStudy === 'other') {
+      return 'Ваше направление обучения не входит в программу. Пожалуйста, переведитесь на направление Зоология, Ветеринария или Сельское хозяйство и предоставьте подтверждение.';
+    }
+
+    // Fall 4: Agrar + 1-3 + valid field → OK
+    return null;
+  }, [university, studyYear, fieldOfStudy, isAgrarUni]);
+
+  const allStep1Filled = !!dob && !!studyYear && !!fieldOfStudy && !!university.trim() && !!prevInternship;
+  const isEligible = allStep1Filled && eligibilityErrors.length === 0 && !universityWarning;
 
   const handleCheckEligibility = () => {
     setEligibilityChecked(true);
@@ -323,6 +348,16 @@ const Register = () => {
                 </Select>
               </div>
 
+              {/* University */}
+              <div className="space-y-2">
+                <Label>{t('В каком университете вы учитесь?', 'Кайсы университетте окуйсуз?')}</Label>
+                <Input
+                  value={university}
+                  onChange={(e) => setUniversity(e.target.value)}
+                  placeholder={t('Введите название университета', 'Университеттин аталышын жазыңыз')}
+                />
+              </div>
+
               {/* Field of study */}
               <div className="space-y-2">
                 <Label>{t('Направление обучения', 'Окуу багыты')}</Label>
@@ -384,6 +419,14 @@ const Register = () => {
                 )}
               </div>
 
+              {/* University warning */}
+              {universityWarning && (
+                <Alert className="border-orange-400/50 bg-orange-50 text-orange-900 dark:bg-orange-950/30 dark:text-orange-200 dark:border-orange-500/30">
+                  <AlertTriangle className="h-4 w-4 text-orange-500" />
+                  <AlertDescription>{universityWarning}</AlertDescription>
+                </Alert>
+              )}
+
               {eligibilityChecked && eligibilityErrors.length > 0 && (
                 <div className="space-y-2">
                   {eligibilityErrors.map((err, i) => (
@@ -406,7 +449,7 @@ const Register = () => {
 
               <Button
                 className="w-full"
-                disabled={!allStep1Filled}
+                disabled={!allStep1Filled || !!universityWarning}
                 onClick={handleCheckEligibility}
               >
                 {t('Проверить', 'Текшерүү')}
