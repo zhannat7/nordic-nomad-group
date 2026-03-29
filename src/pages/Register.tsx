@@ -348,6 +348,42 @@ const Register = () => {
                 </Select>
               </div>
 
+              {/* Were you in an EU country before? */}
+              <div className="space-y-2">
+                <Label>{t('Были ли вы ранее в стране ЕС?', 'Сиз мурда ЕС өлкөсүндө болгонсузбу?')}</Label>
+                <Select value={wasInEU} onValueChange={(v) => { setWasInEU(v); if (v === 'no') setEuCountry(''); }}>
+                  <SelectTrigger><SelectValue placeholder={t('Выберите', 'Тандаңыз')} /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="no">{t('Нет', 'Жок')}</SelectItem>
+                    <SelectItem value="yes">{t('Да', 'Ооба')}</SelectItem>
+                  </SelectContent>
+                </Select>
+                {wasInEU === 'yes' && (
+                  <div className="space-y-2 pt-1">
+                    <Label>{t('В какой стране ЕС вы были?', 'Кайсы ЕС өлкөсүндө болгонсуз?')}</Label>
+                    <Input value={euCountry} onChange={(e) => setEuCountry(e.target.value)} placeholder={t('Укажите страну', 'Өлкөнү көрсөтүңүз')} />
+                  </div>
+                )}
+              </div>
+
+              {/* Entry ban or deportation */}
+              <div className="space-y-2">
+                <Label>{t('Был ли у вас запрет на въезд или депортация?', 'Кирүүгө тыюу же депортация болгонбу?')}</Label>
+                <Select value={hadBanOrDeportation} onValueChange={(v) => { setHadBanOrDeportation(v); if (v === 'no') setBanCountry(''); }}>
+                  <SelectTrigger><SelectValue placeholder={t('Выберите', 'Тандаңыз')} /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="no">{t('Нет', 'Жок')}</SelectItem>
+                    <SelectItem value="yes">{t('Да', 'Ооба')}</SelectItem>
+                  </SelectContent>
+                </Select>
+                {hadBanOrDeportation === 'yes' && (
+                  <div className="space-y-2 pt-1">
+                    <Label>{t('В какой стране?', 'Кайсы өлкөдө?')}</Label>
+                    <Input value={banCountry} onChange={(e) => setBanCountry(e.target.value)} placeholder={t('Укажите страну', 'Өлкөнү көрсөтүңүз')} />
+                  </div>
+                )}
+              </div>
+
               {eligibilityChecked && eligibilityErrors.length > 0 && (
                 <div className="space-y-2">
                   {eligibilityErrors.map((err, i) => (
