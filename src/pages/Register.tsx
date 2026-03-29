@@ -419,6 +419,14 @@ const Register = () => {
                 )}
               </div>
 
+              {/* University warning */}
+              {universityWarning && (
+                <Alert className="border-orange-400/50 bg-orange-50 text-orange-900 dark:bg-orange-950/30 dark:text-orange-200 dark:border-orange-500/30">
+                  <AlertTriangle className="h-4 w-4 text-orange-500" />
+                  <AlertDescription>{universityWarning}</AlertDescription>
+                </Alert>
+              )}
+
               {eligibilityChecked && eligibilityErrors.length > 0 && (
                 <div className="space-y-2">
                   {eligibilityErrors.map((err, i) => (
@@ -441,7 +449,7 @@ const Register = () => {
 
               <Button
                 className="w-full"
-                disabled={!allStep1Filled}
+                disabled={!allStep1Filled || !!universityWarning}
                 onClick={handleCheckEligibility}
               >
                 {t('Проверить', 'Текшерүү')}
