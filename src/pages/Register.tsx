@@ -348,6 +348,16 @@ const Register = () => {
                 </Select>
               </div>
 
+              {/* University */}
+              <div className="space-y-2">
+                <Label>{t('В каком университете вы учитесь?', 'Кайсы университетте окуйсуз?')}</Label>
+                <Input
+                  value={university}
+                  onChange={(e) => setUniversity(e.target.value)}
+                  placeholder={t('Введите название университета', 'Университеттин аталышын жазыңыз')}
+                />
+              </div>
+
               {/* Field of study */}
               <div className="space-y-2">
                 <Label>{t('Направление обучения', 'Окуу багыты')}</Label>
