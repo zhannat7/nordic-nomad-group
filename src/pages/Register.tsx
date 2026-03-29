@@ -33,6 +33,10 @@ const Register = () => {
   const [studyYear, setStudyYear] = useState('');
   const [fieldOfStudy, setFieldOfStudy] = useState('');
   const [prevInternship, setPrevInternship] = useState('');
+  const [wasInEU, setWasInEU] = useState('');
+  const [euCountry, setEuCountry] = useState('');
+  const [hadBanOrDeportation, setHadBanOrDeportation] = useState('');
+  const [banCountry, setBanCountry] = useState('');
   const [eligibilityChecked, setEligibilityChecked] = useState(false);
 
   // Step 2
