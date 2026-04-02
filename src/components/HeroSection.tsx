@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useI18n } from '@/lib/i18n';
-import { ArrowRight, Users, Globe, Shield } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
+import { ArrowRight } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -16,23 +15,12 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const } },
 };
 
-const stats = [
-  { icon: Users, value: '50+', labelKey: 'hero.stat_interns' },
-  { icon: Globe, value: '2+', labelKey: 'hero.stat_years' },
-  { icon: Shield, value: '100%', labelKey: 'hero.stat_legal' },
-];
-
 const HeroSection = () => {
   const { t, isCyrillic } = useI18n();
   const cx = isCyrillic ? 'cyrillic-text' : '';
 
   return (
-    <section className="relative overflow-hidden min-h-[130px] flex items-center">
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})`, backgroundPosition: 'center 40%' }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220_25%_10%/0.75)] via-[hsl(220_25%_10%/0.45)] to-transparent" />
+    <section className="relative overflow-hidden min-h-[130px] flex items-center bg-[hsl(220,25%,15%)]">
 
       <div className="container relative z-10 py-3 md:py-4">
         <motion.div
