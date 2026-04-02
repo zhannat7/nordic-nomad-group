@@ -89,7 +89,7 @@ const Register = () => {
   // University/course/field warning (soft block with orange warning)
   const universityWarning = useMemo(() => {
     if (!university.trim() || !studyYear || !fieldOfStudy) return null;
-    const isValidField = ['zoology', 'veterinary', 'agricultural'].includes(fieldOfStudy);
+    const isValidField = ['zoology', 'veterinary'].includes(fieldOfStudy);
 
     // Fall 1: nicht Agrar-Uni
     if (!isAgrarUni) {
