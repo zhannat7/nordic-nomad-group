@@ -332,6 +332,14 @@ const Register = () => {
                     {t('Возраст', 'Жашы')}: {differenceInYears(new Date(), dob)} {t('лет', 'жаш')}
                   </p>
                 )}
+                {dob && (differenceInYears(new Date(), dob) < 18 || differenceInYears(new Date(), dob) > 29) && (
+                  <p className="text-sm text-destructive font-medium">
+                    {t(
+                      `К сожалению, вам ${differenceInYears(new Date(), dob)} лет. Для участия в программе необходимо быть в возрасте от 18 до 29 лет.`,
+                      `Кечиресиз, сиздин жашыңыз ${differenceInYears(new Date(), dob)} жашта. Программага катышуу үчүн 18 менен 29 жаш аралыгында болуу керек.`
+                    )}
+                  </p>
+                )}
               </div>
 
               {/* Study year */}
