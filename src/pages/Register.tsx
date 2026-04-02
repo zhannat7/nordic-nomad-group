@@ -12,6 +12,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { format, differenceInYears, differenceInMonths, parse, isValid } from 'date-fns';
 import { CalendarIcon, CheckCircle2, XCircle, Upload, ArrowLeft, ArrowRight, AlertTriangle } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
 import logo from '@/assets/logo.jpeg';
@@ -45,7 +46,8 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [englishLevel, setEnglishLevel] = useState('');
-  const [animals, setAnimals] = useState('');
+  const [selectedAnimals, setSelectedAnimals] = useState<string[]>([]);
+  const [animalsOtherText, setAnimalsOtherText] = useState('');
   const [agricultureInterest, setAgricultureInterest] = useState('');
   const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
   const [passportExpiry, setPassportExpiry] = useState<Date>();
@@ -202,7 +204,7 @@ const Register = () => {
         status: 'pending',
         date_of_birth: dob ? format(dob, 'yyyy-MM-dd') : null,
         english_level: englishLevel || null,
-        animals: animals.trim() || null,
+        animals: [...selectedAnimals.filter(a => a !== 'other'), ...(selectedAnimals.includes('other') && animalsOtherText.trim() ? [animalsOtherText.trim()] : [])].join(', ') || null,
         agriculture_interest: agricultureInterest.trim() || null,
       });
 
@@ -514,13 +516,42 @@ const Register = () => {
               </div>
 
               {/* Animals */}
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <Label>{t('С какими животными умеете работать?', 'Кайсы жаныбарлар менен иштей аласыз?')}</Label>
-                <Input
-                  value={animals}
-                  onChange={(e) => setAnimals(e.target.value)}
-                  placeholder={t('Напр.: коровы, лошади, овцы', 'Мис.: уйлар, жылкылар, коюлар')}
-                />
+                <p className="text-sm text-muted-foreground italic">
+                  {t('💡 Чаще всего требуются специалисты по коровам и свиньям.', '💡 Көбүнчө уй жана чочко боюнча адистер керек болот.')}
+                </p>
+                <div className="space-y-2">
+                  {[
+                    { value: 'cow', ru: 'Корова', ky: 'Уй' },
+                    { value: 'pig', ru: 'Свинья', ky: 'Чочко' },
+                    { value: 'chicken', ru: 'Курица', ky: 'Тоок' },
+                    { value: 'other', ru: 'Другое', ky: 'Башка' },
+                  ].map((animal) => (
+                    <div key={animal.value} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`animal-${animal.value}`}
+                        checked={selectedAnimals.includes(animal.value)}
+                        onCheckedChange={(checked) => {
+                          setSelectedAnimals(prev =>
+                            checked ? [...prev, animal.value] : prev.filter(a => a !== animal.value)
+                          );
+                          if (!checked && animal.value === 'other') setAnimalsOtherText('');
+                        }}
+                      />
+                      <Label htmlFor={`animal-${animal.value}`} className="font-normal cursor-pointer">
+                        {t(animal.ru, animal.ky)}
+                      </Label>
+                    </div>
+                  ))}
+                </div>
+                {selectedAnimals.includes('other') && (
+                  <Input
+                    value={animalsOtherText}
+                    onChange={(e) => setAnimalsOtherText(e.target.value)}
+                    placeholder={t('Укажите каких', 'Кайсы экенин жазыңыз')}
+                  />
+                )}
               </div>
 
               {/* Agriculture interest */}
