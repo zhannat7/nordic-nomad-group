@@ -241,10 +241,9 @@ const Register = () => {
   ];
 
   const fields = [
-    { value: 'zoology', label: t('Зоология', 'Зоология') },
-    { value: 'veterinary', label: t('Ветеринария', 'Ветеринария') },
-    { value: 'agricultural', label: t('Сельское хозяйство', 'Айыл чарба') },
-    { value: 'other', label: t('Другое', 'Башка') },
+    { value: 'zoology', label: t('Зоотехника / Животноводство', 'Зоотехника / Мал чарбачылык') },
+    { value: 'veterinary', label: t('Ветеринарная медицина', 'Ветеринардык медицина') },
+    { value: 'other', label: t('Другое', 'Башка тармак') },
   ];
 
   const FileInput = ({ label, file, onChange, accept = '.pdf,.jpg,.jpeg,.png' }: { label: string; file: File | null; onChange: (f: File | null) => void; accept?: string }) => (
