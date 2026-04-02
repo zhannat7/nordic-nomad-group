@@ -97,6 +97,10 @@ const RegistrationSuccess = () => {
           <Button asChild className="w-full">
             <a href="/login">{t('Войти', 'Кирүү')}</a>
           </Button>
+
+          <Button asChild variant="outline" className="w-full">
+            <a href="/">{t('На главную страницу', 'Башкы бетке кайтуу')}</a>
+          </Button>
         </CardContent>
       </Card>
     </div>
