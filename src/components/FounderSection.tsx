@@ -32,7 +32,7 @@ const FounderSection = () => {
           </div>
 
           <div className="text-center sm:text-left">
-            <h3 className={`font-display text-2xl text-foreground ${cx}`}>Tahmina</h3>
+            <h3 className={`font-display text-2xl text-foreground ${cx}`}>{t('founder.name')}</h3>
             <p className="mt-1.5 text-sm font-medium text-primary">{t('founder.role')}</p>
             <p className={`mt-5 text-sm leading-relaxed text-muted-foreground ${cx}`}>
               {t('founder.bio')}

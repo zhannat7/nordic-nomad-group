@@ -230,11 +230,17 @@ const t: Translations = {
   'founder.label': { en: 'Leadership', da: 'Ledelse', ru: 'Руководство', ky: 'Жетекчилик' },
   'founder.title': { en: 'Meet our Founder', da: 'Mød vores grundlægger', ru: 'Наш основатель', ky: 'Биздин негиздөөчү' },
   'founder.role': { en: 'CEO & Founder', da: 'CEO & Grundlægger', ru: 'CEO и основатель', ky: 'CEO жана негиздөөчү' },
+  'founder.name': {
+    en: 'Takhmina Islambek kyzy',
+    da: 'Takhmina Islambek kyzy',
+    ru: 'Тахмина Исламбек кызы',
+    ky: 'Тахмина Исламбек кызы',
+  },
   'founder.bio': {
-    en: 'Tahmina founded Nordic Nomad Group with a clear vision: to bridge the gap between talented professionals from Central Asia and European companies in need of dedicated, skilled workforce. With deep expertise in international recruitment and cross-cultural management, she leads the company with a hands-on approach — ensuring every candidate and partner receives personal, transparent, and reliable support throughout the entire process.',
-    da: 'Tahmina grundlagde Nordic Nomad Group med en klar vision: at bygge bro mellem talentfulde fagfolk fra Centralasien og europæiske virksomheder, der har brug for en dedikeret og dygtig arbejdsstyrke. Med dyb ekspertise inden for international rekruttering og tværkulturel ledelse leder hun virksomheden med en praktisk tilgang — og sikrer, at hver kandidat og partner modtager personlig, gennemsigtig og pålidelig støtte gennem hele processen.',
-    ru: 'Тахмина основала Nordic Nomad Group с ясной целью: соединить талантливых специалистов из Центральной Азии с европейскими компаниями, нуждающимися в квалифицированных сотрудниках. Обладая глубокой экспертизой в международном рекрутинге и межкультурном управлении, она руководит компанией лично — обеспечивая каждому кандидату и партнёру прозрачную и надёжную поддержку на всех этапах.',
-    ky: 'Тахмина Nordic Nomad Group компаниясын так максат менен негиздеген: Борбордук Азиядагы таланттуу адистерди квалификациялуу кызматкерлерге муктаж Европа компаниялары менен байланыштыруу. Эл аралык рекрутинг жана маданияттар аралык башкаруу боюнча терең тажрыйбасы менен, ал компанияны жеке башкарат — ар бир талапкерге жана өнөктөшкө бардык этаптарда ачык жана ишенимдүү колдоо көрсөтөт.',
+    en: 'Takhmina founded Nordic Nomad Group with one mission: to make international hiring simple and reliable for Danish farms. Born in Kyrgyzstan and living in Denmark, she personally understands both sides. Fluent in 5 languages — Kyrgyz, Russian, English, Turkish and Danish — she ensures every partnership runs smoothly and professionally.',
+    da: 'Takhmina grundlagde Nordic Nomad Group med ét mål: at gøre international ansættelse enkel og pålidelig for danske gårde. Født i Kirgisistan og bosiddende i Danmark forstår hun personligt begge sider. Hun taler 5 sprog — og sikrer, at hvert samarbejde forløber professionelt og gnidningsfrit.',
+    ru: 'Тахмина основала Nordic Nomad Group с одной миссией: создать законный и надёжный путь для кыргызских студентов работать и учиться в Дании. Родившись в Кыргызстане и живя в Дании, она лично соединяет два мира. Владея 5 языками — кыргызским, русским, английским, турецким и датским — она ведёт каждое дело с прозрачностью и преданностью.',
+    ky: 'Тахмина Nordic Nomad Group компаниясын бир максат менен негиздеген: кыргыз студенттери үчүн Данияда мыйзамдуу жана ишенимдүү жол түзүү. Кыргызстанда туулуп, Данияда жашап, ал эки дүйнөнү жеке байланыштырат. 5 тилди билет — кыргыз, орус, англис, түрк жана дат — ар бир ишти ачыктык жана берилгендик менен жүргүзөт.',
   },
 
   // Contact
