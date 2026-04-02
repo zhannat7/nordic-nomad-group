@@ -1,32 +1,36 @@
 import { useState, useEffect } from 'react';
+import { useI18n } from '@/lib/i18n';
 
 const CurrencyTicker = () => {
-  const [text, setText] = useState('Loading exchange rates...');
+  const { lang } = useI18n();
+  const [text, setText] = useState('');
 
   const fetchRates = async () => {
     try {
-      const res = await fetch('https://open.er-api.com/v6/latest/EUR');
+      const res = await fetch('https://open.er-api.com/v6/latest/KGS');
       if (!res.ok) throw new Error('Failed to fetch');
       const data = await res.json();
-      const kgs = data.rates?.KGS;
-      const dkk = data.rates?.DKK;
-      const usd = data.rates?.USD;
-      if (kgs) {
-        const kgsToEur = (1 / kgs).toFixed(4);
-        const kgsToDkk = (dkk / kgs).toFixed(4);
-        const kgsToUsd = (usd / kgs).toFixed(4);
-        setText(`🇰🇬 1 KGS = ${kgsToEur} EUR  •  🇰🇬 1 KGS = ${kgsToDkk} DKK  •  🇰🇬 1 KGS = ${kgsToUsd} USD`);
+      const usdRate = data.rates?.USD;
+      const eurRate = data.rates?.EUR;
+      const dkkRate = data.rates?.DKK;
+      if (usdRate && eurRate && dkkRate) {
+        const usdToKgs = (1 / usdRate).toFixed(2);
+        const eurToKgs = (1 / eurRate).toFixed(2);
+        const dkkToKgs = (1 / dkkRate).toFixed(2);
+        setText(`🇺🇸 1 USD = ${usdToKgs} сом  •  🇪🇺 1 EUR = ${eurToKgs} сом  •  🇩🇰 1 DKK = ${dkkToKgs} сом`);
       }
     } catch {
-      setText('🇰🇬 1 KGS = 0.0097 EUR  •  🇰🇬 1 KGS = 0.0724 DKK  •  🇰🇬 1 KGS = 0.0112 USD');
+      setText('🇺🇸 1 USD = 89.50 сом  •  🇪🇺 1 EUR = 97.20 сом  •  🇩🇰 1 DKK = 13.02 сом');
     }
   };
 
   useEffect(() => {
     fetchRates();
-    const interval = setInterval(fetchRates, 60000);
+    const interval = setInterval(fetchRates, 3600000);
     return () => clearInterval(interval);
   }, []);
+
+  if (lang !== 'ru' && lang !== 'ky') return null;
 
   return (
     <div className="overflow-hidden whitespace-nowrap" style={{ backgroundColor: '#1B3A6B' }}>
