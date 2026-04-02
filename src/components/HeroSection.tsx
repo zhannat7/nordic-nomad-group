@@ -30,7 +30,7 @@ const HeroSection = () => {
     <section className="relative overflow-hidden min-h-[130px] flex items-center">
       <div
         className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})`, backgroundPosition: 'center top' }}
+        style={{ backgroundImage: `url(${heroBg})`, backgroundPosition: 'center 40%' }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220_25%_10%/0.75)] via-[hsl(220_25%_10%/0.45)] to-transparent" />
 
