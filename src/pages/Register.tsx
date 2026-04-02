@@ -204,7 +204,7 @@ const Register = () => {
         status: 'pending',
         date_of_birth: dob ? format(dob, 'yyyy-MM-dd') : null,
         english_level: englishLevel || null,
-        animals: animals.trim() || null,
+        animals: [...selectedAnimals.filter(a => a !== 'other'), ...(selectedAnimals.includes('other') && animalsOtherText.trim() ? [animalsOtherText.trim()] : [])].join(', ') || null,
         agriculture_interest: agricultureInterest.trim() || null,
       });
 
