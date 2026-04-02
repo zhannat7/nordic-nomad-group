@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useI18n } from '@/lib/i18n';
-import { ArrowRight, Users, Globe, Shield } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
+import { ArrowRight } from 'lucide-react';
 
 const containerVariants = {
   hidden: { opacity: 0 },
