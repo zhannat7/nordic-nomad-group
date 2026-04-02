@@ -350,7 +350,7 @@ const Register = () => {
 
               {/* University */}
               <div className="space-y-2">
-                <Label>{t('В каком университете вы учитесь?', 'Кайсы университетте окуйсуз?')}</Label>
+                <Label>{t('В каком учебном заведении (университет или колледж) вы учитесь?', 'Сиз кайсы окуу жайында (университет же колледж) окуйсуз?')}</Label>
                 <Input
                   value={university}
                   onChange={(e) => setUniversity(e.target.value)}
