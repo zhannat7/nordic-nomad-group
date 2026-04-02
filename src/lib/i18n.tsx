@@ -114,16 +114,14 @@ const t: Translations = {
     ky: "Кыргызстандын жумушчу күчү менен бизнесиңизди оптималдаштырыңыз",
   },
   "hero.subtitle": {
- 'hero.subtitle': {
-  en: 'We connect you with motivated and skilled interns, making international hiring simple and reliable.',
-  da: 'Vi forbinder dig med motiverede og dygtige praktikanter og gør international ansættelse enkel og pålidelig.',
-  ru: 'Мы помогаем кыргызским студентам пройти сельскохозяйственную стажировку в Дании — официально и прозрачно.',
-  ky: 'Биз кыргыз студенттерине Данияда айыл чарба стажировкасынан өтүүгө расмий жана ачык түрдө жол көрсөтөбүз.',
+    en: "We connect you with motivated and skilled interns, making international hiring simple and reliable.",
+    da: "Vi forbinder dig med motiverede og dygtige praktikanter og gør international ansættelse enkel og pålidelig.",
+    ru: "Мы помогаем кыргызским студентам пройти сельскохозяйственную стажировку в Дании — официально и прозрачно.",
+    ky: "Биз кыргыз студенттерине Данияда айыл чарба стажировкасынан өтүүгө расмий жана ачык түрдө жол көрсөтөбүз.",
   },
-  'hero.service1': { en: '✔ Consulting & Coordination Service', da: '✔ Konsulentservice & koordinering', ru: '', ky: '' },
-  'hero.service2': { en: '✔ International Placement Support', da: '✔ International formidlingsstøtte', ru: '', ky: '' },
-  'hero.service3': { en: '✔ Trainee Placement Assistance', da: '✔ Praktikantstøtte', ru: '', ky: '' 
-  },
+  "hero.service1": { en: "✔ Consulting & Coordination Service", da: "✔ Konsulentservice & koordinering", ru: "", ky: "" },
+  "hero.service2": { en: "✔ International Placement Support", da: "✔ International formidlingsstøtte", ru: "", ky: "" },
+  "hero.service3": { en: "✔ Trainee Placement Assistance", da: "✔ Praktikantstøtte", ru: "", ky: "" },
   "hero.stat_interns": {
     en: "Interns placed",
     da: "Praktikanter formidlet",
