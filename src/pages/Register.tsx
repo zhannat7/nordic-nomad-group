@@ -12,6 +12,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { format, differenceInYears, differenceInMonths, parse, isValid } from 'date-fns';
 import { CalendarIcon, CheckCircle2, XCircle, Upload, ArrowLeft, ArrowRight, AlertTriangle } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { toast } from '@/hooks/use-toast';
 import logo from '@/assets/logo.jpeg';
