@@ -271,7 +271,7 @@ export default function ChatBot() {
     <>
       {/* Floating button — Tahmina avatar */}
       <AnimatePresence>
-        {!open && (
+        {!open && (pageLang === "ru" || pageLang === "ky") && (
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -297,7 +297,7 @@ export default function ChatBot() {
 
       {/* Chat window */}
       <AnimatePresence>
-        {open && (
+        {open && (pageLang === "ru" || pageLang === "ky") && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
