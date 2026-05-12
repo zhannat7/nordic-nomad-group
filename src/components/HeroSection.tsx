@@ -1,12 +1,12 @@
-import { motion } from 'framer-motion';
-import { useI18n } from '@/lib/i18n';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
-import heroFarm from '@/assets/hero-farm.jpg';
-import internFarm from '@/assets/intern-farm.jpg';
+import { motion } from "framer-motion";
+import { useI18n } from "@/lib/i18n";
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import heroFarm from "@/assets/hero-farm.jpg";
+import internFarm from "@/assets/intern-farm.jpg";
 
 const HeroSection = () => {
   const { t, isCyrillic } = useI18n();
-  const cx = isCyrillic ? 'cyrillic-text' : '';
+  const cx = isCyrillic ? "cyrillic-text" : "";
 
   return (
     <section className="relative overflow-hidden bg-background">
@@ -40,10 +40,15 @@ const HeroSection = () => {
             transition={{ duration: 0.7, delay: 0.05 }}
             className={`mt-7 font-display text-[2.6rem] leading-[1.02] tracking-tight text-foreground sm:text-6xl lg:text-[5.2rem] ${cx}`}
           >
-            From the steppes <br className="hidden sm:block" />
-            <span className="italic text-primary">of Kyrgyzstan</span>{' '}
-            <br className="hidden sm:block" />
-            to Danish farms.
+            {isCyrillic ? (
+              t("hero.title")
+            ) : (
+              <>
+                From the steppes <br className="hidden sm:block" />
+                <span className="italic text-primary">of Kyrgyzstan</span> <br className="hidden sm:block" />
+                to Danish farms.
+              </>
+            )}
           </motion.h1>
 
           <motion.p
@@ -52,9 +57,8 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.18 }}
             className={`mt-7 max-w-xl text-base leading-relaxed text-foreground/70 md:text-lg ${cx}`}
           >
-            We&rsquo;re a Denmark-registered consultancy placing motivated young students
-            from Kyrgyzstan into official agricultural internships. Vetted candidates,
-            handled paperwork, lasting partnerships.
+            We&rsquo;re a Denmark-registered consultancy placing motivated young students from Kyrgyzstan into official
+            agricultural internships. Vetted candidates, handled paperwork, lasting partnerships.
           </motion.p>
 
           <motion.div
@@ -67,14 +71,14 @@ const HeroSection = () => {
               href="#contact"
               className="group inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-3.5 text-sm font-semibold text-background transition-all hover:bg-primary"
             >
-              {t('hero.tagline')}
+              {t("hero.tagline")}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <a
               href="#about"
               className="text-sm font-medium text-foreground/70 underline decoration-foreground/30 underline-offset-[6px] transition-colors hover:text-foreground hover:decoration-foreground"
             >
-              {t('nav.about')}
+              {t("nav.about")}
             </a>
           </motion.div>
 
@@ -86,9 +90,9 @@ const HeroSection = () => {
             className="mt-16 grid max-w-xl grid-cols-3 divide-x divide-foreground/10 border-y border-foreground/10 py-6"
           >
             {[
-              { n: '50+', l: t('hero.stat_interns') },
-              { n: '2', l: t('hero.stat_years') },
-              { n: '100%', l: t('hero.stat_legal') },
+              { n: "50+", l: t("hero.stat_interns") },
+              { n: "2", l: t("hero.stat_years") },
+              { n: "100%", l: t("hero.stat_legal") },
             ].map((s, i) => (
               <div key={i} className="px-4 first:pl-0">
                 <div className="font-display text-3xl text-foreground md:text-4xl">{s.n}</div>
@@ -143,7 +147,10 @@ const HeroSection = () => {
           {/* Vertical caption */}
           <div className="absolute -right-2 top-6 hidden flex-col items-center gap-2 lg:flex">
             <span className="h-12 w-px bg-foreground/30" />
-            <span className="rotate-180 text-[10px] uppercase tracking-[0.4em] text-foreground/50" style={{ writingMode: 'vertical-rl' }}>
+            <span
+              className="rotate-180 text-[10px] uppercase tracking-[0.4em] text-foreground/50"
+              style={{ writingMode: "vertical-rl" }}
+            >
               Vol. 01 — 2026
             </span>
           </div>
