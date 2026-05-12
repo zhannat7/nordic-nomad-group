@@ -123,6 +123,30 @@ export type Database = {
           },
         ]
       }
+      leads: {
+        Row: {
+          created_at: string
+          id: string
+          lang: string | null
+          preferred_days: string | null
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          lang?: string | null
+          preferred_days?: string | null
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          lang?: string | null
+          preferred_days?: string | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
