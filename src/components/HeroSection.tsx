@@ -57,8 +57,9 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.18 }}
             className={`mt-7 max-w-xl text-base leading-relaxed text-foreground/70 md:text-lg ${cx}`}
           >
-            We&rsquo;re a Denmark-registered consultancy placing motivated young students from Kyrgyzstan into official
-            agricultural internships. Vetted candidates, handled paperwork, lasting partnerships.
+            {isCyrillic
+              ? t("hero.subtitle")
+              : "We're a Denmark-registered consultancy placing motivated young students from Kyrgyzstan into official agricultural internships. Vetted candidates, handled paperwork, lasting partnerships."}
           </motion.p>
 
           <motion.div
