@@ -567,8 +567,8 @@ export const useI18n = () => {
 };
 
 export const languages: { code: Lang; label: string; flag: string }[] = [
-  { code: "en", label: "English", flag: "🇬🇧" },
   { code: "da", label: "Dansk", flag: "🇩🇰" },
-  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "en", label: "English", flag: "🇬🇧" },
   { code: "ky", label: "Кыргызча", flag: "🇰🇬" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
 ];
