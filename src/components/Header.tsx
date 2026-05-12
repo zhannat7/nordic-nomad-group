@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import logo from "@/assets/logo.png";
+import flagBg from "@/assets/flag-bg.png";
 
 const programs = [
   { key: "program.agriculture", href: "/programs/agriculture" },
@@ -43,7 +44,14 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-xl shadow-sm">
+    <header
+      className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-xl shadow-sm"
+      style={{
+        backgroundImage: `url(${flagBg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="container flex h-[4.5rem] items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group shrink-0">
