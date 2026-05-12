@@ -1,7 +1,7 @@
 // i18n provider - internationalization context
 import { createContext, useContext, useState, ReactNode } from "react";
 
-export type Lang = "en" | "da" | "ru" | "ky";
+export type Lang = "da" | "en" | "ky" | "ru";
 
 type Translations = Record<string, Record<Lang, string>>;
 
