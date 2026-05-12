@@ -46,6 +46,10 @@ function lastAssistantAskedForWhatsApp(messages: any[]): boolean {
   return c.includes("whatsapp") || c.includes("ватсап") || c.includes("номер") || c.includes("номериңиз");
 }
 
+function isFirstUserMessage(messages: any[]): boolean {
+  return messages.filter((m: any) => m.role === "user").length === 1;
+}
+
 async function saveLead(whatsapp: string, lang: string, preferred_days: string) {
   const supabaseUrl = Deno.env.get("SUPABASE_URL");
   const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
