@@ -10,7 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import logo from "@/assets/logo.png";
-import flagBg from "@/assets/flag-bg.png";
 
 const programs = [
   { key: "program.agriculture", href: "/programs/agriculture" },
