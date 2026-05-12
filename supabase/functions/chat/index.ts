@@ -33,8 +33,32 @@ function extractAge(msg: string): number | null {
   return null;
 }
 
-function isFirstUserMessage(messages: any[]): boolean {
-  return messages.filter((m) => m.role === "user").length === 1;
+function extractPhone(msg: string): string | null {
+  const match = msg.match(/[\+\d][\d\s\-\(\)]{6,20}\d/);
+  if (match) return match[0].replace(/\s/g, "");
+  return null;
+}
+
+function lastAssistantAskedForWhatsApp(messages: any[]): boolean {
+  const last = [...messages].reverse().find((m: any) => m.role === "assistant");
+  if (!last) return false;
+  const c = last.content.toLowerCase();
+  return c.includes("whatsapp") || c.includes("ватсап") || c.includes("номер") || c.includes("номериңиз");
+}
+
+async function saveLead(whatsapp: string, lang: string, preferred_days: string) {
+  const supabaseUrl = Deno.env.get("SUPABASE_URL");
+  const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!supabaseUrl || !supabaseKey) return;
+  await fetch(`${supabaseUrl}/rest/v1/leads`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      apikey: supabaseKey,
+      Authorization: `Bearer ${supabaseKey}`,
+    },
+    body: JSON.stringify({ whatsapp, lang, preferred_days }),
+  });
 }
 
 function fixedStreamResponse(text: string, corsHeaders: Record<string, string>) {
@@ -176,6 +200,14 @@ serve(async (req) => {
 
     const l = (lang === "ky" ? "ky" : "ru") as "ru" | "ky";
     const lastUserMsg = [...messages].reverse().find((m) => m.role === "user")?.content ?? "";
+
+    // Telefonnummer erkennen und speichern
+    if (lastAssistantAskedForWhatsApp(messages.slice(0, -1))) {
+      const phone = extractPhone(lastUserMsg);
+      if (phone) {
+        await saveLead(phone, l, lastUserMsg);
+      }
+    }
 
     if (isFirstUserMessage(messages)) {
       const age = extractAge(lastUserMsg);
