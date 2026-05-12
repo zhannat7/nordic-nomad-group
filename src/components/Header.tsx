@@ -46,11 +46,7 @@ const Header = () => {
   return (
     <header
       className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-xl shadow-sm"
-      style={{
-        backgroundImage: `url(${flagBg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-xl shadow-sm">
     >
       <div className="container flex h-[4.5rem] items-center justify-between">
         {/* Logo */}
