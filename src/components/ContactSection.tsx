@@ -14,18 +14,28 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-background">
-      <div className="container max-w-5xl">
-        <div className="grid gap-14 lg:grid-cols-2">
+    <section id="contact" className="section-padding section-alt">
+      <div className="container max-w-6xl">
+        <div className="grid gap-14 lg:grid-cols-12">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="lg:col-span-5"
           >
-            <span className="section-label">✉️ Contact</span>
-            <h2 className={`section-title ${cx}`}>{t('contact.title')}</h2>
-            <p className={`section-desc ${cx}`}>{t('contact.desc')}</p>
+            <div className="flex items-center gap-3">
+              <span className="h-px w-8 bg-foreground/40" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-foreground/70">
+                Contact — 04
+              </span>
+            </div>
+            <h2 className={`mt-6 font-display text-4xl leading-[1.05] text-foreground md:text-5xl ${cx}`}>
+              {t('contact.title')}
+            </h2>
+            <p className={`mt-5 max-w-md text-base leading-relaxed text-foreground/70 ${cx}`}>
+              {t('contact.desc')}
+            </p>
 
             <div className="mt-10 space-y-5">
               <div className="flex items-center gap-4">
@@ -72,6 +82,7 @@ const ContactSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-7"
           >
             {submitted ? (
               <div className="flex flex-col items-center justify-center rounded-xl border border-primary/15 bg-primary/5 py-16 text-center">
