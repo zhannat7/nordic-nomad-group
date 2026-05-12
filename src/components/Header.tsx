@@ -98,7 +98,7 @@ const Header = () => {
           {/* Language switcher */}
           <div className="relative group">
             <button className="flex items-center gap-1.5 rounded-lg border border-border bg-background px-3 py-1.5 text-sm text-foreground hover:bg-secondary transition-colors">
-              <span className="text-base">{languages.find((l) => l.code === lang)?.flag ?? "🇩🇰"}</span>
+              <Globe className="h-4 w-4 text-muted-foreground" />
               <span>{languages.find((l) => l.code === lang)?.label ?? "Dansk"}</span>
               <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
             </button>
