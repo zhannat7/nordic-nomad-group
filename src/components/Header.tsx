@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useI18n, languages } from "@/lib/i18n";
 import {
