@@ -119,7 +119,12 @@ const t: Translations = {
     ru: "Мы помогаем кыргызским студентам пройти сельскохозяйственную стажировку в Дании — официально и прозрачно.",
     ky: "Биз кыргыз студенттерине Данияда айыл чарба стажировкасынан өтүүгө расмий жана ачык түрдө жол көрсөтөбүз.",
   },
-  "hero.service1": { en: "✔ Consulting & Coordination Service", da: "✔ Konsulentservice & koordinering", ru: "", ky: "" },
+  "hero.service1": {
+    en: "✔ Consulting & Coordination Service",
+    da: "✔ Konsulentservice & koordinering",
+    ru: "",
+    ky: "",
+  },
   "hero.service2": { en: "✔ International Placement Support", da: "✔ International formidlingsstøtte", ru: "", ky: "" },
   "hero.service3": { en: "✔ Trainee Placement Assistance", da: "✔ Praktikantstøtte", ru: "", ky: "" },
   "hero.stat_interns": {
@@ -561,9 +566,9 @@ export const useI18n = () => {
   return ctx;
 };
 
-export const languages: { code: Lang; label: string }[] = [
-  { code: "en", label: "English" },
-  { code: "da", label: "Dansk" },
-  { code: "ru", label: "Русский" },
-  { code: "ky", label: "Кыргызча" },
+export const languages: { code: Lang; label: string; flag: string }[] = [
+  { code: "en", label: "English", flag: "🇬🇧" },
+  { code: "da", label: "Dansk", flag: "🇩🇰" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "ky", label: "Кыргызча", flag: "🇰🇬" },
 ];
